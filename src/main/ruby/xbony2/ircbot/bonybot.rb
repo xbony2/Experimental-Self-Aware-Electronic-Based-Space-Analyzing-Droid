@@ -1,5 +1,3 @@
-gem 'cinch', '2.1.0'
-
 require 'cinch'
 
 botName = "ESAEBSAD"
@@ -14,3 +12,5 @@ bot = Cinch::Bot.new do
     m.reply "Hello, #{m.user.nick}"
   end
 end
+
+bot.start
