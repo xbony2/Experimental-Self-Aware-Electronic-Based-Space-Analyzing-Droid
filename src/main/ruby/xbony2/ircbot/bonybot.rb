@@ -1,6 +1,6 @@
 require 'cinch'
 
-BOT_NAME = "ESAEBSAD"
+BOT_NAME = "ESAEBSAD Bot"
 
 bot = Cinch::Bot.new do
   configure do |c|
