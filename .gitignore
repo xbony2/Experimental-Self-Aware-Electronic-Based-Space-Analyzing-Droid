@@ -37,4 +37,4 @@ build/
 .DS_Store
 
 # Urls
-src/main/resources/xbony2/ircbot/Urls
+src/main/resources/xbony2/ircbot/Urls.txt

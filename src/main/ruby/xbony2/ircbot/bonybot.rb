@@ -34,6 +34,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@url-shorten (.+)/ do |m, url|
+    urlFile = File.open("src/main/resources/xbony2/ircbot/Urls")
     shortUrl = Googl.shorten(url)
     m.reply "New URL: #{shortUrl.short_url}"
   end

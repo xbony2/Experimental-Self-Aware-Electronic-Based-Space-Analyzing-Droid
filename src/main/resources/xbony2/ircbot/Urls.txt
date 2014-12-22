@@ -1,3 +1,3 @@
 Whenever some does the @@url-shorten command, the links will come here in a format like:
-long_link short_link
+long_link short_link (very simple you see)
 I don't want to push all of the links though, so I'm just going to push this.
