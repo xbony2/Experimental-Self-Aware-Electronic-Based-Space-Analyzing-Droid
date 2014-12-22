@@ -1,4 +1,7 @@
 require 'cinch'
+require 'httparty'
+require 'json'
+require 'googl'
 
 BOT_NAME = "ESAEBSAD Bot"
 
@@ -13,7 +16,8 @@ bot = Cinch::Bot.new do
     m.reply "Commands:"
     m.reply ": @@help -displays this message,"
     m.reply ": @@flip -flips a coin,"
-    m.reply ": @@roll -rolls a die."
+    m.reply ": @@roll -rolls a die,"
+    m.reply ": @@url-shorten [link] -shortens a link using goo.gl."
   end
   
   on :channel, /^@@flip/ do |m|
@@ -27,6 +31,11 @@ bot = Cinch::Bot.new do
   on :channel, /^@@roll/ do |m|
     result = 1 + rand(6)
     m.reply "The die roll reveals the number #{result}."
+  end
+  
+  on :channel, /^@@url-shorten (.+)/ do |m, url|
+    shortUrl = Googl.shorten(url)
+    m.reply "New URL: #{shortUrl.short_url}"
   end
   
   # This command is hidden by default, since only the owner needs to know about it.
