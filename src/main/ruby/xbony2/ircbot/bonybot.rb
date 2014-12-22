@@ -12,7 +12,7 @@ bot = Cinch::Bot.new do
     c.nick = BOT_NAME
   end
   
-  on :channel, /^@@help/ do |m|
+  on :channel, "@@help" do |m|
     m.reply "Commands:"
     m.reply ": @@help -displays this message,"
     m.reply ": @@flip -flips a coin,"
@@ -20,7 +20,7 @@ bot = Cinch::Bot.new do
     m.reply ": @@url-shorten [link] -shortens a link using goo.gl."
   end
   
-  on :channel, /^@@flip/ do |m|
+  on :channel, "@@flip" do |m|
     if 1 + rand(2) == 1
       m.reply "The coin flip reveals heads."
     else
@@ -28,7 +28,7 @@ bot = Cinch::Bot.new do
     end
   end
   
-  on :channel, /^@@roll/ do |m|
+  on :channel, "@@roll" do |m|
     result = 1 + rand(6)
     m.reply "The die roll reveals the number #{result}."
   end
@@ -39,7 +39,7 @@ bot = Cinch::Bot.new do
   end
   
   # This command is hidden by default, since only the owner needs to know about it.
-  on :channel, /^@@stop/ do |m|
+  on :channel, "@@stop" do |m|
     if m.user.authname == "xbony2"
       exit
     else
