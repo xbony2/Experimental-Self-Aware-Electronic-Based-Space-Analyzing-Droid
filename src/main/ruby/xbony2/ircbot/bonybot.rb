@@ -17,8 +17,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@flip/ do |m|
-    result = 1 + rand(2)
-    if result == 1
+    if 1 + rand(2) == 1
       m.reply "The coin flip reveals heads."
     else
       m.reply "The coin flip reveals tails."
@@ -30,6 +29,7 @@ bot = Cinch::Bot.new do
     m.reply "The die roll reveals the number #{result}."
   end
   
+  # This command is hidden by default, since only the owner needs to know about it.
   on :channel, /^@@stop/ do |m|
     if m.user.authname == "xbony2"
       exit
