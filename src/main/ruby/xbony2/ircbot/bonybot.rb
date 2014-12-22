@@ -34,7 +34,7 @@ bot = Cinch::Bot.new do
     if m.user.authname == "xbony2"
       exit
     else
-      m.reply "You cannot stop me unless you are my owner."
+      m.reply "You cannot stop me unless you're my owner."
     end 
   end
   
