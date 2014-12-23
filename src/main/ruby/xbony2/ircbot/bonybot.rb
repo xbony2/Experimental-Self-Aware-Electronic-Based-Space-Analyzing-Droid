@@ -8,7 +8,7 @@ BOT_NAME = "ESAEBSAD Bot"
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#NuclearControl2"]
+    c.channels = ["#FTB-Wiki"]
     c.nick = BOT_NAME
   end
   
@@ -17,6 +17,7 @@ bot = Cinch::Bot.new do
     m.reply ": @@help -displays this message,"
     m.reply ": @@flip -flips a coin,"
     m.reply ": @@roll -rolls a die,"
+    m.reply ": @@dev -gives technical informations about me,"
     m.reply ": @@url-shorten [link] -shortens a link using goo.gl."
   end
   
@@ -31,6 +32,11 @@ bot = Cinch::Bot.new do
   on :channel, "@@roll" do |m|
     result = 1 + rand(6)
     m.reply "The die roll reveals the number #{result}."
+  end
+  
+  on :channel, "@@dev" do |m|
+    m.reply "I am an IRC bot created by xbony2 in ruby, using the cinch gem."
+    m.reply "I am open sourced and under the MIT license: http://goo.gl/GkH1x1"
   end
   
   on :channel, /^@@url-shorten (.+)/ do |m, url|
