@@ -8,7 +8,7 @@ BOT_NAME = "ESAEBSAD Bot"
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#FTB-Wiki"]
+    c.channels = ["#FTB-Wiki", "#NuclearControl2"]
     c.nick = BOT_NAME
   end
   
