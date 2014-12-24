@@ -2,13 +2,17 @@ require 'cinch'
 require 'httparty'
 require 'json'
 require 'googl'
+require 'rest-client'
+require 'mediawiki-gateway'
 
-BOT_NAME = "ESAEBSAD Bot"
+BOT_NAME = "ESAEBSAD"
+
+mw = MediaWiki::Gateway.new('http://ftb.gamepedia.com/api.php')
 
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#FTB-Wiki", "#NuclearControl2"]
+    c.channels = ["#NuclearControl2"] #"#FTB-Wiki", 
     c.nick = BOT_NAME
   end
   
@@ -43,6 +47,8 @@ bot = Cinch::Bot.new do
     shortUrl = Googl.shorten(url)
     m.reply "New URL: #{shortUrl.short_url}"
   end
+  
+  #on :Channel, // TODO
   
   # This command is hidden by default, since only the owner needs to know about it.
   on :channel, "@@stop" do |m|
