@@ -53,6 +53,7 @@ bot = Cinch::Bot.new do
     end 
   end
   
+  # If the bot is kicked, the program stops
   on :leaving do |m, user|
     if user.nick == bot.nick
       exit
