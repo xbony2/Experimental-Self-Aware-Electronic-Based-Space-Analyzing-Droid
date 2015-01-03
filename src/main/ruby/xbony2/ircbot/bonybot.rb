@@ -14,12 +14,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@help" do |m|
-    m.reply "Commands:"
-    m.reply ": @@help -displays this message,"
-    m.reply ": @@flip -flips a coin,"
-    m.reply ": @@roll -rolls a die,"
-    m.reply ": @@dev -gives technical informations about me,"
-    m.reply ": @@url-shorten [link] -shortens a link using goo.gl."
+    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@url and @@spam."
   end
   
   on :channel, "@@flip" do |m|
@@ -43,6 +38,10 @@ bot = Cinch::Bot.new do
   on :channel, /^@@url-shorten (.+)/ do |m, url|
     shortUrl = Googl.shorten(url)
     m.reply "New URL: #{shortUrl.short_url}"
+  end
+  
+  on :channel, "@@spam" do |m|
+    m.reply "I think you should know I'm better then that, #{m.user}."
   end
   
   # This command is hidden by default, since only the owner needs to know about it.
