@@ -14,7 +14,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@help" do |m|
-    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@url and @@spam."
+    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@url-shorten and @@spam."
   end
   
   on :channel, "@@flip" do |m|
