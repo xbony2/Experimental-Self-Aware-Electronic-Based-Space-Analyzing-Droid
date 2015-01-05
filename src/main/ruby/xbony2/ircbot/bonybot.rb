@@ -26,13 +26,12 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@roll" do |m|
-    result = 1 + rand(6)
-    m.reply "The die roll reveals the number #{result}."
+    m.reply "The die roll reveals the number #{1 + rand(6)}."
   end
   
   on :channel, "@@dev" do |m|
-    m.reply "I am an IRC bot created by xbony2 in ruby, using the cinch gem."
-    m.reply "I am open sourced and under the MIT license: http://goo.gl/GkH1x1"
+    m.reply "I am an IRC bot created by xbony2 in Ruby, using the cinch gem."
+    m.reply "I am open-sourced and under the MIT license: http://goo.gl/GkH1x1"
   end
   
   on :channel, /^@@url-shorten (.+)/ do |m, url|
@@ -47,9 +46,9 @@ bot = Cinch::Bot.new do
   # This command is hidden by default, since only the owner needs to know about it.
   on :channel, "@@stop" do |m|
     if m.user.authname == "xbony2"
-      exit
+      exit # Terminates program
     else
-      m.reply "You cannot stop me unless you're my owner."
+      m.reply "You cannot stop me unless you're my creator."
     end 
   end
   
