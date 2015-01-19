@@ -9,7 +9,7 @@ BOT_NAME = "ESAEBSAD"
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#NuclearControl2", "#FTB-Wiki", "#StopModReposts"]
+    c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = BOT_NAME
   end
   
@@ -41,6 +41,10 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@spam" do |m|
     m.reply "I think you should know I'm better then that, #{m.user}."
+  end
+  
+  on :channel, "xbony2 is ugly" do |m|
+    m.reply "Shut the fuck up, #{m.user}."
   end
   
   # This command is hidden by default, since only the owner needs to know about it.
