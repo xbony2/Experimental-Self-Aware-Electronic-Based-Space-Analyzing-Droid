@@ -45,9 +45,9 @@ bot = Cinch::Bot.new do
   
   on :channel, "xbony2 is ugly" do |m|
     if m.user.authname != "xbony2"
-      m.reply "Shut the fuck up, #{m.user}."
+      m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
     else
-      m.reply "Don't feel so bad about yourself ( ͡° ͜ʖ ͡°)"
+      m.reply "Don't feel so bad about yourself ( ͡° ͜ʖ ͡°) u so sexy."
     end
   end
   
