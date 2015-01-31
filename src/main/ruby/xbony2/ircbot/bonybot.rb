@@ -5,6 +5,13 @@ require 'googl'
 require 'rest-client'
 
 BOT_NAME = "ESAEBSAD"
+NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're awesome",
+  "ERROR: so awesome I don't know what to do.", "I want you.", 
+  "I would let you eat my butthole.", "I am unworthy of you eating my butthole.",
+  "Fuck that, what about me?", "You're awesome, that's just it.", 
+  "Your so awesome I forgot to grammar.", "You're almost as cool as Xbony2.",
+  "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
+  "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -14,7 +21,12 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@help" do |m|
-    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@url-shorten and @@spam."
+    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@spam."
+  end
+  
+  on :channel, "@@motivate" do |m|
+    ran = Random.rand(NICE_THINGS.length)
+    m.reply NICE_THINGS.fetch(ran)
   end
   
   on :channel, "@@flip" do |m|
