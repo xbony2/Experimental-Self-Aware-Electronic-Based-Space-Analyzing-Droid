@@ -62,6 +62,7 @@ bot = Cinch::Bot.new do
     m.reply "I think you should know I'm better then that, #{m.user}."
   end
   
+  # Protection
   on :channel, "xbony2 is ugly" do |m|
     if m.user.authname != "xbony2"
       m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
@@ -78,7 +79,7 @@ bot = Cinch::Bot.new do
         end
   end
   
-  # This command is hidden by default, since only the owner needs to know about it.
+  # This command is hidden by default, since only the owner can use it
   on :channel, "@@stop" do |m|
     if m.user.authname == "xbony2"
       exit # Terminates program
