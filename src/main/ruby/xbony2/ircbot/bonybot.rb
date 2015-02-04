@@ -15,8 +15,6 @@ NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're aw
   "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
   "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
 
-ARCHIVE_URL = 'http://web.archive.org/save/'
-
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
@@ -25,12 +23,13 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@help" do |m|
-    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@spam."
+    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
   end
   
-  #on :channel, "@@archive" do |m, site|
-    #open site TODO: probably doesn't work
-  #end
+  on :channel, /^@@archive (.+)/ do |m, site|
+    open("http://web.archive.org/save/" + site)
+    m.reply("Will be available here shortly: https://web.archive.org/web/*/" + site)
+  end
   
   on :channel, "@@motivate" do |m|
     ran = Random.rand(NICE_THINGS.length)
