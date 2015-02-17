@@ -4,6 +4,7 @@ require 'json'
 require 'googl'
 require 'rest-client'
 require 'open-uri'
+require 'mediawiki_api'
 
 BOT_NAME = "ESAEBSAD"
 
@@ -23,12 +24,20 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = BOT_NAME
+    
     WIKI_PASS = File.read(PASS_DIR)
-    $wiki_bot = WikiBot::Bot.new(BOT_NAME, WIKI_PASS, :autologin => true, :api => API_PAGE)
+    $wiki_bot = MediawikiApi::Client.new(API_PAGE)
+    $wiki_bot.log_in(BOT_NAME, WIKI_PASS)
   end
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
+  end
+  
+  on :channel, /^@@read (.+)/ do |m, ftbpage|
+    m.reply "hi"
+    m.reply("Page: " + ($wiki_bot.get_wikitext(ftbpage).body))
+    m.reply "hi"
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
