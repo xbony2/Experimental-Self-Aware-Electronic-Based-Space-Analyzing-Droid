@@ -14,12 +14,17 @@ NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're aw
   "Your so awesome I forgot to grammar.", "You're almost as cool as Xbony2.",
   "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
   "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
+  
+PASS_DIR = '/Users/xbony2/git/IRC-Bot/src/main/ruby/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
+API_PAGE = 'http://ftb.gamepedia.com/api.php'
 
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = BOT_NAME
+    WIKI_PASS = File.read(PASS_DIR)
+    $wiki_bot = WikiBot::Bot.new(BOT_NAME, WIKI_PASS, :autologin => true, :api => API_PAGE)
   end
   
   on :channel, "@@help" do |m|
