@@ -6,7 +6,8 @@ require 'rest-client'
 require 'open-uri'
 require 'mediawiki_api'
 
-BOT_NAME = "ESAEBSAD"
+BOT_NAME = 'ESAEBSAD'
+OWNER_NAME = 'xbony2'
 
 NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're awesome",
   "ERROR: so awesome I don't know what to do.", "I want you.", 
@@ -16,7 +17,9 @@ NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're aw
   "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
   "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
   
-PASS_DIR = '/Users/xbony2/git/IRC-Bot/src/main/ruby/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
+PASS_DIR = 'git/IRC-Bot/src/main/ruby/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
+DESKTOP_DIR = 'Desktop/'
+
 API_PAGE = 'http://ftb.gamepedia.com/api.php'
 
 bot = Cinch::Bot.new do
@@ -32,12 +35,18 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
+    m.reply "Admin only commands: @@stop, @@upload."
   end
   
-  on :channel, /^@@read (.+)/ do |m, ftbpage|
-    m.reply "hi"
-    m.reply("Page: " + ($wiki_bot.get_wikitext(ftbpage).body))
-    m.reply "hi"
+  #Uploads file from the desktop
+  on :channel, /^@@upload (.+)/ do |m, pic|
+    if m.user.authname != OWNER_NAME
+      m.reply "You are not authorized."
+    else
+      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, 
+        "Contact #{OWNER_NAME} with any concerns about this picture.", true)
+      m.reply "Picture uploaded: http://ftb.gamepedia.com/File:#{pic}"
+    end
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
@@ -46,8 +55,8 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@motivate" do |m|
-    ran = Random.rand(NICE_THINGS.length)
-    m.reply NICE_THINGS.fetch(ran)
+    rand = Random.rand(NICE_THINGS.length)
+    m.reply(NICE_THINGS.fetch(rand))
   end
   
   on :channel, "@@flip" do |m|
@@ -77,25 +86,24 @@ bot = Cinch::Bot.new do
   end
   
   # Protection
-  on :channel, "xbony2 is ugly" do |m|
-    if m.user.authname != "xbony2"
+  on :channel, "#{OWNER_NAME} is ugly" do |m|
+    if m.user.authname != OWNER_NAME
       m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
     else
       m.reply "Don't feel so bad about yourself ( ͡° ͜ʖ ͡°) u so sexy."
     end
   end
   
-  on :channel, "ESAEBSAD is ugly" do |m|
-    if m.user.authname != "xbony2"
+  on :channel, "#{BOT_NAME} is ugly" do |m|
+    if m.user.authname != OWNER_NAME
           m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
         else
           m.reply "I'm sorry for ever showing my face ;_;"
         end
   end
   
-  # This command is hidden by default, since only the owner can use it
   on :channel, "@@stop" do |m|
-    if m.user.authname == "xbony2"
+    if m.user.authname == OWNER_NAME
       exit # Terminates program
     else
       m.reply "You cannot stop me unless you're my creator."
@@ -104,7 +112,7 @@ bot = Cinch::Bot.new do
   
   # If the bot is kicked, the program stops
   on :leaving do |m, user|
-    if user.nick == bot.nick
+    if user.nick == BOT_NAME
       exit
     end
   end
