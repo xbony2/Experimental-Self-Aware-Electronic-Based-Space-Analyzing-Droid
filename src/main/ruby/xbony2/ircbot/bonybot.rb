@@ -38,6 +38,7 @@ bot = Cinch::Bot.new do
     m.reply "Admin only commands: @@stop, @@upload."
   end
   
+  
   #Uploads file from the desktop
   on :channel, /^@@upload (.+)/ do |m, pic|
     if m.user.authname != OWNER_NAME
