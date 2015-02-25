@@ -44,7 +44,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@lyrics (.*), (.*)/ do |m, artist, song|
-    if m.user.authname != OWNER_NAME #restricted because it can be used as a spam machine.
+    if m.user.authname != OWNER_NAME #restricted because it's basically a spam machine
       m.reply "You are not authorized. Ask #{OWNER_NAME} for any requests."
     else
       lyrics = $lyric_getter.search(artist, song).body.split("\\n")
