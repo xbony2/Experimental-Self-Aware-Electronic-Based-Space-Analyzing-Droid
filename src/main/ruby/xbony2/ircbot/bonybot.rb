@@ -5,6 +5,9 @@ require 'googl'
 require 'rest-client'
 require 'open-uri'
 require 'mediawiki_api'
+require 'lyricfy'
+require 'highline'
+require 'nokogiri'
 
 BOT_NAME = 'ESAEBSAD'
 OWNER_NAME = 'xbony2'
@@ -31,12 +34,26 @@ bot = Cinch::Bot.new do
     WIKI_PASS = File.read(PASS_DIR)
     $wiki_bot = MediawikiApi::Client.new(API_PAGE)
     $wiki_bot.log_in(BOT_NAME, WIKI_PASS)
+    
+    $lyric_getter = Lyricfy::Fetcher.new
   end
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Admin only commands: @@stop, @@upload."
+    m.reply "Admin only commands: @@stop, @@upload, @@lyrics."
   end
+  
+  on :channel, /^@@lyrics (.*), (.*)/ do |m, artist, song|
+    if m.user.authname != OWNER_NAME #restricted because it can be used as a spam machine.
+      m.reply "You are not authorized. Ask #{OWNER_NAME} for any requests."
+    else
+      lyrics = $lyric_getter.search(artist, song).body.split("\\n")
+      lyrics.each do |str|
+        m.reply(str)
+      end
+    end
+  end
+  
   
   #Uploads file from the desktop
   on :channel, /^@@upload (.+)/ do |m, pic|
