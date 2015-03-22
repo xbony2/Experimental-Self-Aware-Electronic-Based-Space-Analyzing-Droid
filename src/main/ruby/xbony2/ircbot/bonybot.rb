@@ -40,7 +40,23 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Admin only commands: @@stop, @@upload, @@lyrics."
+    m.reply "Admin only commands: @@stop, @@upload, @@lyrics, @@addcat."
+  end
+  
+  on :channel, /^@@addcat (.+), (.*)/ do |m, type, name|
+    if m.user.authname != OWNER_NAME
+      m.reply "You are not authorized."
+    else
+      if type == "mod"
+        $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]")
+        m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
+      elsif type == "minor"
+        $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]")
+        m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
+      else
+        m.reply "You screwed up. Try again."
+      end  
+    end
   end
   
   on :channel, /^@@lyrics (.*), (.*)/ do |m, artist, song|
