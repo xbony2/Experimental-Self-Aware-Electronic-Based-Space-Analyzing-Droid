@@ -40,7 +40,16 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Admin only commands: @@stop, @@upload, @@lyrics, @@addcat."
+    m.reply "Admin only commands: @@stop, @@upload, @@lyrics, @@addcat, @@trans."
+  end
+  
+  on :channel, /^@@trans (.*)/ do |m, page|
+    if m.user.authname != OWNER_NAME
+      m.reply "You are not authorized."
+    else
+      text = $wiki_bot.get_wikitext(page)
+      # TODO: http://www.mediawiki.org/wiki/API:Edit
+    end
   end
   
   on :channel, /^@@addcat (.+), (.*)/ do |m, type, name|
