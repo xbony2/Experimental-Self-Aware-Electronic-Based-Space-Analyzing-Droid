@@ -47,8 +47,16 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      text = $wiki_bot.get_wikitext(page)
-      # TODO: http://www.mediawiki.org/wiki/API:Edit
+      textRes = $wiki_bot.get_wikitext(page) #Note: this is all broken.
+      text = textRes.body
+      puts "Text: #{text}"
+      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") 
+      editHash = Hash.new
+      editHash["title"] = page
+      editHash["text"] = text
+      #^should replace "[[" with "{{L|" and "]]" with "}}"
+      puts text
+      #$wiki_bot.edit(editHash)
     end
   end
   
@@ -154,9 +162,7 @@ bot = Cinch::Bot.new do
   
   # If the bot is kicked, the program stops
   on :leaving do |m, user|
-    if user.nick == BOT_NAME
-      exit
-    end
+    exit if user.nick == BOT_NAME
   end
 end
 
