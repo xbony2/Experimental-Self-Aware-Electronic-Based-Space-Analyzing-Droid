@@ -47,20 +47,15 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      textRes = $wiki_bot.get_wikitext(page) #Note: this is all broken.
-      text = textRes.body
-      puts "Text: #{text}"
-      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") 
-      editHash = Hash.new
-      editHash["title"] = page
-      editHash["text"] = text
-      #^should replace "[[" with "{{L|" and "]]" with "}}"
-      puts text
-      #$wiki_bot.edit(editHash)
+      text = nil #TODO: get wikitext
+      puts "Wikitext: #{text}"
+      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}")
+      puts "Wikitext: #{text}"
+      $wiki_bot.edit(title: page, text: text)
     end
   end
   
-  on :channel, /^@@addcat (.+), (.*)/ do |m, type, name|
+  on :channel, /^@@addcat (.+); (.*)/ do |m, type, name|
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
@@ -76,7 +71,7 @@ bot = Cinch::Bot.new do
     end
   end
   
-  on :channel, /^@@lyrics (.*), (.*)/ do |m, artist, song|
+  on :channel, /^@@lyrics (.*); (.*)/ do |m, artist, song|
     if m.user.authname != OWNER_NAME #restricted because it's basically a spam machine
       m.reply "You are not authorized. Ask #{OWNER_NAME} for any requests."
     else
