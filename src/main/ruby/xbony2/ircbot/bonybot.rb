@@ -49,13 +49,11 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      #textRes = $wiki_bot.get_wikitext(page) #textRes is Faraday::Response (https://github.com/lostisland/faraday/blob/master/lib/faraday/response.rb)
-      #text = textRes.body #Error here, it's always nil
-      text = $other_wiki_bot.get_wikitext(page)
-      puts "Wikitext: #{text}"
-      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}")
-      puts "Wikitext: #{text}"
-      $wiki_bot.edit(title: page, text: text)
+      puts JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]
+      text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]["38261"]["revisions"][0]["*"]
+      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") #Does links
+      text = text.gsub(/\{\{Infobox/, "{{Infobox{{L}}") #Does infobox
+      #$wiki_bot.edit(title: page, text: new_text)
     end
   end
   

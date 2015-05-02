@@ -22,7 +22,11 @@ class WikiClient
     req = URI @api_page
     req.query = URI.encode_www_form params
     res = Net::HTTP.get_response req
-    res.is_a? Net::HTTPSuccess ? JSON.parse(res.body) : nil
+    if res.is_a? Net::HTTPSuccess
+      return res.body
+    else
+      @debug ? res : nil
+    end
   end
 end
 
