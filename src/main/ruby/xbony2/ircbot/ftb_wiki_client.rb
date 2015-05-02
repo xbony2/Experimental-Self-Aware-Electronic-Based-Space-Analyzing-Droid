@@ -19,7 +19,8 @@ class WikiClient
       format: 'json',
       titles: page_name
     }
-    req = ((URI(@api_page)).query = URI.encode_www_form params)
+    req = URI @api_page
+    req.query = URI.encode_www_form params
     res = Net::HTTP.get_response req
     res.is_a? Net::HTTPSuccess ? JSON.parse(res.body) : nil
   end
