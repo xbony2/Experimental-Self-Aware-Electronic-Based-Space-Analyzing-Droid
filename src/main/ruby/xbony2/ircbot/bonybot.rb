@@ -8,6 +8,7 @@ require 'mediawiki_api'
 require 'lyricfy'
 require 'highline'
 require 'nokogiri'
+require_relative 'ftb_wiki_client'
 
 BOT_NAME = 'ESAEBSAD'
 OWNER_NAME = 'xbony2'
@@ -34,6 +35,7 @@ bot = Cinch::Bot.new do
     WIKI_PASS = File.read(PASS_DIR)
     $wiki_bot = MediawikiApi::Client.new(API_PAGE)
     $wiki_bot.log_in(BOT_NAME, WIKI_PASS)
+    $other_wiki_bot = FTB_Wiki_Client::WikiClient.new(API_PAGE)
     
     $lyric_getter = Lyricfy::Fetcher.new
   end
@@ -47,8 +49,9 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      textRes = $wiki_bot.get_wikitext(page) #textRes is Faraday::Response (https://github.com/lostisland/faraday/blob/master/lib/faraday/response.rb)
-      text = textRes.body #Error here, it's always nil
+      #textRes = $wiki_bot.get_wikitext(page) #textRes is Faraday::Response (https://github.com/lostisland/faraday/blob/master/lib/faraday/response.rb)
+      #text = textRes.body #Error here, it's always nil
+      text = $other_wiki_bot.get_wikitext(page)
       puts "Wikitext: #{text}"
       text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}")
       puts "Wikitext: #{text}"
