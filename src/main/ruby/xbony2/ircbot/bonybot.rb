@@ -48,7 +48,7 @@ bot = Cinch::Bot.new do
       m.reply "You are not authorized."
     else
       textRes = $wiki_bot.get_wikitext(page) #textRes is Faraday::Response (https://github.com/lostisland/faraday/blob/master/lib/faraday/response.rb)
-      puts "|#{textRes.headers}|#{textRes.body}|#{textRes.success?}"
+      puts "|#{textRes.headers}|#{textRes.body}|#{textRes.success?}" #For debugging purposes, textRes.body is always nil
       text = textRes.body
       puts "Wikitext: #{text}"
       text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}")
