@@ -42,7 +42,7 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Owner only commands: @@stop, @@upload, @@lyrics, @@addcat, @@trans."
+    m.reply "Owner only commands: @@stop, @@upload, @@lyrics, @@addcat, @@addcata, @@trans."
   end
   
   on :channel, /^@@help (.+)/ do |m, command|
@@ -66,6 +66,11 @@ bot = Cinch::Bot.new do
       when "addcat"
         m.reply "The add category commands takes two parameters, the type, then the name."
         m.reply "Example: \"@@addcat mod; Thermal Expansion 3\"."
+        m.reply "It's owner-only, since it edits the wiki and can probably be abused."
+      when "addcata"
+        m.reply "The advanced add category commands takes three parameters, the first sub category, the second sub category, then the name."
+        m.reply "\"nil\" should be used as the second sub category if there's only one sub category."
+        m.reply "Example: \"@@addcata Armor; nil; Horse Armor\"."
         m.reply "It's owner-only, since it edits the wiki and can probably be abused."
       else
         m.reply "That command isn't important enough to be documented, or doesn't exist."
@@ -91,13 +96,26 @@ bot = Cinch::Bot.new do
     else
       if type == "mod"
         $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]")
-        m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
       elsif type == "minor"
         $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]")
-        m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
       else
         m.reply "You screwed up. Try again."
-      end  
+        return
+      end
+      m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
+    end
+  end
+  
+  on :channel, /^@@addcata (.*); (.*); (.*)/ do |m, sub1, sub2, name|
+    if m.user.authname != OWNER_NAME
+      m.reply "You are not authorized."
+    else
+      if sub2 != "nil"
+        $wiki_bot.create_page("Category:#{name}", "[[Category:#{sub1}]]\n[[Category:#{sub2}]]")
+      else
+        $wiki_bot.create_page("Category:#{name}", "[[Category:#{sub1}]]")
+      end
+      m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
     end
   end
   
@@ -163,7 +181,7 @@ bot = Cinch::Bot.new do
   # Protection
   on :channel, "#{OWNER_NAME} is ugly" do |m|
     if m.user.authname != OWNER_NAME
-      m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
+      m.reply "Shut up, #{m.user}. Your mom is ugly, but not as ugly as you are."
     else
       m.reply "Don't feel so bad about yourself ( ͡° ͜ʖ ͡°) u so sexy."
     end
@@ -171,10 +189,10 @@ bot = Cinch::Bot.new do
   
   on :channel, "#{BOT_NAME} is ugly" do |m|
     if m.user.authname != OWNER_NAME
-          m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
-        else
-          m.reply "I'm sorry for ever showing my face ;_;"
-        end
+      m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
+    else
+      m.reply "I'm sorry for ever showing my face ;_;"
+    end
   end
   
   on :channel, "@@stop" do |m|
