@@ -82,19 +82,22 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      #puts $other_wiki_bot.get_wikitext(page)
-      #puts JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]
       JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"].each do |revid, data|
         $revid = revid
         break
       end
       
       text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"][$revid]["revisions"][0]["*"]
-      text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") #Does links
+      text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub(/\]\]/, "{{L}}]]")} #Does categories
+      text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
       text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
-      text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}")
+      text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
+      text = text.gsub(/\{\{Cg\/Crafting Table/, "{{Cg/Crafting Table{{L}}") #Does Crafting Table
+      text = text.gsub(/\{\{Cg\/Furnace/, "{{Cg/Furnace{{L}}") #Does Furnace
+      text = text.gsub(/\{\{Navbox Witchery\}\}/, "{{Navbox Witchery{{L}}}}") #Navbox: Witchery.
+      text = text.gsub(/\{\{Navbox GregTech\}\}/, "{{Navbox GregTech{{L}}}}") #Navbox: GregTech.
       puts text
-      #$wiki_bot.edit(title: page, text: new_text)
+      #$wiki_bot.edit(title: page, text: text)
     end
   end
   
