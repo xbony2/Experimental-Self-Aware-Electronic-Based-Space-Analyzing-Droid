@@ -82,10 +82,18 @@ bot = Cinch::Bot.new do
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
-      puts JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]
-      text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]["38261"]["revisions"][0]["*"]
+      #puts $other_wiki_bot.get_wikitext(page)
+      #puts JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"]
+      JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"].each do |revid, data|
+        $revid = revid
+        break
+      end
+      
+      text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"][$revid]["revisions"][0]["*"]
       text = text.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") #Does links
-      text = text.gsub(/\{\{Infobox/, "{{Infobox{{L}}") #Does infobox
+      text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
+      text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}")
+      puts text
       #$wiki_bot.edit(title: page, text: new_text)
     end
   end
