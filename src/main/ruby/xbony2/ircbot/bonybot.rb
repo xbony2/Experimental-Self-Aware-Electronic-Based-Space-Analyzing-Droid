@@ -92,9 +92,8 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
       text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
-      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>")} #name parameter for infoboxes
-      text = text.gsub(/\{\{Cg\/Crafting Table/, "{{Cg/Crafting Table{{L}}") #Does Crafting Table
-      text = text.gsub(/\{\{Cg\/Furnace/, "{{Cg/Furnace{{L}}") #Does Furnace
+      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>\n")} #name parameter for infoboxes
+      text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}\n")} # Does crafting grids
       text = text.gsub(/\{\{Navbox Witchery\}\}/, "{{Navbox Witchery{{L}}}}") #Navbox: Witchery.
       text = text.gsub(/\{\{Navbox GregTech\}\}/, "{{Navbox GregTech{{L}}}}") #Navbox: GregTech.
       text = text.gsub(/\{\{Navbox QuarryPlus\}\}/, "{{Navbox QuarryPlus{{L}}}}") #Navbox: QuarryPlus
