@@ -92,12 +92,16 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
       text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
+      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>")} #name parameter for infoboxes
       text = text.gsub(/\{\{Cg\/Crafting Table/, "{{Cg/Crafting Table{{L}}") #Does Crafting Table
       text = text.gsub(/\{\{Cg\/Furnace/, "{{Cg/Furnace{{L}}") #Does Furnace
       text = text.gsub(/\{\{Navbox Witchery\}\}/, "{{Navbox Witchery{{L}}}}") #Navbox: Witchery.
       text = text.gsub(/\{\{Navbox GregTech\}\}/, "{{Navbox GregTech{{L}}}}") #Navbox: GregTech.
-      puts text
-      #$wiki_bot.edit(title: page, text: text)
+      text = text.gsub(/\{\{Navbox QuarryPlus\}\}/, "{{Navbox QuarryPlus{{L}}}}") #Navbox: QuarryPlus
+      text = text.gsub(/\{\{Navbox Santa's Toys\}\}/, "{{Navbox Santa's Toys{{L}}}}") #Navbox: Santa's Toys
+      text = text.gsub(/\{\{Navbox Nuclear Control\}\}/, "{{Navbox Nuclear Control{{L}}}}") #Navbox: Nuclear Control
+      text = text.gsub(/\{\{Navbox OpenBlocks\}\}/, "{{Navbox OpenBlocks{{L}}}}") #Navbox: OpenBlocks
+      $wiki_bot.edit(title: page, text: text)
     end
   end
   
