@@ -94,12 +94,7 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
       text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>\n")} #name parameter for infoboxes
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}\n")} # Does crafting grids
-      text = text.gsub(/\{\{Navbox Witchery\}\}/, "{{Navbox Witchery{{L}}}}") #Navbox: Witchery.
-      text = text.gsub(/\{\{Navbox GregTech\}\}/, "{{Navbox GregTech{{L}}}}") #Navbox: GregTech.
-      text = text.gsub(/\{\{Navbox QuarryPlus\}\}/, "{{Navbox QuarryPlus{{L}}}}") #Navbox: QuarryPlus
-      text = text.gsub(/\{\{Navbox Santa's Toys\}\}/, "{{Navbox Santa's Toys{{L}}}}") #Navbox: Santa's Toys
-      text = text.gsub(/\{\{Navbox Nuclear Control\}\}/, "{{Navbox Nuclear Control{{L}}}}") #Navbox: Nuclear Control
-      text = text.gsub(/\{\{Navbox OpenBlocks\}\}/, "{{Navbox OpenBlocks{{L}}}}") #Navbox: OpenBlocks
+      text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
       $wiki_bot.edit(title: page, text: text)
     end
   end
