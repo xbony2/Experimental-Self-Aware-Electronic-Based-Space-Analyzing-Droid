@@ -98,14 +98,15 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
       
       #TODO: advanced parameter code (should use loop and constant array).
-      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>")} #name parameter for infoboxes
-      text = text.gsub(/\|mod=.+\n/){|s| s.insert(5, "<translate>").insert(-1, "</translate>\n")} #mod parameter for infoboxes
-      text = text.gsub(/\|lore=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
-      text = text.gsub(/\|module=.+\n/){|s| s.insert(8, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
-      text = text.gsub(/\|modpacks=.+\n/){|s| s.insert(10, "<translate>").insert(-1, "</translate>\n")} #modpacks parameter for infoboxes
-      text = text.gsub(/\|requires=.+\n/){|s| s.insert(10, "<translate>").insert(-1, "</translate>\n")} #requires parameter for infoboxes
-      text = text.gsub(/\|dependency=.+\n/){|s| s.insert(12, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
-      text = text.gsub(/\|neededfor=.+\n/){|s| s.insert(11, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
+      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-2, "</translate>")} #name parameter for infoboxes
+      text = text.gsub(/\|mod=.+\n/){|s| s.insert(5, "<translate>").insert(-2, "</translate>")} #mod parameter for infoboxes
+      text = text.gsub(/\|lore=.+\n/){|s| s.insert(6, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
+      text = text.gsub(/\|module=.+\n/){|s| s.insert(8, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
+      text = text.gsub(/\|modpacks=.+\n/){|s| s.insert(10, "<translate>").insert(-2, "</translate>")} #modpacks parameter for infoboxes
+      text = text.gsub(/\|requires=.+\n/){|s| s.insert(10, "<translate>").insert(-2, "</translate>")} #requires parameter for infoboxes
+      text = text.gsub(/\|dependency=.+\n/){|s| s.insert(12, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
+      text = text.gsub(/\|neededfor=.+\n/){|s| s.insert(11, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
+      
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}\n")} # Does crafting grids
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
       $wiki_bot.edit(title: page, text: text)
