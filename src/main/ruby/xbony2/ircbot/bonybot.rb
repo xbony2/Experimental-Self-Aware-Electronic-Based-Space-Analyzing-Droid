@@ -42,7 +42,7 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@help" do |m|
     m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Owner only commands: @@stop, @@upload, @@lyrics, @@addcat, @@addcata, @@trans."
+    m.reply "Owner only commands: @@stop, @@upload, @@lyrics, @@addcat, @@addcata, and @@trans."
   end
   
   on :channel, /^@@help (.+)/ do |m, command|
