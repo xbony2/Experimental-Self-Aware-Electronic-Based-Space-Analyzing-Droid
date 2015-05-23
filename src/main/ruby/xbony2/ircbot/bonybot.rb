@@ -21,7 +21,7 @@ NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're aw
   "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
   "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
   
-PASS_DIR = 'git/IRC-Bot/src/main/ruby/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
+PASS_DIR = 'git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
 DESKTOP_DIR = 'Desktop/'
 
 API_PAGE = 'http://ftb.gamepedia.com/api.php'
@@ -72,6 +72,10 @@ bot = Cinch::Bot.new do
         m.reply "\"nil\" should be used as the second sub category if there's only one sub category."
         m.reply "Example: \"@@addcata Armor; nil; Horse Armor\"."
         m.reply "It's owner-only, since it edits the wiki and can probably be abused."
+      when "trans"
+        m.reply "WARNING: that command is currently very WIP!"
+        m.reply "Anyway, it's probably the most intricate command. It prepares a wiki page for translation."
+        m.reply "It takes only one argument: the page name. It's owner-only of course."
       else
         m.reply "That command isn't important enough to be documented, or doesn't exist."
         m.reply "If it's simple enough, running the command will explain itself."
@@ -94,7 +98,7 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
       
       #TODO: advanced parameter code (should use loop and constant array).
-      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>\n")} #name parameter for infoboxes
+      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>")} #name parameter for infoboxes
       text = text.gsub(/\|mod=.+\n/){|s| s.insert(5, "<translate>").insert(-1, "</translate>\n")} #mod parameter for infoboxes
       text = text.gsub(/\|lore=.+\n/){|s| s.insert(6, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
       text = text.gsub(/\|module=.+\n/){|s| s.insert(8, "<translate>").insert(-1, "</translate>\n")} #lore parameter for infoboxes
