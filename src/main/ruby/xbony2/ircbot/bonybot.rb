@@ -26,6 +26,10 @@ DESKTOP_DIR = 'Desktop/'
 
 API_PAGE = 'http://ftb.gamepedia.com/api.php'
 
+TRANSLATABLE_PARAMETERS = ["name", "mod", "lore", "module", "effects", "storageslots", "storage",
+  "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",
+  "dependecypast", "description"]
+
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
@@ -96,16 +100,9 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
       text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
-      
-      #TODO: advanced parameter code (should use loop and constant array).
-      text = text.gsub(/\|name=.+\n/){|s| s.insert(6, "<translate>").insert(-2, "</translate>")} #name parameter for infoboxes
-      text = text.gsub(/\|mod=.+\n/){|s| s.insert(5, "<translate>").insert(-2, "</translate>")} #mod parameter for infoboxes
-      text = text.gsub(/\|lore=.+\n/){|s| s.insert(6, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
-      text = text.gsub(/\|module=.+\n/){|s| s.insert(8, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
-      text = text.gsub(/\|modpacks=.+\n/){|s| s.insert(10, "<translate>").insert(-2, "</translate>")} #modpacks parameter for infoboxes
-      text = text.gsub(/\|requires=.+\n/){|s| s.insert(10, "<translate>").insert(-2, "</translate>")} #requires parameter for infoboxes
-      text = text.gsub(/\|dependency=.+\n/){|s| s.insert(12, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
-      text = text.gsub(/\|neededfor=.+\n/){|s| s.insert(11, "<translate>").insert(-2, "</translate>")} #lore parameter for infoboxes
+      TRANSLATABLE_PARAMETERS.each {|s| #Does parameters
+        text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
+      }
       
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}\n")} # Does crafting grids
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
