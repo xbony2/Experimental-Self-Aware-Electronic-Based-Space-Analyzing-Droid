@@ -26,7 +26,8 @@ DESKTOP_DIR = 'Desktop/'
 
 API_PAGE = 'http://ftb.gamepedia.com/api.php'
 
-TRANSLATABLE_PARAMETERS = ["name", "mod", "lore", "module", "effects", "storageslots", "storage",
+# "mod" moved because of Template:Gc
+TRANSLATABLE_PARAMETERS = ["name", "lore", "module", "effects", "storageslots", "storage",
   "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",
   "dependecypast", "description"]
 
@@ -99,12 +100,12 @@ bot = Cinch::Bot.new do
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub(/\]\]/, "{{L}}]]")} #Does categories
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
       text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
-      text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}") #Does infobox mod
+      text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}\n") #Does infobox mod
       TRANSLATABLE_PARAMETERS.each {|s| #Does parameters
         text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
       }
       
-      text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}\n")} # Does crafting grids
+      text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}")} # Does crafting grids
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
       $wiki_bot.edit(title: page, text: text)
     end
