@@ -105,6 +105,7 @@ bot = Cinch::Bot.new do
         text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
       }
       
+      text = text.gsub(/\|mod=.+\n/){|s| !s.end_with?("}}\n") ? s.gsub(/|mod=.+\n/){|ns| ns.insert(5, "<translate>").insert(-2, "</translate>")} : s}
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-1, "{{L}}")} # Does crafting grids
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
       $wiki_bot.edit(title: page, text: text)
