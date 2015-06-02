@@ -131,7 +131,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/ do |m, name, t1_armor_rating, t1_helmet_dur, t1_chest_dur, t1_leggings_dur, t1_boots_dur, t2_armor_rating, 
-    t2_helmet_dur, t1_chest_dur, t2_leggings_dur, t2_boots_dur|
+    t2_helmet_dur, t2_chest_dur, t2_leggings_dur, t2_boots_dur|
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
@@ -162,22 +162,22 @@ bot = Cinch::Bot.new do
         "\n|A2={{Gc|mod=TMOR2|dis=false|#{name}}}\n|C2={{Gc|mod=TMOR2|dis=false|#{name}}}\n|O={{Gc|mod=TMOR2|link=none|#{name} Boots}}\n}}\n\n\n{{Navbox The Mists of RioV 2}}\n\n" +
         "[[Category:The Mists of RioV 2]][[Category:Armor]]\n\n<languages/>\n")
       $wiki_bot.create_page("#{name} Helmet Tier II", "{{Infobox\n|name=#{name} Helmet Tier II\n|imageicon={{Gc|mod=TMOR2|link=none|#{name} Helmet Tier II}}\n|mod=The Mists of RioV 2\n" +
-        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Helmet}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_helmet_rating}\n}}\n\nThe '''#{name} Helmet Tier II''' is an armor added by " +
+        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Helmet}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_helmet_dur}\n}}\n\nThe '''#{name} Helmet Tier II''' is an armor added by " +
         "[[The Mists of RioV 2]] mod. It as an upgraded version of the [[#{name} Helmet]].\n\n==Recipe==\n{{Cg/Enhancer\n|I1={{Gc|mod=TMOR2|dis=false|Enhancer Gem}}\n" + 
         "|I2={{Gc|mod=TMOR2|dis=false|#{name} Helmet}}\n|O={{Gc|mod=TMOR2|link=false|#{name} Helmet Tier II}}\n}}\n\n\n{{Navbox The Mists of RioV 2}}\n\n[[Category:The Mists of RioV 2]][[Category:Armor]]" +
         "\n\n<languages/>\n")
       $wiki_bot.create_page("#{name} Chestplate Tier II", "{{Infobox\n|name=#{name} Chestplate Tier II\n|imageicon={{Gc|mod=TMOR2|link=none|#{name} Chestplate Tier II}}\n|mod=The Mists of RioV 2\n" +
-        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Chestplate}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_chest_rating}\n}}\n\n" +
+        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Chestplate}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_chest_dur}\n}}\n\n" +
         "The '''#{name} Chestplate Tier II''' is an armor added by [[The Mists of RioV 2]] mod. It as an upgraded version of the [[#{name} Chestplate]].\n\n==Recipe==\n" + 
         "{{Cg/Enhancer\n|I1={{Gc|mod=TMOR2|dis=false|Enhancer Gem}}\n|I2={{Gc|mod=TMOR2|dis=false|#{name} Chestplate}}\n|O={{Gc|mod=TMOR2|link=false|#{name} Chestplate Tier II}}\n}}\n\n\n" +
         "{{Navbox The Mists of RioV 2}}\n\n[[Category:The Mists of RioV 2]][[Category:Armor]]\n\n<languages/>\n")
       $wiki_bot.create_page("#{name} Leggings Tier II", "{{Infobox\n|name=#{name} Leggings Tier II\n|imageicon={{Gc|mod=TMOR2|link=none|#{name} Leggings Tier II}}\n|mod=The Mists of RioV 2\n" +
-        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Leggings}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_leggings_rating}\n}}\n\n" +
+        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Leggings}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_leggings_dur}\n}}\n\n" +
         "The '''#{name} Leggings Tier II''' is an armor added by [[The Mists of RioV 2]] mod. It as an upgraded version of the [[#{name} Leggings]].\n\n==Recipe==\n" + 
         "{{Cg/Enhancer\n|I1={{Gc|mod=TMOR2|dis=false|Enhancer Gem}}\n|I2={{Gc|mod=TMOR2|dis=false|#{name} Leggings}}\n|O={{Gc|mod=TMOR2|link=false|#{name} Leggings Tier II}}\n}}\n\n\n" +
         "{{Navbox The Mists of RioV 2}}\n\n[[Category:The Mists of RioV 2]][[Category:Armor]]\n\n<languages/>\n")
       $wiki_bot.create_page("#{name} Boots Tier II", "{{Infobox\n|name=#{name} Boots Tier II\n|imageicon={{Gc|mod=TMOR2|link=none|#{name} Boots Tier II}}\n|mod=The Mists of RioV 2\n" +
-        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Boots}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_boots_rating}\n}}\n\n" +
+        "|type=armor\n|prevtier={{Gc|mod=TMOR2|dis=false|#{name} Boots}}\n|armorrating=#{t2_armor_rating}\n|durability=#{t2_boots_dur}\n}}\n\n" +
         "The '''#{name} Boots Tier II''' is an armor added by [[The Mists of RioV 2]] mod. It as an upgraded version of the [[#{name} Boots]].\n\n==Recipe==\n" + 
         "{{Cg/Enhancer\n|I1={{Gc|mod=TMOR2|dis=false|Enhancer Gem}}\n|I2={{Gc|mod=TMOR2|dis=false|#{name} Boots}}\n|O={{Gc|mod=TMOR2|link=false|#{name} Boots Tier II}}\n}}\n\n\n" +
         "{{Navbox The Mists of RioV 2}}\n\n[[Category:The Mists of RioV 2]][[Category:Armor]]\n\n<languages/>\n")
