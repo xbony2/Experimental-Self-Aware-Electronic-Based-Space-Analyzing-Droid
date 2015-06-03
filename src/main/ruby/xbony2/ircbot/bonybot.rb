@@ -99,7 +99,7 @@ bot = Cinch::Bot.new do
       text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"][$revid]["revisions"][0]["*"]
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub(/\]\]/, "{{L}}]]")} #Does categories
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
-      text = text.gsub(/\{\{Infobox\n/, "{{Infobox{{L}}\n") #Does infobox
+      text = text.gsub(/\{\{[Ii]nfobox\n/, "{{Infobox{{L}}\n") #Does infobox
       text = text.gsub(/\{\{Infobox mod\n/, "{{Infobox mod{{L}}\n") #Does infobox mod
       TRANSLATABLE_PARAMETERS.each {|s| #Does parameters
         text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
