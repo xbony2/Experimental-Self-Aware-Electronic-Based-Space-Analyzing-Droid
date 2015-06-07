@@ -87,7 +87,7 @@ bot = Cinch::Bot.new do
     end
   end
   
-  on :channel, /^@@trans (.*)/ do |m, page|
+  on :channel, /^@@trans (.*); (.+)/ do |m, page, special|
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
     else
@@ -109,6 +109,9 @@ bot = Cinch::Bot.new do
       #No idea why, but that doesn't work ^
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-2, "{{L}}")} # Does crafting grids
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
+      text = text.insert(0, "<translate><!--Translators note: you don't needed to translate this line. Just copy-paste it over. Anyway, this page was originally translated before " + 
+        "the module was put in place, using whatever older system there was. I made backups of previously translated pages, so you can use them for reference. Checkout: " + 
+        "[[UserWiki:Xbony2#My_subpages]--></translate>\n") if special == "in"
       $wiki_bot.edit(title: page, text: text)
       m.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
     end
@@ -208,8 +211,6 @@ bot = Cinch::Bot.new do
     end
   end
   
-  
-  #Uploads file from the desktop
   on :channel, /^@@upload (.+)/ do |m, pic|
     if m.user.authname != OWNER_NAME
       m.reply "You are not authorized."
@@ -279,11 +280,6 @@ bot = Cinch::Bot.new do
     else
       m.reply "You cannot stop me unless you're my creator."
     end 
-  end
-  
-  # If the bot is kicked, the program stops
-  on :leaving do |m, user|
-    exit if user.nick == BOT_NAME
   end
 end
 
