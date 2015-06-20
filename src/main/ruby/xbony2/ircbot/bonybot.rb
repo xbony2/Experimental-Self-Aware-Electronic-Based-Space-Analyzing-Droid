@@ -11,6 +11,7 @@ require 'nokogiri'
 require_relative 'ftb_wiki_client'
 
 require_relative 'plugins/help'
+require_relative 'plugins/help_advanced'
 
 BOT_NAME = 'ESAEBSAD'
 OWNER_NAME = 'xbony2'
