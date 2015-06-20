@@ -13,8 +13,8 @@ require_relative 'ftb_wiki_client'
 require_relative 'plugins/help'
 require_relative 'plugins/help_advanced'
 
-BOT_NAME = 'ESAEBSAD'
-OWNER_NAME = 'xbony2'
+$BOT_NAME = 'ESAEBSAD'
+$OWNER_NAME = 'xbony2'
 
 NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're awesome",
   "ERROR: so awesome I don't know what to do.", "I want you.", 
@@ -37,19 +37,14 @@ RANDOM_QUOTES = ["\"FUCK YOU!\" - bitch-ass kid", "PrincessTwilightSparkle: I lu
 PASS_DIR = 'git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
 DESKTOP_DIR = 'Desktop/'
 
-API_PAGE = 'http://ftb.gamepedia.com/api.php'
-
-# "mod" moved because of Template:Gc
-TRANSLATABLE_PARAMETERS = ["name", "lore", "module", "effects", "storageslots", "storage",
-  "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",
-  "dependecypast", "description"]
+$API_PAGE = 'http://ftb.gamepedia.com/api.php'
 
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
-    c.nick = BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced]
+    c.nick = $BOT_NAME
+    c.plugins.plugins = [Help, Help_Advanced, Trans]
     
     WIKI_PASS = File.read(PASS_DIR)
     $wiki_bot = MediawikiApi::Client.new(API_PAGE)
@@ -59,38 +54,8 @@ bot = Cinch::Bot.new do
     $lyric_getter = Lyricfy::Fetcher.new
   end
   
-  on :channel, /^@@trans (.*); (.+)/ do |m, page, special|
-    if m.user.authname != OWNER_NAME
-      m.reply "You are not authorized."
-    else
-      JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"].each do |revid, data|
-        $revid = revid
-        break
-      end
-      
-      text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"][$revid]["revisions"][0]["*"]
-      text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub(/\]\]/, "{{L}}]]")} #Does categories
-      text = text.gsub(/\[\[.+\]\]/){|s| (!s.start_with?("[[Category:") and !s.start_with?("[[File:")) ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s} #Does links
-      text = text.gsub(/\{\{[Ii]nfobox\n/, "{{Infobox{{L}}\n") #Does infobox
-      text = text.gsub(/\{\{[Ii]nfobox mod\n/, "{{Infobox mod{{L}}\n") #Does infobox mod
-      TRANSLATABLE_PARAMETERS.each {|s| #Does parameters
-        text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
-      }
-      
-      #text = text.gsub(/\|mod=.+\n/){|s| !s.end_with?("}}\n") ? s.gsub(/|mod=.+\n/){|ns| ns.insert(5, "<translate>").insert(-2, "</translate>")} : s}
-      #No idea why, but that doesn't work ^
-      text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-2, "{{L}}")} # Does crafting grids
-      text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")} #Does navboxes
-      text = text.insert(0, "<translate><!--Translators note: you don't needed to translate this line. Just copy-paste it over. Anyway, this page was originally translated before " + 
-        "the module was put in place, using whatever older system there was. I made backups of previously translated pages, so you can use them for reference. Checkout: " + 
-        "[[UserWiki:Xbony2#My_subpages]--></translate>\n") if special == "in"
-      $wiki_bot.edit(title: page, text: text)
-      m.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
-    end
-  end
-  
   on :channel, /^@@addcat (.+); (.*)/ do |m, type, name|
-    if m.user.authname != OWNER_NAME
+    if m.user.authname != $OWNER_NAME
       m.reply "You are not authorized."
     else
       if type == "mod"
@@ -107,7 +72,7 @@ bot = Cinch::Bot.new do
   
   on :channel, /^@@addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/ do |m, name, t1_armor_rating, t1_helmet_dur, t1_chest_dur, t1_leggings_dur, t1_boots_dur, t2_armor_rating, 
     t2_helmet_dur, t2_chest_dur, t2_leggings_dur, t2_boots_dur|
-    if m.user.authname != OWNER_NAME
+    if m.user.authname != $OWNER_NAME
       m.reply "You are not authorized."
     else
       $wiki_bot.create_page("#{name} Helmet", "{{Infobox\n|name=#{name} Helmet\n|imageicon={{Gc|mod=TMOR2|link=none|#{name} Helmet}}\n|mod=The Mists of RioV 2\n|type=armor\n" +
@@ -160,7 +125,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@addcata (.*); (.*); (.*)/ do |m, sub1, sub2, name|
-    if m.user.authname != OWNER_NAME
+    if m.user.authname != $OWNER_NAME
       m.reply "You are not authorized."
     else
       if sub2 != "nil"
@@ -173,7 +138,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@lyrics (.*); (.*)/ do |m, artist, song|
-    if m.user.authname != OWNER_NAME #restricted because it's basically a spam machine
+    if m.user.authname != $OWNER_NAME #restricted because it's basically a spam machine
       m.reply "You are not authorized. Ask #{OWNER_NAME} for any requests."
     else
       lyrics = $lyric_getter.search(artist, song).body.split("\\n")
@@ -184,11 +149,10 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@upload (.+)/ do |m, pic|
-    if m.user.authname != OWNER_NAME
+    if m.user.authname != $OWNER_NAME
       m.reply "You are not authorized."
     else
-      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, 
-        "Contact #{OWNER_NAME} with any concerns about this picture.", true)
+      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, "Contact #{OWNER_NAME} with any concerns about this picture.", true)
       m.reply "Picture uploaded: http://ftb.gamepedia.com/File:#{pic}"
     end
   end
@@ -230,7 +194,7 @@ bot = Cinch::Bot.new do
   end
   
   # Protection
-  on :channel, "#{OWNER_NAME} is ugly" do |m|
+  on :channel, "#{$OWNER_NAME} is ugly" do |m|
     if m.user.authname != OWNER_NAME
       m.reply "Shut up, #{m.user}. Your mom is ugly, but not as ugly as you are."
     else
@@ -238,7 +202,7 @@ bot = Cinch::Bot.new do
     end
   end
   
-  on :channel, "#{BOT_NAME} is ugly" do |m|
+  on :channel, "#{$BOT_NAME} is ugly" do |m|
     if m.user.authname != OWNER_NAME
       m.reply "Shut the fuck up, #{m.user}. Your mom is ugly, but not as ugly as you are."
     else
@@ -247,7 +211,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@stop" do |m|
-    if m.user.authname == OWNER_NAME
+    if m.user.authname == $OWNER_NAME
       exit # Terminates program
     else
       m.reply "You cannot stop me unless you're my creator."
