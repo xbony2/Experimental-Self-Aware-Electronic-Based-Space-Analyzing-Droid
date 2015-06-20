@@ -10,6 +10,8 @@ require 'highline'
 require 'nokogiri'
 require_relative 'ftb_wiki_client'
 
+require_relative 'plugins/help'
+
 BOT_NAME = 'ESAEBSAD'
 OWNER_NAME = 'xbony2'
 
@@ -36,6 +38,7 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = BOT_NAME
+    c.plugins.plugins = [Help]
     
     WIKI_PASS = File.read(PASS_DIR)
     $wiki_bot = MediawikiApi::Client.new(API_PAGE)
@@ -43,11 +46,6 @@ bot = Cinch::Bot.new do
     $other_wiki_bot = FTB_Wiki_Client::WikiClient.new(API_PAGE)
     
     $lyric_getter = Lyricfy::Fetcher.new
-  end
-  
-  on :channel, "@@help" do |m|
-    m.reply "Commands: @@help, @@flip, @@roll, @@dev, @@motivate, @@url-shorten and @@archive."
-    m.reply "Owner only commands: @@stop, @@upload, @@lyrics, @@addcat, @@addcata, and @@trans."
   end
   
   on :channel, /^@@help (.+)/ do |m, command|
