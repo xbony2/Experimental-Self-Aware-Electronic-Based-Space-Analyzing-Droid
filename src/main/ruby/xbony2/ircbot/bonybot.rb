@@ -24,6 +24,16 @@ NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're aw
   "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
   "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
   
+RANDOM_QUOTES = ["\"FUCK YOU!\" - bitch-ass kid", "PrincessTwilightSparkle: I luff yew baby <3 Have my wixi babies",
+  "wikislaves aren't suppose to die", "xbony2: You're the great and powerful trixie?", 
+  "*enjoys the sensation of PrincessTwilightSparkle burping on his ass*", "Quick xbrony, dash! rainbow dash !",
+  "\"My cat is bullying me. How do I fight him?\"", "All a girl wants is to be treated rough, god.", "[[What is love]]",
+  "PaladinOne: Hydra can go [CENSORED] itself", "them ghasts have such wide holes ;)", "you must eat it so your cat isn't insulted",
+  "IMMA INSERT MY EXTRA PENISES IN YOUR EARHOLES NOW", "NONE OF MY HOLES ARE SAFE", "EVERYTHING BUT THE BUTT", "My butt is nice tyvm",
+  "I dream of being thrown around by a fry pan, dropping hot sticky loads of egg yolk on people", "we need more wiki-slaves",
+  "xbony2: yer a scrub", "xbony2: hey bby, wanna fck?", "When I first discovered masturbation at Catholic school, I was terrified - I thought I was broken.",
+  "I couldn't understand why jizz was coming out of my cock instead of my arsehole like it normally did."]
+  
 PASS_DIR = 'git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'
 DESKTOP_DIR = 'Desktop/'
 
