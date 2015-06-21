@@ -1,8 +1,9 @@
 class Trans
   include Cinch::Plugin
   
+  set :prefix, /^@@/
   match /trans (.*); (.+)/
-  def execute(msg, command, page, special)
+  def execute(msg, page, special)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
     else

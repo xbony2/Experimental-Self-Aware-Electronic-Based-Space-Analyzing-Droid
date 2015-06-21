@@ -44,7 +44,7 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat]
+    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata]
     
     WIKI_PASS = File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
     $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
@@ -52,19 +52,6 @@ bot = Cinch::Bot.new do
     $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
     
     $lyric_getter = Lyricfy::Fetcher.new
-  end
-  
-  on :channel, /^@@addcata (.*); (.*); (.*)/ do |m, sub1, sub2, name|
-    if m.user.authname != $OWNER_NAME
-      m.reply "You are not authorized."
-    else
-      if sub2 != "nil"
-        $wiki_bot.create_page("Category:#{name}", "[[Category:#{sub1}]]\n[[Category:#{sub2}]]")
-      else
-        $wiki_bot.create_page("Category:#{name}", "[[Category:#{sub1}]]")
-      end
-      m.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
-    end
   end
   
   on :channel, /^@@lyrics (.*); (.*)/ do |m, artist, song|
