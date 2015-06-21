@@ -39,8 +39,6 @@ RANDOM_QUOTES = ["\"FUCK YOU!\" - bitch-ass kid", "PrincessTwilightSparkle: I lu
   
 DESKTOP_DIR = 'Desktop/'
 
-$API_PAGE = 'http://ftb.gamepedia.com/api.php'
-
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
@@ -49,9 +47,9 @@ bot = Cinch::Bot.new do
     c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat]
     
     WIKI_PASS = File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
-    $wiki_bot = MediawikiApi::Client.new($API_PAGE)
+    $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
     $wiki_bot.log_in($BOT_NAME, WIKI_PASS)
-    $other_wiki_bot = FTB_Wiki_Client::WikiClient.new($API_PAGE)
+    $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
     
     $lyric_getter = Lyricfy::Fetcher.new
   end
@@ -71,7 +69,7 @@ bot = Cinch::Bot.new do
   
   on :channel, /^@@lyrics (.*); (.*)/ do |m, artist, song|
     if m.user.authname != $OWNER_NAME #restricted because it's basically a spam machine
-      m.reply "You are not authorized. Ask #{OWNER_NAME} for any requests."
+      m.reply "You are not authorized. Ask #{$OWNER_NAME} for any requests."
     else
       lyrics = $lyric_getter.search(artist, song).body.split("\\n")
       lyrics.each do |str|
