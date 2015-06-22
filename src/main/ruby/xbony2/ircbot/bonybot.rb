@@ -15,6 +15,7 @@ require_relative 'plugins/help_advanced'
 require_relative 'plugins/trans'
 require_relative 'plugins/addcat'
 require_relative 'plugins/addriovarmor'
+require_relative 'plugins/addcata'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
