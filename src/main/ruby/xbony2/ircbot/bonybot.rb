@@ -70,7 +70,7 @@ bot = Cinch::Bot.new do
     if m.user.authname != $OWNER_NAME
       m.reply "You are not authorized."
     else
-      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, "Contact #{OWNER_NAME} with any concerns about this picture.", true)
+      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, "Contact #{$OWNER_NAME} with any concerns about this picture.", true)
       m.reply "Picture uploaded: http://ftb.gamepedia.com/File:#{pic}"
     end
   end
