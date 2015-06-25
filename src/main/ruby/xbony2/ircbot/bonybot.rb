@@ -16,6 +16,7 @@ require_relative 'plugins/trans'
 require_relative 'plugins/addcat'
 require_relative 'plugins/addriovarmor'
 require_relative 'plugins/addcata'
+require_relative 'plugins/lyrics'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
@@ -36,7 +37,8 @@ RANDOM_QUOTES = ["\"FUCK YOU!\" - bitch-ass kid", "PrincessTwilightSparkle: I lu
   "IMMA INSERT MY EXTRA PENISES IN YOUR EARHOLES NOW", "NONE OF MY HOLES ARE SAFE", "EVERYTHING BUT THE BUTT", "My butt is nice tyvm",
   "I dream of being thrown around by a fry pan, dropping hot sticky loads of egg yolk on people", "we need more wiki-slaves",
   "xbony2: yer a scrub", "xbony2: hey bby, wanna fck?", "When I first discovered masturbation at Catholic school, I was terrified - I thought I was broken.",
-  "I couldn't understand why jizz was coming out of my cock instead of my arsehole like it normally did."]
+  "I couldn't understand why jizz was coming out of my cock instead of my arsehole like it normally did.", 
+  "an \"Advanced Lubrication System\" sounds like it would be something very fun to use :3"]
   
 DESKTOP_DIR = 'Desktop/'
 
@@ -51,19 +53,6 @@ bot = Cinch::Bot.new do
     $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
     $wiki_bot.log_in($BOT_NAME, WIKI_PASS)
     $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
-    
-    $lyric_getter = Lyricfy::Fetcher.new
-  end
-  
-  on :channel, /^@@lyrics (.*); (.*)/ do |m, artist, song|
-    if m.user.authname != $OWNER_NAME #restricted because it's basically a spam machine
-      m.reply "You are not authorized. Ask #{$OWNER_NAME} for any requests."
-    else
-      lyrics = $lyric_getter.search(artist, song).body.split("\\n")
-      lyrics.each do |str|
-        m.reply(str)
-      end
-    end
   end
   
   on :channel, /^@@upload (.+)/ do |m, pic|
