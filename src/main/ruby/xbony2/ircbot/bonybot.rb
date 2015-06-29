@@ -18,17 +18,11 @@ require_relative 'plugins/addriovarmor'
 require_relative 'plugins/addcata'
 require_relative 'plugins/lyrics'
 require_relative 'plugins/quote'
+require_relative 'plugins/upload'
+require_relative 'plugins/motivate'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
-
-NICE_THINGS = ["I love you the way you are.", "You are doing great.", "You're awesome",
-  "ERROR: so awesome I don't know what to do.", "I want you.", 
-  "I would let you eat my butthole.", "I am unworthy of you eating my butthole.",
-  "Fuck that, what about me?", "You're awesome, that's just it.", 
-  "Your so awesome I forgot to grammar.", "You're almost as cool as Xbony2.",
-  "I'm going to touch you when you aren't looking.", "Give yourself a pat on the back.",
-  "It is a good day when you are here.", "You are my savior", "SatanicSanta is smelly"]
   
 DESKTOP_DIR = 'Desktop/'
 
@@ -37,21 +31,12 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote]
+    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Upload, Motivate]
     
     WIKI_PASS = File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
     $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
     $wiki_bot.log_in($BOT_NAME, WIKI_PASS)
     $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
-  end
-  
-  on :channel, /^@@upload (.+)/ do |m, pic|
-    if m.user.authname != $OWNER_NAME
-      m.reply "You are not authorized."
-    else
-      $wiki_bot.upload_image(pic, DESKTOP_DIR + pic, "Contact #{$OWNER_NAME} with any concerns about this picture.", true)
-      m.reply "Picture uploaded: http://ftb.gamepedia.com/File:#{pic.gsub(' ', '_')}"
-    end
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
