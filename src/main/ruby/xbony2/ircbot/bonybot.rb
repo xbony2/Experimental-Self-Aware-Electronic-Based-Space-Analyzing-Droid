@@ -23,8 +23,6 @@ require_relative 'plugins/motivate'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
-  
-DESKTOP_DIR = 'Desktop/'
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -33,9 +31,8 @@ bot = Cinch::Bot.new do
     c.nick = $BOT_NAME
     c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Upload, Motivate]
     
-    WIKI_PASS = File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
     $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
-    $wiki_bot.log_in($BOT_NAME, WIKI_PASS)
+    $wiki_bot.log_in($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
     $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
   end
   
