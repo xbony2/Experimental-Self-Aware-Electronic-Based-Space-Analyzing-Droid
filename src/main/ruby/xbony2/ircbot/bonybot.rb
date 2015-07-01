@@ -41,11 +41,6 @@ bot = Cinch::Bot.new do
     m.reply("Will be available here shortly: https://web.archive.org/web/*/" + site)
   end
   
-  on :channel, "@@motivate" do |m|
-    rand = Random.rand(NICE_THINGS.length)
-    m.reply(NICE_THINGS.fetch(rand))
-  end
-  
   on :channel, "@@flip" do |m|
     if 1 + rand(2) == 1
       m.reply "The coin flip reveals heads."
