@@ -29,7 +29,7 @@ class Trans
       text = text.insert(0, "<translate><!--Translators note: you don't needed to translate this line. Just copy-paste it over. Anyway, this page was originally translated before " + 
         "the module was put in place, using whatever older system there was. I made backups of previously translated pages, so you can use them for reference. Checkout: " + 
         "[[UserWiki:Xbony2#My_subpages]--></translate>\n") if special == "in"
-      $wiki_bot.edit(title: page, text: text)
+      $wiki_bot.edit(title: page, text: text, bot: 1, summary: "Add translation markup.")
       msg.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
     end
   end
