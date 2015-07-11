@@ -14,6 +14,7 @@ class Quote
       "an \"Advanced Lubrication System\" sounds like it would be something very fun to use :3", "WHAT IS LOVE / BABY DON'T HURT ME", "\"I am the oracle.\"", 
       "Just get to the point where you and peter end up having sex over the desk, and the librarian comes across and beats you with a meter long ruler?", "wut",
       "Peter likes his literotica", "DONT RAPE ME PETER", "Aint rape if you enjoy it", "I squirm, and peter squirms inside me.", "And he bites me inappropriately, while I screech.", 
-      "I know he enjoys this. And deep down, I do to.", "So much pain… but so much pleasure.", "you know I like it solid :3"].sample)
+      "I know he enjoys this. And deep down, I do to.", "So much pain… but so much pleasure.", "you know I like it solid :3", 
+      "\"What's a girls?\" - \"Some place you where pulled out from and you desperately want to go into?\""].sample)
   end
 end
