@@ -8,9 +8,9 @@ class Addcat
       msg.reply "You are not authorized."
     else
       if type == "mod"
-        $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]")
+        $wiki_bot.create_page "Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]"
       elsif type == "minor"
-        $wiki_bot.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]")
+        $wiki_bot.create_page "Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]"
       else
         msg.reply "You screwed up. Try again."
         return

@@ -4,7 +4,7 @@ class Quote
   set :prefix, /^@@/
   match "quote"
   def execute(msg)
-    msg.reply(["\"FUCK YOU!\" - bitch-ass kid", "I luff yew baby <3 Have my wixi babies", "wikislaves aren't suppose to die", "You're the great and powerful trixie?", 
+    msg.reply ["\"FUCK YOU!\" - bitch-ass kid", "I luff yew baby <3 Have my wixi babies", "wikislaves aren't suppose to die", "You're the great and powerful trixie?", 
       "*enjoys the sensation of PrincessTwilightSparkle burping on his ass*", "Quick xbrony, dash! rainbow dash !",  "\"My cat is bullying me. How do I fight him?\"", 
       "All a girl wants is to be treated rough, god.", "[[What is love]]",  "Hydra can go [CENSORED] itself", "them ghasts have such wide holes ;)", "you must eat it so your cat isn't insulted",
       "IMMA INSERT MY EXTRA PENISES IN YOUR EARHOLES NOW", "NONE OF MY HOLES ARE SAFE", "EVERYTHING BUT THE BUTT", "My butt is nice tyvm",  
@@ -15,6 +15,6 @@ class Quote
       "Just get to the point where you and peter end up having sex over the desk, and the librarian comes across and beats you with a meter long ruler?", "wut",
       "Peter likes his literotica", "DONT RAPE ME PETER", "Aint rape if you enjoy it", "I squirm, and peter squirms inside me.", "And he bites me inappropriately, while I screech.", 
       "I know he enjoys this. And deep down, I do to.", "So much pain… but so much pleasure.", "you know I like it solid :3", 
-      "\"What's a girls?\" - \"Some place you where pulled out from and you desperately want to go into?\"", "ALL YOUR HOLES ARE BELONG TO US"].sample)
+      "\"What's a girls?\" - \"Some place you where pulled out from and you desperately want to go into?\"", "ALL YOUR HOLES ARE BELONG TO US"].sample
   end
 end

@@ -20,9 +20,9 @@ class WikiClient
       titles: page_name
     }
     
-    req = URI(@api_page)
-    req.query = URI.encode_www_form(params)
-    res = Net::HTTP.get_response(req)
+    req = URI @api_page
+    req.query = URI.encode_www_form params
+    res = Net::HTTP.get_response req
     if res.is_a? Net::HTTPSuccess
       return res.body
     else

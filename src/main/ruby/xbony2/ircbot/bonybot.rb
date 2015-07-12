@@ -32,22 +32,18 @@ bot = Cinch::Bot.new do
     c.nick = $BOT_NAME
     c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Upload, Motivate, Flirt]
     
-    $wiki_bot = MediawikiApi::Client.new('http://ftb.gamepedia.com/api.php')
-    $wiki_bot.log_in($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
-    $other_wiki_bot = FTB_Wiki_Client::WikiClient.new('http://ftb.gamepedia.com/api.php')
+    $wiki_bot = MediawikiApi::Client.new 'http://ftb.gamepedia.com/api.php'
+    $wiki_bot.log_in $BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
+    $other_wiki_bot = FTB_Wiki_Client::WikiClient.new 'http://ftb.gamepedia.com/api.php'
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
-    open("http://web.archive.org/save/" + site)
-    m.reply("Will be available here shortly: https://web.archive.org/web/*/" + site)
+    open "http://web.archive.org/save/#{site}"
+    m.reply "Will be available here shortly: https://web.archive.org/web/*/#{site}"
   end
   
   on :channel, "@@flip" do |m|
-    if 1 + rand(2) == 1
-      m.reply "The coin flip reveals heads."
-    else
-      m.reply "The coin flip reveals tails."
-    end
+    m.reply "The coin flip reveals #{1 + rand(2) == 1? "heads." : "tails."}"
   end
   
   on :channel, "@@roll" do |m|
@@ -60,8 +56,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, /^@@url-shorten (.+)/ do |m, url|
-    shortUrl = Googl.shorten(url)
-    m.reply "New URL: #{shortUrl.short_url}"
+    m.reply "New URL: #{Googl.shorten(url).short_url}"
   end
   
   on :channel, "@@spam" do |m|
@@ -87,7 +82,7 @@ bot = Cinch::Bot.new do
   
   on :channel, "@@stop" do |m|
     if m.user.authname == $OWNER_NAME
-      exit # Terminates program
+      exit
     else
       m.reply "You cannot stop me unless you're my creator."
     end 
