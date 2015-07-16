@@ -4,6 +4,6 @@ class Flirt
   set :prefix, /^@@/
   match "flirt"
   def execute(msg)
-    msg.reply "#{["LittleHelper", "MineBot", "PrincessCelestia", "Alfred"].sample}: hey bby, wanna fuck?"
+    msg.reply "#{["LittleHelper", "MineBot", "PrincessCelestia", "Alfred", "Haylee"].sample}: hey bby, wanna fuck?"
   end
 end
