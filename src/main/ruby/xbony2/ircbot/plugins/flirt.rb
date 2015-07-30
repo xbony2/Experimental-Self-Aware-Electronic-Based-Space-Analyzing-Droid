@@ -2,10 +2,9 @@ class Flirt
   include Cinch::Plugin
     
   set :prefix, /^@@/
-  match "flirt"
-  def execute(msg)
-    fellow_bot = ["LittleHelper", "MineBot", "PrincessCelestia", "Alfred", "Haylee"].sample
-    puts fellow_bot
-    msg.reply(Cinch::User.new(fellow_bot).online? ? "#{fellow_bot}: hey bby, wanna fuck?": "#{msg.user.nick}: fuck you")
+  match /flirt (.+)/
+  def execute(msg, flirtery) #For lack of a better term
+    msg.reply "#{flirtery}: hey bby, #{["wanna fuck?", "you must be a portal, cause' I want you to explore my nether dimension.", 
+    "you must be an infinite array, cause I want to interate in your forever."].sample}"
   end
 end
