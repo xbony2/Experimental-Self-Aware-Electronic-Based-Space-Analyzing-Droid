@@ -8,6 +8,7 @@ require 'mediawiki_api'
 require 'lyricfy'
 require 'highline'
 require 'nokogiri'
+require 'voice'
 require_relative 'ftb_wiki_client'
 
 require_relative 'plugins/help'
@@ -21,6 +22,7 @@ require_relative 'plugins/quote'
 require_relative 'plugins/upload'
 require_relative 'plugins/motivate'
 require_relative 'plugins/flirt'
+require_relative 'plugins/say_stuff'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
@@ -30,7 +32,7 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Upload, Motivate, Flirt]
+    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Upload, Motivate, Flirt, Say_Stuff]
     
     $wiki_bot = MediawikiApi::Client.new 'http://ftb.gamepedia.com/api.php'
     $wiki_bot.log_in $BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual')
