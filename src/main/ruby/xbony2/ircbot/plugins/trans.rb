@@ -26,7 +26,7 @@ class Trans
       text = text.gsub(/\|mod=.+\n/){|s| !s.end_with?("}}\n") ? s.insert(5, "<translate>").insert(-2, "</translate>") : s}
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert -2, "{{L}}"}
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert -3, "{{L}}"}
-      text = text.insert(0, "<!--Translators note: this article is part of the [[Feed The Beast Wiki:Translation Restoration project|Translation Restoration project]]-->\n") if special == "in"
+      text = text.insert(0, "<translate><!--Translators note: this article is part of the [[project:Translation Restoration project|Translation Restoration project]]--></translate>\n") if special == "in"
       $wiki_bot.edit(title: page, text: text, bot: 1, summary: "Add translation markup.")
       msg.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
     end
