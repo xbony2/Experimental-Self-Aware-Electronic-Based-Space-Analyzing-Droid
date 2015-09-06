@@ -16,7 +16,7 @@ class Trans
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub /\]\]/, "{{L}}]]"}
       text = text.gsub(/<br\/>/, "<br />")
       text = text.gsub(/<languages\/>/, "<languages />")
-      text = text.gsub(/\[\[.+\]\]/){|s| (!s.start_with?("[[Category:") and !s.start_with?("[[File:")) ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s}
+      text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:", "[[File:", "[[wikipedia:", "[[WP:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s}
       text = text.gsub(/\{\{[Ii]nfobox\n/, "{{Infobox{{L}}\n")
       text = text.gsub(/\{\{[Ii]nfobox mod\n/, "{{Infobox mod{{L}}\n")
       ["name", "lore", "module", "effects", "storageslots", "storage", "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",  "dependecypast", "description"].each {|s|
