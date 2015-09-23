@@ -5,8 +5,9 @@ class Addriovarmor
     text = File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}")
     text = text.gsub(/#NAME/, name)
     text = text.gsub(/#DURA/, durablity)
-    text = text.gsub(/#DAMAGE/, damage)
-    text = text.gsub(/#MINING_LEVEL/, mining_level)
+    if text.gsub(/#DAMAGE/, damage) != nil then text = text.gsub(/#DAMAGE/, damage) end
+    if text.gsub(/#MINING_LEVEL/, mining_level) != nil then text = text.gsub(/#MINING_LEVEL/, mining_level) end
+    
     return text
   end
   
