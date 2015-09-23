@@ -13,8 +13,8 @@
 ==Recipe==
 {{Cg/Crafting Table
 |B1={{Gc|mod=TMOR|dis=false|#NAME}}
-|B2={{Gc|mod=V|dis=false|Stick}}
-|B3={{Gc|mod=V|dis=false|Stick}}
+|B2={{Gc|mod=TMOR|dis=false|Trivu Stick}}
+|B3={{Gc|mod=TMOR|dis=false|Trivu Stick}}
 |O={{Gc|mod=TMOR|link=none|#NAME Shovel}}
 }}
 
