@@ -2,11 +2,16 @@ class Addriovarmor
   include Cinch::Plugin
   
   def get_wikitext(type, name, durablity, damage = 0, mining_level = 0)
-    File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
+    text = File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}")
+    text = text.gsub(/#NAME/, name)
+    text = text.gsub(/#DURA/, durablity)
+    text = text.gsub(/#DAMAGE/, damage)
+    text = text.gsub(/#MINING_LEVEL/, mining_level)
+    return text
   end
   
   set :prefix, /^@@/
-  match /addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*);/
+  match /addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/
   def execute(msg, name, t1_durablity, t1_sword_dmg, t1_pick_dmg, t1_mining_level, t1_axe_dmg, t1_shovel_dmg, t2_durablity, t2_sword_dmg, t2_pick_dmg, t2_mining_level, t2_axe_dmg, t2_shovel_dmg)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
