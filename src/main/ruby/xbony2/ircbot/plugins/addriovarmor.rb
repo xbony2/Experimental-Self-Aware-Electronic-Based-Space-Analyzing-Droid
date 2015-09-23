@@ -1,14 +1,8 @@
 class Addriovarmor
   include Cinch::Plugin
   
-  def get_wikitext(type, name, durablity, damage = 0, mining_level = 0)
-    text = File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}")
-    text = text.gsub(/#NAME/, name)
-    text = text.gsub(/#DURA/, durablity)
-    if text.gsub(/#DAMAGE/, damage) != nil then text = text.gsub(/#DAMAGE/, damage) end
-    if text.gsub(/#MINING_LEVEL/, mining_level) != nil then text = text.gsub(/#MINING_LEVEL/, mining_level) end
-    
-    return text
+  def get_wikitext(type, name, durablity, damage = "", mining_level = "")
+    File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
   
   set :prefix, /^@@/
