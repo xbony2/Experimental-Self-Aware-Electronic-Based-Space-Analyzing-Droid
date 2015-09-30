@@ -8,9 +8,9 @@ class Addcata
       msg.reply "You are not authorized."
       return
     elsif sub2 != "nil"
-      $wiki_bot.edit(title: "Category:#{name}", text: "[[Category:#{sub1}]]\n[[Category:#{sub2}]]", bot: 1)
+      $butt.edit("Category:#{name}", "[[Category:#{sub1}]]\n[[Category:#{sub2}]]", "Created category page.")
     else
-      $wiki_bot.edit(title: "Category:#{name}", text: "[[Category:#{sub1}]]", bot: 1)
+      $butt.edit("Category:#{name}", "[[Category:#{sub1}]]", "Created category page.")
     end
     msg.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
   end

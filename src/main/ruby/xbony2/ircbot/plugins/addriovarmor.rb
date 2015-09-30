@@ -11,15 +11,15 @@ class Addriovarmor
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
     else
-      $wiki_bot.edit(title: "#{name} Sword", text: get_wikitext("t1_sword_template", name, t1_durablity, t1_sword_dmg), bot: 1)
-      $wiki_bot.edit(title: "#{name} Pickaxe", text: get_wikitext("t1_pick_template", name, t1_durablity, t1_pick_dmg, t1_mining_level), bot: 1)
-      $wiki_bot.edit(title: "#{name} Axe", text: get_wikitext("t1_axe_template", name, t1_durablity, t1_axe_dmg), bot: 1)
-      $wiki_bot.edit(title: "#{name} Shovel", text: get_wikitext("t1_shovel_template", name, t1_durablity, t1_shovel_dmg), bot: 1)
-      $wiki_bot.edit(title: "#{name} Hoe", text: get_wikitext("t1_hoe_template", name, t1_durablity), bot: 1)
-      $wiki_bot.edit(title: "#{name} Sword Tier II", text: get_wikitext("t2_sword_template", name, t2_durablity, t2_sword_dmg), bot: 1)
-      $wiki_bot.edit(title: "#{name} Pickaxe Tier II", text: get_wikitext("t2_pick_template", name, t2_durablity, t2_pick_dmg, t2_mining_level), bot: 1)
-      $wiki_bot.edit(title: "#{name} Axe Tier II", text: get_wikitext("t2_axe_template", name, t2_durablity, t2_axe_dmg), bot: 1)
-      $wiki_bot.edit(title: "#{name} Shovel Tier II", text: get_wikitext("t2_shovel_template", name, t2_durablity, t2_shovel_dmg), bot: 1)
+      $butt.edit("#{name} Sword", get_wikitext("t1_sword_template", name, t1_durablity, t1_sword_dmg), "Generated new article.")
+      $butt.edit("#{name} Pickaxe", get_wikitext("t1_pick_template", name, t1_durablity, t1_pick_dmg, t1_mining_level), "Generated new article.")
+      $butt.edit("#{name} Axe", get_wikitext("t1_axe_template", name, t1_durablity, t1_axe_dmg), "Generated new article.")
+      $butt.edit("#{name} Shovel", get_wikitext("t1_shovel_template", name, t1_durablity, t1_shovel_dmg), "Generated new article.")
+      $butt.edit("#{name} Hoe", get_wikitext("t1_hoe_template", name, t1_durablity), "Generated new article.")
+      $butt.edit("#{name} Sword Tier II", get_wikitext("t2_sword_template", name, t2_durablity, t2_sword_dmg), "Generated new article.")
+      $butt.edit("#{name} Pickaxe Tier II", get_wikitext("t2_pick_template", name, t2_durablity, t2_pick_dmg, t2_mining_level), "Generated new article.")
+      $butt.edit("#{name} Axe Tier II", get_wikitext("t2_axe_template", name, t2_durablity, t2_axe_dmg), "Generated new article.")
+      $butt.edit("#{name} Shovel Tier II", get_wikitext("t2_shovel_template", name, t2_durablity, t2_shovel_dmg), "Generated new article.")
       
        msg.reply "Process complete, all #{name} tools done."
     end

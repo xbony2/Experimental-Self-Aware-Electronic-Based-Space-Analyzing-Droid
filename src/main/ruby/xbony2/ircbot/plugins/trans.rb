@@ -7,12 +7,7 @@ class Trans
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
     else
-      JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"].each do |revid, data|
-        $revid = revid
-        break
-      end
-          
-      text = JSON.parse($other_wiki_bot.get_wikitext(page))["query"]["pages"][$revid]["revisions"][0]["*"]
+      text = $butt.get_text(page)
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub /\]\]/, "{{L}}]]"}
       text = text.gsub(/<br\/>/, "<br />")
       text = text.gsub(/<languages\/>/, "<languages />")
@@ -27,7 +22,7 @@ class Trans
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert -2, "{{L}}"}
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert -3, "{{L}}"}
       text = text.insert(0, "<translate><!--Translators note: this article is part of the [[project:Translation Restoration project|Translation Restoration project]]--></translate>\n") if special == "in"
-      $wiki_bot.edit(title: page, text: text, bot: 1, summary: "Add translation markup.")
+      $butt.edit(page, text, "Added translation markup.")
       msg.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
     end
   end

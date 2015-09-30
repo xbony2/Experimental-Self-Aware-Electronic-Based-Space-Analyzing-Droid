@@ -8,9 +8,9 @@ class Addcat
       msg.reply "You are not authorized."
     else
       if type == "mod"
-        $wiki_bot.edit(title: "Category:#{name}", text: "[[Category:Mod categories]]\n[[Category:Mods]]", bot: 1)
+        $butt.edit("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
       elsif type == "minor"
-        $wiki_bot.edit(title: "Category:#{name}", text: "[[Category:Mod categories]]\n[[Category:Minor Mods]]", bot: 1)
+        $butt.edit("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")
       else
         msg.reply "You screwed up. Try again."
         return
