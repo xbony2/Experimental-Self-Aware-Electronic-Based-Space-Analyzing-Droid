@@ -11,6 +11,7 @@ class Catmanipulator
       $butt.get_category_members("Category:#{cat}").each {|page| 
         $butt.edit(page, $butt.get_text(page).gsub(/\[\[Category:#{cat}\]\]/, newcat), "Modified category.")
       }
+      msg.reply "Process complete."
     end
   end
 end
