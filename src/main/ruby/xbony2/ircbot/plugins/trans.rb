@@ -14,9 +14,9 @@ class Trans
       text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:", "[[File:", "[[wikipedia:", "[[WP:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s}
       text = text.gsub(/\{\{[Ii]nfobox\n/, "{{Infobox{{L}}\n")
       text = text.gsub(/\{\{[Ii]nfobox mod\n/, "{{Infobox mod{{L}}\n")
-      ["name", "lore", "module", "effects", "storageslots", "storage", "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",  "dependecypast", "description"].each {|s|
+      ["name", "lore", "module", "effects", "storageslots", "storage", "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",  "dependecypast", "description"].each do |s|
         text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
-      }
+      end
           
       text = text.gsub(/\|mod=.+\n/){|s| !s.end_with?("}}\n") ? s.insert(5, "<translate>").insert(-2, "</translate>") : s}
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert -2, "{{L}}"}
