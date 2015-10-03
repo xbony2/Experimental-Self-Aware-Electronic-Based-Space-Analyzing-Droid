@@ -22,6 +22,7 @@ require_relative 'plugins/motivate'
 require_relative 'plugins/flirt'
 require_relative 'plugins/say_stuff'
 require_relative 'plugins/catmanipulator'
+require_relative 'plugins/articleoftheweek'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
@@ -31,7 +32,7 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Motivate, Flirt, Say_Stuff, Catmanipulator]
+    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Motivate, Flirt, Say_Stuff, Catmanipulator, Article_Of_The_Week]
     
     $butt = MediaWiki::Butt.new 'http://ftb.gamepedia.com'
     $butt.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
