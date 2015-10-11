@@ -44,7 +44,7 @@ bot = Cinch::Bot.new do
   end
   
   on :channel, "@@flip" do |m|
-    m.reply "The coin flip reveals #{1 + rand(2) == 1? "heads." : "tails."}"
+    m.reply "The coin flip reveals #{1 + rand(2) == 1? "heads" : "tails"}."
   end
   
   on :channel, "@@roll" do |m|
