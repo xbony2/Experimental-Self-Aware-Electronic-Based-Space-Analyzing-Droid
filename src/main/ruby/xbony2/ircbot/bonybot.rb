@@ -36,7 +36,10 @@ bot = Cinch::Bot.new do
     c.plugins.plugins = [Help, HelpAdvanced, Trans, AddCat, AddRiovArmor, AddCatA, Lyrics, Quote, Motivate, Flirt, SayStuff, CatManipulator, ArticleOfTheWeek, Info]
     
     $ftb_client = MediaWiki::Butt.new 'http://ftb.gamepedia.com'
+    $br_client = MediaWiki::Butt.new 'http://minecraft-br.gamepedia.com'
+    
     $ftb_client.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
+    $br_client.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
