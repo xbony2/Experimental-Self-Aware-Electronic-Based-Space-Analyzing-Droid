@@ -12,6 +12,7 @@ class CatManipulator
       newcat = newcat == "nil" ? "" : "[[Category:#{newcat}]]"
       client.get_category_members("Category:#{cat}").each do |page| 
         client.edit(page, client.get_text(page).gsub(/\[\[Category:#{cat}\]\]/, newcat), "Modified category.")
+        client.edit(page, client.get_text(page).gsub(/\[\[Categoria:#{cat}\]\]/, newcat), "Modified category. | Modificado categoria.")
       end
       msg.reply "Process complete."
     end
