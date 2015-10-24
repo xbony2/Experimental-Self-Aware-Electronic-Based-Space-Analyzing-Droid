@@ -1,4 +1,4 @@
-class Say_Stuff
+class SayStuff
   include Cinch::Plugin
   
   set :prefix, /^@@/

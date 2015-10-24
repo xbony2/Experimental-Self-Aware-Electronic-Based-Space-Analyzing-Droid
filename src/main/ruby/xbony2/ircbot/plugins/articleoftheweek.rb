@@ -1,4 +1,4 @@
-class Article_Of_The_Week
+class ArticleOfTheWeek
   include Cinch::Plugin
   
   set :prefix, /^@@/

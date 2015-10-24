@@ -1,4 +1,4 @@
-class Addcat
+class AddCat
   include Cinch::Plugin
     
   set :prefix, /^@@/

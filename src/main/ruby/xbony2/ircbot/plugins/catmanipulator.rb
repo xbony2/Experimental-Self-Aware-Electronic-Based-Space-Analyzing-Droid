@@ -1,4 +1,4 @@
-class Catmanipulator
+class CatManipulator
   include Cinch::Plugin
   
   set :prefix, /^@@/

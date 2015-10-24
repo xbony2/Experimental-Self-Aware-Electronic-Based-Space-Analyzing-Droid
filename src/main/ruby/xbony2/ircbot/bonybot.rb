@@ -31,9 +31,9 @@ $OWNER_NAME = 'xbony2'
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#NuclearControl2", "#FTB-Wiki"]
+    c.channels = ["#NuclearControl2", "#FTB-Wiki", "FTB-Wiki-Dev"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, Help_Advanced, Trans, Addcat, Addriovarmor, Addcata, Lyrics, Quote, Motivate, Flirt, Say_Stuff, Catmanipulator, Article_Of_The_Week, Info]
+    c.plugins.plugins = [Help, HelpAdvanced, Trans, AddCat, AddRiovArmor, AddCatA, Lyrics, Quote, Motivate, Flirt, SayStuff, CatManipulator, ArticleOfTheWeek, Info]
     
     $ftb_client = MediaWiki::Butt.new 'http://ftb.gamepedia.com'
     $ftb_client.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))

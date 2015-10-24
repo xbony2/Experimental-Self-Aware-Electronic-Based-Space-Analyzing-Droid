@@ -1,4 +1,4 @@
-class Help_Advanced
+class HelpAdvanced
   include Cinch::Plugin
   
   set :prefix, /^@@/
