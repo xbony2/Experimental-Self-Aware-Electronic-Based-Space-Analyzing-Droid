@@ -31,7 +31,7 @@ $OWNER_NAME = 'xbony2'
 bot = Cinch::Bot.new do
   configure do |c|
     c.server = "irc.esper.net"
-    c.channels = ["#NuclearControl2", "#FTB-Wiki", "FTB-Wiki-Dev"]
+    c.channels = ["#NuclearControl2", "#FTB-Wiki", "#FTB-Wiki-Dev"]
     c.nick = $BOT_NAME
     c.plugins.plugins = [Help, HelpAdvanced, Trans, AddCat, AddRiovArmor, AddCatA, Lyrics, Quote, Motivate, Flirt, SayStuff, CatManipulator, ArticleOfTheWeek, Info]
     
