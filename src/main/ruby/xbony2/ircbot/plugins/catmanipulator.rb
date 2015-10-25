@@ -2,7 +2,7 @@ class CatManipulator
   include Cinch::Plugin
   
   set :prefix, /^@@/
-  match /catmanipulate (.*); (.*);? ?(.+)/
+  match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
@@ -12,8 +12,7 @@ class CatManipulator
       
       newcat = newcat == "nil" ? "" : "[[#{category}:#{newcat}]]"
       client.get_category_members("Category:#{cat}").each do |page|
-        msg.reply "Page found: #{page}"
-        client.edit(page, client.get_text(page).gsub(/\[\[#{category}:#{cat}\]\]/, newcat), "Modified category. | Modificado categoria.")
+        client.edit(page, client.get_text(page).gsub(/\[\[Category:#{cat}\]\]/, newcat).gsub(/\[\[Categoria:#{cat}\]\]/, newcat), summary: "Modified category. | Modificado categoria.")
       end
       msg.reply "Process complete."
     end
