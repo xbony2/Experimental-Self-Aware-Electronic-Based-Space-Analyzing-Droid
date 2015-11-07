@@ -24,6 +24,7 @@ require_relative 'plugins/say_stuff'
 require_relative 'plugins/catmanipulator'
 require_relative 'plugins/articleoftheweek'
 require_relative 'plugins/info'
+require_relative 'plugins/replaceallincategory'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
@@ -33,7 +34,7 @@ bot = Cinch::Bot.new do
     c.server = "irc.esper.net"
     c.channels = ["#NuclearControl2", "#FTB-Wiki", "#FTB-Wiki-Dev"]
     c.nick = $BOT_NAME
-    c.plugins.plugins = [Help, HelpAdvanced, Trans, AddCat, AddRiovArmor, AddCatA, Lyrics, Quote, Motivate, Flirt, SayStuff, CatManipulator, ArticleOfTheWeek, Info]
+    c.plugins.plugins = [Help, HelpAdvanced, Trans, AddCat, AddRiovArmor, AddCatA, Lyrics, Quote, Motivate, Flirt, SayStuff, CatManipulator, ArticleOfTheWeek, Info, ReplaceAllInCategory]
     
     $ftb_client = MediaWiki::Butt.new 'http://ftb.gamepedia.com'
     $br_client = MediaWiki::Butt.new 'http://minecraft-br.gamepedia.com'
