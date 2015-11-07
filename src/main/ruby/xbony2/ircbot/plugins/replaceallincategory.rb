@@ -2,7 +2,7 @@ class ReplaceAllInCategory
   include Cinch::Plugin
   
   set :prefix, /^@@/
-  match /replaceallincategory (.*); (.*); (.+)/
+  match /replaceallincategory (.*); (.*); (.+|.?)/
   def execute(msg, cat, oldtext, newtext)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
