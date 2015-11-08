@@ -34,7 +34,7 @@ class HelpAdvanced < ESAEBSADCommand
         msg.reply "\"in\" will make me automatically insert the header notifying the translator of older translations."
         msg.reply "See: http://ftb.gamepedia.com/Feed_The_Beast_Wiki:Translation_Guide#Restoring_translations"
       else
-        msg.reply "That command isn't important enough to be documented, or doesn't exist."
+        msg.reply "That command hasn't been documented, or doesn't exist."
         msg.reply "If it's simple enough, running the command will explain itself."
       end
     end

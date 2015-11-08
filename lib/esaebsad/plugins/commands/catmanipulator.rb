@@ -7,12 +7,11 @@ class CatManipulator < ESAEBSADCommand
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
     else
-      client = wiki == "br" ? $br_client : $ftb_client
       category = wiki == "br" ? "Categoria" : "Category"
       
       newcat = newcat == "nil" ? "" : "[[#{category}:#{newcat}]]"
-      client.get_category_members("Category:#{cat}").each do |page|
-        client.edit(page, client.get_text(page).gsub(/\[\[(Category|Categoria):#{cat}\]\]/, newcat), summary: "Modified category. | Modificado categoria.")
+      get_client(wiki).get_category_members("Category:#{cat}").each do |page|
+        get_client.edit(page, get_client.get_text(page).gsub(/\[\[(Category|Categoria):#{cat}\]\]/, newcat), summary: "Modified category. | Modificado categoria.")
       end
       msg.reply "Process complete."
     end

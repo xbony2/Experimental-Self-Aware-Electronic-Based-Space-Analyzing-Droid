@@ -8,9 +8,9 @@ class AddCat < ESAEBSADCommand
       msg.reply "You are not authorized."
     else
       if type == "mod"
-        $ftb_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
+        get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
       elsif type == "minor"
-        $ftb_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")
+        get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")
       else
         msg.reply "You screwed up. Try again."
         return

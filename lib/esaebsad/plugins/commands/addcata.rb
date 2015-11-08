@@ -8,9 +8,9 @@ class AddCatA < ESAEBSADCommand
       msg.reply "You are not authorized."
       return
     elsif sub2 != "nil"
-      $ftb_client.create_page("Category:#{name}", "[[Category:#{sub1}]]\n[[Category:#{sub2}]]", "Created category page.")
+      get_client.create_page("Category:#{name}", "[[Category:#{sub1}]]\n[[Category:#{sub2}]]", "Created category page.")
     else
-      $ftb_client.create_page("Category:#{name}", "[[Category:#{sub1}]]", "Created category page.")
+      get_client.create_page("Category:#{name}", "[[Category:#{sub1}]]", "Created category page.")
     end
     msg.reply "Here you go: http://ftb.gamepedia.com/Category:#{name.gsub(' ', '_')}"
   end
