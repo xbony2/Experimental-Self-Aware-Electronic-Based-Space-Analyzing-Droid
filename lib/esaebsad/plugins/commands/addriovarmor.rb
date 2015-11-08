@@ -2,7 +2,7 @@ class AddRiovArmor
   include Cinch::Plugin
   
   def get_wikitext(type, name, durablity, damage = "", mining_level = "")
-    File.read("git/IRC-Bot/src/main/resources/xbony2/ircbot/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
+    File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
   
   set :prefix, /^@@/

@@ -9,22 +9,9 @@ require 'lyricfy'
 require 'highline'
 require 'nokogiri'
 require 'voice'
+require 'require_all'
 
-require_relative 'plugins/help'
-require_relative 'plugins/help_advanced'
-require_relative 'plugins/trans'
-require_relative 'plugins/addcat'
-require_relative 'plugins/addriovarmor'
-require_relative 'plugins/addcata'
-require_relative 'plugins/lyrics'
-require_relative 'plugins/quote'
-require_relative 'plugins/motivate'
-require_relative 'plugins/flirt'
-require_relative 'plugins/say_stuff'
-require_relative 'plugins/catmanipulator'
-require_relative 'plugins/articleoftheweek'
-require_relative 'plugins/info'
-require_relative 'plugins/replaceallincategory'
+require_rel 'plugins'
 
 $BOT_NAME = 'ESAEBSAD'
 $OWNER_NAME = 'xbony2'
@@ -39,8 +26,8 @@ bot = Cinch::Bot.new do
     $ftb_client = MediaWiki::Butt.new 'http://ftb.gamepedia.com'
     $br_client = MediaWiki::Butt.new 'http://minecraft-br.gamepedia.com'
     
-    $ftb_client.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
-    $br_client.login($BOT_NAME, File.read('git/IRC-Bot/src/main/resources/xbony2/ircbot/SEKRET_PASSWORD.confidentual'))
+    $ftb_client.login($BOT_NAME, File.read('git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual'))
+    $br_client.login($BOT_NAME, File.read('git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual'))
   end
   
   on :channel, /^@@archive (.+)/ do |m, site|
