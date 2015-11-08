@@ -1,4 +1,4 @@
-class HelpAdvanced
+class HelpAdvanced < ESAEBSADCommand
   include Cinch::Plugin
   
   set :prefix, /^@@/

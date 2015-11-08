@@ -1,4 +1,4 @@
-class Flirt
+class Flirt < ESAEBSADCommand
   include Cinch::Plugin
     
   set :prefix, /^@@/

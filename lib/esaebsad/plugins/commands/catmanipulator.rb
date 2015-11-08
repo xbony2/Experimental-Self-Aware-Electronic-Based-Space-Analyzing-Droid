@@ -1,4 +1,4 @@
-class CatManipulator
+class CatManipulator < ESAEBSADCommand
   include Cinch::Plugin
   
   set :prefix, /^@@/

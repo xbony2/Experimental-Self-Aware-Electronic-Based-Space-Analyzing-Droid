@@ -1,4 +1,4 @@
-class ArticleOfTheWeek
+class ArticleOfTheWeek < ESAEBSADCommand
   include Cinch::Plugin
   
   set :prefix, /^@@/

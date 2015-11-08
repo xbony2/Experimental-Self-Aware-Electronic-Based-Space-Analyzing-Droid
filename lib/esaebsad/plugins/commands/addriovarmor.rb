@@ -1,4 +1,4 @@
-class AddRiovArmor
+class AddRiovArmor < ESAEBSADCommand
   include Cinch::Plugin
   
   def get_wikitext(type, name, durablity, damage = "", mining_level = "")

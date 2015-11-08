@@ -1,4 +1,4 @@
-class Lyrics 
+class Lyrics < ESAEBSADCommand
   include Cinch::Plugin
   
   def initialize(*args)

@@ -1,4 +1,4 @@
-class AddCat
+class AddCat < ESAEBSADCommand
   include Cinch::Plugin
     
   set :prefix, /^@@/

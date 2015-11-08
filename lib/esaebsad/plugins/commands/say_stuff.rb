@@ -1,4 +1,4 @@
-class SayStuff
+class SayStuff < ESAEBSADCommand
   include Cinch::Plugin
   
   set :prefix, /^@@/

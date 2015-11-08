@@ -1,4 +1,4 @@
-class Trans
+class Trans < ESAEBSADCommand
   include Cinch::Plugin
   
   set :prefix, /^@@/

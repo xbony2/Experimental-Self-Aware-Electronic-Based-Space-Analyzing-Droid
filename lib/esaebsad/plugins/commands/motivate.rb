@@ -1,4 +1,4 @@
-class Motivate
+class Motivate < ESAEBSADCommand
   include Cinch::Plugin
     
   set :prefix, /^@@/
