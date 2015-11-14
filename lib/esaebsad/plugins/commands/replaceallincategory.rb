@@ -8,7 +8,6 @@ class ReplaceAllInCategory < ESAEBSADCommand
       msg.reply "You are not authorized."
     else
       get_client.get_category_members("Category:#{cat}").each do |page|
-        puts page
         text = get_client.get_text(page)
         get_client.edit(page, text.gsub(oldtext, newtext), summary: "Converting \"#{oldtext}\" to \"#{newtext}\"") if text.include?(oldtext)
       end
