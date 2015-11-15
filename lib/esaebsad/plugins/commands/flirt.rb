@@ -1,6 +1,7 @@
 class Flirt < ESAEBSADCommand
   include Cinch::Plugin
-    
+  
+  set_help("flirt", "Group: all. Syntax: \"@@flirt (flirtery)\"\nThe flirt command will make ESAEBSAD flirt with the \"flirtery\".")
   set :prefix, /^@@/
   match /flirt (.+)/
   def execute(msg, flirtery) #For lack of a better term

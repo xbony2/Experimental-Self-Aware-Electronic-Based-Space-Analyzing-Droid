@@ -1,6 +1,7 @@
 class Motivate < ESAEBSADCommand
   include Cinch::Plugin
-    
+  
+  set_help("motivate", "Group: all. Syntax: \"@@motivate\"\nThe motivate command will yield a motivating message.")
   set :prefix, /^@@/
   match "motivate"
   def execute(msg)

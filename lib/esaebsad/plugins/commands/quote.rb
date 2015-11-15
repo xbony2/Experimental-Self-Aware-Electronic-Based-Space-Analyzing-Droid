@@ -1,6 +1,7 @@
 class Quote < ESAEBSADCommand
   include Cinch::Plugin
   
+  set_help("quote", "Group: all. Syntax: \"@@quote\"\nThe quote command will yield a clean, motivating quote.")
   set :prefix, /^@@/
   match "quote"
   def execute(msg)

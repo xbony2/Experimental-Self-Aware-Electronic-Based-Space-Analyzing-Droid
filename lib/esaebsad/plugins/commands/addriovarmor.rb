@@ -5,6 +5,7 @@ class AddRiovArmor < ESAEBSADCommand
     File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
   
+  set_help("addriovarmor", "Group: owner. Syntax: \"@@addriovarmor (name); (info1); (info2); (info3)...\"\nThe addriovarmor command is an alias for all automatic page-generating commands.\nIt should never be run more then once, and it's arguments vary on it's need.")
   set :prefix, /^@@/
   match /addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/
   def execute(msg, name, t1_durablity, t1_sword_dmg, t1_pick_dmg, t1_mining_level, t1_axe_dmg, t1_shovel_dmg, t2_durablity, t2_sword_dmg, t2_pick_dmg, t2_mining_level, t2_axe_dmg, t2_shovel_dmg)
