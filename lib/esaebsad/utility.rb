@@ -1,5 +1,4 @@
 $BOT_NAME = "ESAEBSAD"
-$OWNER_NAME = "xbony2"
 
 $FTB_WIKI_CLIENT = MediaWiki::Butt.new "http://ftb.gamepedia.com"
 $MINECRAFT_BR_WIKI_CLIENT = MediaWiki::Butt.new "http://minecraft-br.gamepedia.com"
@@ -21,5 +20,17 @@ def set_help(name, doc)
 end
 
 def urlize(page_name)
-  page_name.gsub(" ", "_").gsub("'", "%27")
+  page_name.tr(" ", "_").gsub("'", "%27")
+end
+
+#TODO: create a better system.
+def get_group(authname)
+  case authname
+  when "xbony2" then :owner
+  else :all
+  end
+end
+
+def is_part_of_group?(authname, group)
+  get_group(authname) == group
 end

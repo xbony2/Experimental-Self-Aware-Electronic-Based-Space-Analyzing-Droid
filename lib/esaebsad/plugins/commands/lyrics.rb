@@ -11,15 +11,15 @@ class Lyrics < ESAEBSADCommand
   set :prefix, /^@@/
   match /lyrics (.*); (.*)/
   def execute(msg, artist, song)
-    if msg.user.authname != $OWNER_NAME #restricted because it's basically a spam machine
-      msg.reply "You are not authorized. Ask #{$OWNER_NAME} for any requests."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       begin
         lyrics = @lyric_getter.search(artist, song).body.split "\\n"
         lyrics.each {|str| msg.reply(str)}
       rescue NoMethodError
         msg.reply "Song not found! Or it may be broken. Remember: artist; song."
       end
+    else
+      msg.reply "You are not authorized. Ask #{$OWNER_NAME} for any requests."
     end
   end
 end

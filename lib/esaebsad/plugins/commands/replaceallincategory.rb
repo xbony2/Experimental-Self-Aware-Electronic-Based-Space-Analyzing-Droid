@@ -5,14 +5,14 @@ class ReplaceAllInCategory < ESAEBSADCommand
   set :prefix, /^@@/
   match /replaceallincategory (.*); (.*); (.+|.?)/
   def execute(msg, cat, oldtext, newtext)
-    if msg.user.authname != $OWNER_NAME
-      msg.reply "You are not authorized."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       get_client.get_category_members("Category:#{cat}").each do |page|
         text = get_client.get_text(page)
         get_client.edit(page, text.gsub(oldtext, newtext), summary: "Converting \"#{oldtext}\" to \"#{newtext}\"") if text.include?(oldtext)
       end
       msg.reply "Process complete."
+    else
+      msg.reply "You are not authorized."
     end
   end
 end

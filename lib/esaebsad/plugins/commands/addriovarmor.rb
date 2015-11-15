@@ -9,9 +9,7 @@ class AddRiovArmor < ESAEBSADCommand
   set :prefix, /^@@/
   match /add_riov_armor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/
   def execute(msg, name, t1_durablity, t1_sword_dmg, t1_pick_dmg, t1_mining_level, t1_axe_dmg, t1_shovel_dmg, t2_durablity, t2_sword_dmg, t2_pick_dmg, t2_mining_level, t2_axe_dmg, t2_shovel_dmg)
-    if msg.user.authname != $OWNER_NAME
-      msg.reply "You are not authorized."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       get_client.create_page("#{name} Sword", get_wikitext("t1_sword_template", name, t1_durablity, t1_sword_dmg), "Generated new article.")
       get_client.create_page("#{name} Pickaxe", get_wikitext("t1_pick_template", name, t1_durablity, t1_pick_dmg, t1_mining_level), "Generated new article.")
       get_client.create_page("#{name} Axe", get_wikitext("t1_axe_template", name, t1_durablity, t1_axe_dmg), "Generated new article.")
@@ -22,7 +20,9 @@ class AddRiovArmor < ESAEBSADCommand
       get_client.create_page("#{name} Axe Tier II", get_wikitext("t2_axe_template", name, t2_durablity, t2_axe_dmg), "Generated new article.")
       get_client.create_page("#{name} Shovel Tier II", get_wikitext("t2_shovel_template", name, t2_durablity, t2_shovel_dmg), "Generated new article.")
       
-       msg.reply "Process complete, all #{name} tools done."
+      msg.reply "Process complete, all #{name} tools done."
+    else
+      msg.reply "You are not authorized."
     end
   end
 end

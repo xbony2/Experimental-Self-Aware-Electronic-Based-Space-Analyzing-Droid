@@ -5,9 +5,7 @@ class AddCat < ESAEBSADCommand
   set :prefix, /^@@/
   match /add_cat (.+); (.*)/
   def execute(msg, type, name)
-    if msg.user.authname != $OWNER_NAME
-      msg.reply "You are not authorized."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       case type
       when "mod" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
       when "minor" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")
@@ -17,6 +15,8 @@ class AddCat < ESAEBSADCommand
       end
       
       msg.reply "Here you go: http://ftb.gamepedia.com/Category:#{urlize(name)}"
-     end
+    else
+      msg.reply "You are not authorized."
+    end
   end
 end

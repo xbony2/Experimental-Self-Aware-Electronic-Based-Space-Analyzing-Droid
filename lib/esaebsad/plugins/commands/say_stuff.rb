@@ -5,7 +5,7 @@ class SayStuff < ESAEBSADCommand
   set :prefix, /^@@/
   match /say (.+)/
   def execute(msg, words)
-    if msg.user.authname == $OWNER_NAME
+    if is_part_of_group? msg.user.authname, :owner
       if (ENV["OS"] == nil) and (RUBY_PLATFORM.end_with? "darwin14")
         Voice.say(words, :voice => 'Samantha')
       else

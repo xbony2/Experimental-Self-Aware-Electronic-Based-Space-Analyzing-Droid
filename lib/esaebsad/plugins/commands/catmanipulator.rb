@@ -5,9 +5,7 @@ class CatManipulator < ESAEBSADCommand
   set :prefix, /^@@/
   match /cat_manipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
-    if msg.user.authname != $OWNER_NAME
-      msg.reply "You are not authorized."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       category = wiki == "br" ? "Categoria" : "Category"
       
       newcat = newcat == "nil" ? "" : "[[#{category}:#{newcat}]]"
@@ -15,6 +13,8 @@ class CatManipulator < ESAEBSADCommand
         get_client.edit(page, get_client.get_text(page).gsub(/\[\[(Category|Categoria):#{cat}\]\]/, newcat), summary: "Modified category. | Modificado categoria.")
       end
       msg.reply "Process complete."
+    else
+      msg.reply "You are not authorized."
     end
   end
 end

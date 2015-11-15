@@ -5,10 +5,6 @@ class Stop < ESAEBSADCommand
   set :prefix, /^@@/
   match "stop"
   def execute(msg)
-    if msg.user.authname == $OWNER_NAME
-      exit
-    else
-      msg.reply "You cannot stop me unless you're my creator."
-    end
+    is_part_of_group? msg.user.authname, :owner ? exit : msg.reply("You cannot stop me unless you're my creator.")
   end
 end

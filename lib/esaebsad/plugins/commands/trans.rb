@@ -5,9 +5,7 @@ class Trans < ESAEBSADCommand
   set :prefix, /^@@/
   match /trans (.*); (.+)/
   def execute(msg, page, special)
-    if msg.user.authname != $OWNER_NAME
-      msg.reply "You are not authorized."
-    else
+    if is_part_of_group? msg.user.authname, :owner
       text = get_client.get_text(page)
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub /\]\]/, "{{L}}]]"}
       text = text.gsub(/<br\/>/, "<br />")
@@ -25,6 +23,8 @@ class Trans < ESAEBSADCommand
       text = text.insert(0, "<translate><!--Translators note: this article is part of the [[project:Translation Restoration project|Translation Restoration project]]--></translate>\n") if special == "in"
       get_client.edit(page, text, "Added translation markup.")
       msg.reply "Here you go: http://ftb.gamepedia.com/#{page.gsub(' ', '_')}"
+    else
+      msg.reply "You are not authorized."
     end
   end
 end
