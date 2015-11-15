@@ -1,19 +1,19 @@
-require 'cinch'
-require 'httparty'
-require 'json'
-require 'googl'
-require 'rest-client'
-require 'open-uri'
-require 'mediawiki-butt'
-require 'lyricfy'
-require 'highline'
-require 'nokogiri'
-require 'voice'
-require 'require_all'
+require "cinch"
+require "httparty"
+require "json"
+require "googl"
+require "rest-client"
+require "open-uri"
+require "mediawiki-butt"
+require "lyricfy"
+require "highline"
+require "nokogiri"
+require "voice"
+require "require_all"
 
-require_relative 'esaebsadcommand'
-require_relative 'utility'
-require_rel 'plugins'
+require_relative "esaebsadcommand"
+require_relative "utility"
+require_rel "plugins"
 
 bot = Cinch::Bot.new do
   configure do |c|

@@ -5,6 +5,6 @@ class Flip < ESAEBSADCommand
   set :prefix, /^@@/
   match "flip"
   def execute(msg)
-    msg.reply "The coin flip reveals #{1 + rand(2) == 1? "heads" : "tails"}."
+    msg.reply "The coin flip reveals #{rand(2) == 0 ? "heads" : "tails"}."
   end
 end

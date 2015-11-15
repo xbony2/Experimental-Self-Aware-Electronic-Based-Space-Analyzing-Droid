@@ -1,9 +1,9 @@
 class CatManipulator < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("catmanipulate", "Group: owner. Syntax: \"@@catmanipulate (cat); (newcat); (wiki)\"\nThe catmanipulate command will convert all instanences of a category to a different category.")
+  set_help("cat_manipulate", "Group: owner. Syntax: \"@@cat_manipulate (cat); (newcat); (wiki)\"\nThe cat manipulate command will convert all instanences of a category to a different category.")
   set :prefix, /^@@/
-  match /catmanipulate (.*); (.*); (.+)/
+  match /cat_manipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."

@@ -1,9 +1,9 @@
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("convertlink", "Group: owner. Syntax: \"@@convertlink (oldlink); (newlink)\"\nThe convertlink command will convert all instanences of a link to a different link.")
+  set_help("convert_link", "Group: owner. Syntax: \"@@convert_link (oldlink); (newlink)\"\nThe convert link command will convert all instanences of a link to a different link.")
   set :prefix, /^@@/
-  match /convertlink (.*); (.*)/
+  match /convert_link (.*); (.*)/
   def execute(msg, oldlink, newlink)
     if msg.user.authname != $OWNER_NAME
       msg.reply "You are not authorized."
