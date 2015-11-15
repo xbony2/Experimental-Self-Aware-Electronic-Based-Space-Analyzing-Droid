@@ -1,6 +1,7 @@
 class AddCatA < ESAEBSADCommand
   include Cinch::Plugin
   
+  set_help("addcata", "Group: owner. Syntax: \"@@addcat (sub1); (sub2); (name)\"\nThe addcata command will create a new category based on two subcategories.\n\"nil\" can be set as the second subcategory if a second subcategory is not wanted.\nExample: \"@@addcata Armor; nil; Horse Armor\".")
   set :prefix, /^@@/
   match /addcata (.*); (.*); (.*)/
   def execute(msg, sub1, sub2, name)
