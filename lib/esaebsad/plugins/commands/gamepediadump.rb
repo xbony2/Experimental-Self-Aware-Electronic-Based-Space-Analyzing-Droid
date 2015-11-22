@@ -5,9 +5,18 @@ class GamepediaDump < ESAEBSADCommand
   match "gamepediadump"
   def execute(msg)
     if is_part_of_group? msg.user.authname, :owner
-      file = File.new("domains.txt", "w")
-      file.puts `python /Users/xbony2/Downloads/subbrute/subbrute.py gamepedia.com`
-      file.close
+      domains = File.new("Documents/domains.txt", "w")
+      
+      open("http://www.gamepedia.com/wikis").read.match(/&hellip;(.+)&page=(\d\d)/).to_s.sub(/&hellip;(.+)&page=/, "").to_i.times do |n|
+        open("http://www.gamepedia.com/wikis?page=#{n + 1}") do |p|
+          p.each_line do |l|
+            url = l.match(/http:\/\/(.+).gamepedia.com/).to_s
+            domains.puts url if url != "" and url != "http://www.gamepedia.com"
+          end
+        end
+      end
+      
+      domains.close
     else
       msg.reply "You are not authorized."
     end
