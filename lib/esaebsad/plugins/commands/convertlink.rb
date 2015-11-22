@@ -1,12 +1,12 @@
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help "convert_link", <<EOS
-Group: owner. Syntax: "@@convert_link (oldlink); (newlink)"
+  set_help "convertlink", <<EOS
+Group: owner. Syntax: "@@convertlink (oldlink); (newlink)"
 The convert link command will convert all instanences of a link to a different link.
 EOS
   set :prefix, /^@@/
-  match /convert_link (.*); (.*)/
+  match /convertlink (.*); (.*)/
   def execute(msg, oldlink, newlink)
     if is_part_of_group? msg.user.authname, :owner
       get_client.what_links_here(oldlink).each do |page|

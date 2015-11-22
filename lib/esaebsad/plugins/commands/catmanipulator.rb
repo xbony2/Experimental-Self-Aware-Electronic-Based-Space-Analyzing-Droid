@@ -1,12 +1,12 @@
 class CatManipulator < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help "cat_manipulate", <<EOS
-Group: owner. Syntax: "@@cat_manipulate (cat); (newcat); (wiki)"
+  set_help "catmanipulate", <<EOS
+Group: owner. Syntax: "@@catmanipulate (cat); (newcat); (wiki)"
 The cat manipulate command will convert all instanences of a category to a different category.
 EOS
   set :prefix, /^@@/
-  match /cat_manipulate (.*); (.*); (.+)/
+  match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
     if is_part_of_group? msg.user.authname, :owner
       category = wiki == "br" ? "Categoria" : "Category"

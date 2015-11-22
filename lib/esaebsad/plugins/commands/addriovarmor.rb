@@ -5,13 +5,13 @@ class AddRiovArmor < ESAEBSADCommand
     File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
   
-  set_help "add_riov_armor", <<EOS
-Group: owner. Syntax: "@@add_riov_armor (name); (info1); (info2); (info3)..."
+  set_help "addriovarmor", <<EOS
+Group: owner. Syntax: "@@addriovarmor (name); (info1); (info2); (info3)..."
 The add riov armor command is an alias for all automatic page-generating commands.
 It should never be run more then once, and it's arguments vary on it's need.
 EOS
   set :prefix, /^@@/
-  match /add_riov_armor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/
+  match /addriovarmor (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*); (.*)/
   def execute(msg, name, t1_durablity, t1_sword_dmg, t1_pick_dmg, t1_mining_level, t1_axe_dmg, t1_shovel_dmg, t2_durablity, t2_sword_dmg, t2_pick_dmg, t2_mining_level, t2_axe_dmg, t2_shovel_dmg)
     if is_part_of_group? msg.user.authname, :owner
       get_client.create_page("#{name} Sword", get_wikitext("t1_sword_template", name, t1_durablity, t1_sword_dmg), "Generated new article.")
