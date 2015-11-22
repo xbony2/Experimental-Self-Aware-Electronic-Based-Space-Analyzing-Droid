@@ -1,7 +1,10 @@
 class Flirt < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("flirt", "Group: all. Syntax: \"@@flirt (flirtery)\"\nThe flirt command will make ESAEBSAD flirt with the \"flirtery\".")
+  set_help "flirt", <<EOS
+Group: all. Syntax: "@@flirt (flirtery)"
+The flirt command will make ESAEBSAD flirt with the "flirtery".
+EOS
   set :prefix, /^@@/
   match /flirt (.+)/
   def execute(msg, flirtery) #For lack of a better term

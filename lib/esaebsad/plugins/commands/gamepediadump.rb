@@ -1,6 +1,10 @@
 class GamepediaDump < ESAEBSADCommand
   include Cinch::Plugin
   
+  set_help "gamepediadump", <<EOS
+Group: owner. Syntax: "@@gamepediadump"
+The gamepedia dump command will create a list of all the gamepedia wikis.
+EOS
   set :prefix, /^@@/
   match "gamepediadump"
   def execute(msg)

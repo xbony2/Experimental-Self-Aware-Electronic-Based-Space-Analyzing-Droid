@@ -1,7 +1,10 @@
 class Stop < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("stop", "Group: owner. Syntax: \"@@stop\"\nThe stop command will stop ESAEBSAD.")
+  set_help "stop", <<EOS
+Group: owner. Syntax: "@@stop"
+The stop command will stop ESAEBSAD.
+EOS
   set :prefix, /^@@/
   match "stop"
   def execute(msg)

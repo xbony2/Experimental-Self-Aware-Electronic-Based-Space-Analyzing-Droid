@@ -1,7 +1,10 @@
 class Archive < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("archive", "Group: all. Syntax: \"@@archive (url)\"\nThe archive shorten command will backup a url using the Internet Archieve (archive.com).")
+  set_help "archive", <<EOS
+Group: all. Syntax: "@@archive (url)"
+The archive shorten command will backup a url using the Internet Archieve (archive.com).
+EOS
   set :prefix, /^@@/
   match /archive (.+)/
   def execute(msg, url)

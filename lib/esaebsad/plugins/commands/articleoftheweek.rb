@@ -1,7 +1,10 @@
 class ArticleOfTheWeek < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("article_of_the_week", "Group: all. Syntax: \"@@article_of_the_week\"\nThe article of the week command creates a new article of the week using an extremely advanced algolrithm.")
+  set_help "article_of_the_week", <<EOS
+Group: all. Syntax: "@@article_of_the_week"
+The article of the week command creates a new article of the week using an extremely advanced algolrithm.
+EOS
   set :prefix, /^@@/
   match "article_of_the_week"
   def execute(msg)

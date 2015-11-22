@@ -1,7 +1,11 @@
 class AddCat < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("add_cat", "Group: owner. Syntax: \"@@add_cat (type); (name)\"\nThe addcat command will create a new category based on the type.\nExample: \"@@add_cat mod; Thermal Expansion 3\".")
+  set_help "add_cat", <<EOS
+Group: owner. Syntax: "@@add_cat (type); (name)"
+The addcat command will create a new category based on the type.
+Example: "@@add_cat mod; Thermal Expansion 3".
+EOS
   set :prefix, /^@@/
   match /add_cat (.+); (.*)/
   def execute(msg, type, name)

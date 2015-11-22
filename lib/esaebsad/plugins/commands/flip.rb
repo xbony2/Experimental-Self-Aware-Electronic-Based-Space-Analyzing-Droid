@@ -1,7 +1,10 @@
 class Flip < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("flip", "Group: all. Syntax: \"@@flip\"\nThe flip command flips a coin.")
+  set_help "flip", <<EOS
+Group: all. Syntax: "@@flip"
+The flip command flips a coin.
+EOS
   set :prefix, /^@@/
   match "flip"
   def execute(msg)

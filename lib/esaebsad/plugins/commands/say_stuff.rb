@@ -1,7 +1,11 @@
 class SayStuff < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("say", "Group: owner. Syntax: \"@@say (words)\"\nThe say shorten command will say, as in through the speaker, the given string.\nIt will not work if ESAEBSAD is running on a non-OS X computer.")
+  set_help "say", <<EOS
+Group: owner. Syntax: "@@say (words)"
+The say shorten command will say, as in through the speaker, the given string.
+It will not work if ESAEBSAD is running on a non-OS X computer.
+EOS
   set :prefix, /^@@/
   match /say (.+)/
   def execute(msg, words)

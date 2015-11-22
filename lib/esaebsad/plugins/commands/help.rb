@@ -1,7 +1,11 @@
 class Help < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("help", "Group: all. Syntax: \"@@help [command]\"\nThe help command gives a list of commands.\nWhen supplied with a parameter, it will give information specific to that command.")
+  set_help "help", <<EOS
+Group: all. Syntax: "@@help [command]"
+The help command gives a list of commands.
+When supplied with a parameter, it will give information specific to that command.
+EOS
   set :prefix, /^@@/
   match "help", method: :list
   match /help (.+)/, method: :advanced

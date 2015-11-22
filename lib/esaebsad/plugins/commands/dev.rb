@@ -1,7 +1,10 @@
 class Dev < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("dev", "Group: all. Syntax: \"@@dev\"\nThe dev command gives basic information on ESAEBSAD.")
+  set_help "dev", <<EOS
+Group: all. Syntax: "@@dev"
+The dev command gives basic information on ESAEBSAD.
+EOS
   set :prefix, /^@@/
   match "dev"
   def execute(msg)

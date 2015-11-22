@@ -1,7 +1,10 @@
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("convert_link", "Group: owner. Syntax: \"@@convert_link (oldlink); (newlink)\"\nThe convert link command will convert all instanences of a link to a different link.")
+  set_help "convert_link", <<EOS
+Group: owner. Syntax: "@@convert_link (oldlink); (newlink)"
+The convert link command will convert all instanences of a link to a different link.
+EOS
   set :prefix, /^@@/
   match /convert_link (.*); (.*)/
   def execute(msg, oldlink, newlink)

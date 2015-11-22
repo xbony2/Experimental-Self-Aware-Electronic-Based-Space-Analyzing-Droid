@@ -1,7 +1,10 @@
 class Info < ESAEBSADCommand
   include Cinch::Plugin
   
-  set_help("info", "Group: all. Syntax: \"@@info (usr)\"\nThe info command will give basic information on a user.")
+  set_help "info", <<EOS
+Group: all. Syntax: "@@info (usr)"
+The info command will give basic information on a user.
+EOS
   set :prefix, /^@@/
   match /info (.*)/
   def execute(msg, usr)
