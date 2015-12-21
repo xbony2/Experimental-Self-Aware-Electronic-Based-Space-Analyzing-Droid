@@ -14,7 +14,7 @@ EOS
     if is_part_of_group? msg.user.authname, :owner
       get_client.get_category_members("Category:#{cat}").each do |page|
         text = get_client.get_text(page)
-        get_client.edit(page, text.gsub(oldtext, irc_escape(newtext))) if text.include?(oldtext)
+        get_client.edit(page, text.gsub(irc_escape(oldtext), irc_escape(newtext))) if text.include?(irc_escape(oldtext))
       end
       msg.reply "Process complete."
     else
