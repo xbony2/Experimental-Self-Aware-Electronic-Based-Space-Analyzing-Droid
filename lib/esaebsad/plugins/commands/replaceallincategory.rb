@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class ReplaceAllInCategory < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "replaceallincategory", <<EOS
 Group: owner. Syntax: "@@replaceallincategory (cat); (oldtext); (newtext)"
