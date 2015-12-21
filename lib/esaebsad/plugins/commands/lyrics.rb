@@ -1,13 +1,15 @@
+require_relative '../../variables'
+
 class Lyrics < ESAEBSADCommand
   include Cinch::Plugin
-  
+
   def initialize(*args)
     super
-    
+
     @lyric_getter = Lyricfy::Fetcher.new
   end
-  
-  set_help "lyrics", <<EOS
+
+  Variables.set_help "lyrics", <<EOS
 Group: owner. Syntax: "@@lyrics (artist); (song)"
 The lyrics command will line-by-line state the lyrics of a song.
 It is owner-only, since many songs are hundreds of lines long.
@@ -23,7 +25,7 @@ EOS
         msg.reply "Song not found! Or it may be broken. Remember: artist; song."
       end
     else
-      msg.reply "You are not authorized. Ask #{$OWNER_NAME} for any requests."
+      msg.reply "You are not authorized. Ask #{Variables::OWNER_NAME} for any requests."
     end
   end
 end

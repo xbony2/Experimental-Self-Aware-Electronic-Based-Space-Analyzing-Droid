@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "convertlink", <<EOS
+
+  Variables.set_help "convertlink", <<EOS
 Group: owner. Syntax: "@@convertlink (oldlink); (newlink)"
 The convert link command will convert all instanences of a link to a different link.
 EOS

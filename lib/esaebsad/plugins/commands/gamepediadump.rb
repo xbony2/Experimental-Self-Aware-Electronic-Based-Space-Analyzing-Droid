@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class GamepediaDump < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "gamepediadump", <<EOS
+
+  Variables.set_help "gamepediadump", <<EOS
 Group: owner. Syntax: "@@gamepediadump"
 The gamepedia dump command will create a list of all the gamepedia wikis.
 EOS
@@ -10,7 +12,7 @@ EOS
   def execute(msg)
     if is_part_of_group? msg.user.authname, :owner
       domains = File.new("Documents/domains.txt", "w")
-      
+
       open("http://www.gamepedia.com/wikis").read.match(/&hellip;(.+)&page=(\d\d)/).to_s.sub(/&hellip;(.+)&page=/, "").to_i.times do |n|
         open("http://www.gamepedia.com/wikis?page=#{n + 1}") do |p|
           p.each_line do |l|
@@ -19,7 +21,7 @@ EOS
           end
         end
       end
-      
+
       domains.close
     else
       msg.reply "You are not authorized."

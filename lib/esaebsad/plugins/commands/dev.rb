@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class Dev < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "dev", <<EOS
+
+  Variables.set_help "dev", <<EOS
 Group: all. Syntax: "@@dev"
 The dev command gives basic information on ESAEBSAD.
 EOS

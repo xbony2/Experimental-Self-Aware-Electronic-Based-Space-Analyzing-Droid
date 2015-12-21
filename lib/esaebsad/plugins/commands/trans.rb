@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class Trans < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "trans", <<EOS
+
+  Variables.set_help "trans", <<EOS
 Group: owner. Syntax: "@@trans (page); (special)"
 The trans command will prepare a (FTB) wiki page for translation.
 The special argument can be really anything and nothing will happen, except for "in".
@@ -22,7 +24,7 @@ EOS
       ["name", "lore", "module", "effects", "storageslots", "storage", "exp", "modpacks", "requires", "dependency", "neededfor", "neededforpast", "requirespast",  "dependecypast", "description"].each do |s|
         text = text.gsub(/\|#{s}=.+\n/){|ns| ns.insert(2 + s.length, "<translate>").insert(-2, "</translate>")}
       end
-          
+
       text = text.gsub(/\|mod=.+\n/){|s| !s.end_with?("}}\n") ? s.insert(5, "<translate>").insert(-2, "</translate>") : s}
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert -2, "{{L}}"}
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert -3, "{{L}}"}

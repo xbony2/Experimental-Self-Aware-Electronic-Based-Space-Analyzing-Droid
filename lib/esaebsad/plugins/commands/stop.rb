@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class Stop < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "stop", <<EOS
+
+  Variables.set_help "stop", <<EOS
 Group: owner. Syntax: "@@stop"
 The stop command will stop ESAEBSAD.
 EOS

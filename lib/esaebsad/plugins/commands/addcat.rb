@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class AddCat < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "addcat", <<EOS
+
+  Variables.set_help "addcat", <<EOS
 Group: owner. Syntax: "@@addcat (type); (name)"
 The addcat command will create a new category based on the type.
 Example: "@@add_cat mod; Thermal Expansion 3".
@@ -17,7 +19,7 @@ EOS
         msg.reply "You screwed up. Try again."
         return
       end
-      
+
       msg.reply "Here you go: http://ftb.gamepedia.com/Category:#{urlize(name)}"
     else
       msg.reply "You are not authorized."

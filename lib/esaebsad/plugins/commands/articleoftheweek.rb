@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class ArticleOfTheWeek < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "articleoftheweek", <<EOS
+
+  Variables.set_help "articleoftheweek", <<EOS
 Group: all. Syntax: "@@articleoftheweek"
 The article of the week command creates a new article of the week using an extremely advanced algolrithm.
 EOS

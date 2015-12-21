@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class ReplaceAllInCategory < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "replaceallincategory", <<EOS
+
+  Variables.set_help "replaceallincategory", <<EOS
 Group: owner. Syntax: "@@replaceallincategory (cat); (oldtext); (newtext)"
 The replace all in category command will convert all instanences of text in a category to a new text.
 EOS
