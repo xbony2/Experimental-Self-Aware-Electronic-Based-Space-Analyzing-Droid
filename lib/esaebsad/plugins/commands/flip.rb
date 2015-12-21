@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class Flip < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "flip", <<EOS
+
+  Variables.set_help "flip", <<EOS
 Group: all. Syntax: "@@flip"
 The flip command flips a coin.
 EOS

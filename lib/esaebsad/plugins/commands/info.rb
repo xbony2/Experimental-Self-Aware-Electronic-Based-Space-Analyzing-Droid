@@ -1,7 +1,9 @@
+require_relative '../../variables'
+
 class Info < ESAEBSADCommand
   include Cinch::Plugin
-  
-  set_help "info", <<EOS
+
+  Variables.set_help "info", <<EOS
 Group: all. Syntax: "@@info (usr)"
 The info command will give basic information on a user.
 EOS
