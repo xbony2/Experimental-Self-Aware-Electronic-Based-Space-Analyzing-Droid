@@ -12,6 +12,10 @@ module ESAEBSAD
     def urlize(page_name)
       page_name.tr(" ", "_").gsub("'", "%27")
     end
+    
+    def irc_escape(msg)
+      msg.gsub(/\\n/, "\n").gsub(/\\-/, "--")
+    end
 
     # TODO: create a better system.
     def get_group(authname)
