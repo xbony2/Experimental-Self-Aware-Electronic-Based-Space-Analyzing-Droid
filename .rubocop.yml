@@ -1,0 +1,24 @@
+Metrics/LineLength:
+  Max: 220
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# It's complicated.
+# Sometimes you should use one, sometimes not.
+# No space after parenthies, like in
+# text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:", "[[File:", "[[wikipedia:", "[[WP:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s}
+# Space after a lack of parenties.
+# sub.each {|s| text << "[[Category:#{s}]]\n"}
+Style/SpaceBeforeBlockBraces:
+  Enabled: false
+
+Style/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
+  SpaceBeforeBlockParameters: false
+
+Metrics/MethodLength:
+  Max: 9000 # I don't give a fuck, I don't give a fuck, fuck fuck...
