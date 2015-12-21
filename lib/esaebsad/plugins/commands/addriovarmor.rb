@@ -1,4 +1,4 @@
-require_relative '../../variables'
+require_relative "../../variables"
 
 class AddRiovArmor < ESAEBSADCommand
   include Cinch::Plugin

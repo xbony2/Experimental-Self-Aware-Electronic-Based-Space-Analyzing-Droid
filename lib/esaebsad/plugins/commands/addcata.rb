@@ -1,4 +1,4 @@
-require_relative '../../variables'
+require_relative "../../variables"
 
 class AddCatA < ESAEBSADCommand
   include Cinch::Plugin

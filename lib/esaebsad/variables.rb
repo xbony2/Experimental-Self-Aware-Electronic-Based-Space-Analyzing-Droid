@@ -1,11 +1,11 @@
 module Variables
   extend self
-  BOT_NAME = "SatanicBot"
+  BOT_NAME = "ESAEBSAD"
   FTB_WIKI_CLIENT = MediaWiki::Butt.new "http://ftb.gamepedia.com"
   MINECRAFT_BR_WIKI_CLIENT = MediaWiki::Butt.new "http://minecraft-br.gamepedia.com"
-  # FTB_WIKI_CLIENT.login(BOT_NAME, File.read("#{Dir.pwd}/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
-  # MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("#{Dir.pwd}/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
-  OWNER_NAME = 'xbony2'
+  FTB_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
+  MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
+  OWNER_NAME = "xbony2"
 
   @help_commands = {}
 
