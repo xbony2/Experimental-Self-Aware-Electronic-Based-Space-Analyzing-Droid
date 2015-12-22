@@ -17,7 +17,7 @@ EOS
         open("http://www.gamepedia.com/wikis?page=#{n + 1}") do |p|
           p.each_line do |l|
             url = l.match(/http:\/\/(.+).gamepedia.com/).to_s
-            domains.puts url if url != "" and url != "http://www.gamepedia.com"
+            domains.puts url if url != "" && url != "http://www.gamepedia.com"
           end
         end
       end

@@ -12,8 +12,8 @@ EOS
   match /say (.+)/
   def execute(msg, words)
     if is_part_of_group? msg.user.authname, :owner
-      if (ENV["OS"] == nil) and (RUBY_PLATFORM.end_with? "darwin14")
-        Voice.say(words, :voice => 'Samantha')
+      if ENV["OS"].nil? && (RUBY_PLATFORM.end_with? "darwin14")
+        Voice.say(words, voice: "Samantha")
       else
         msg.reply "#{Variables::OWNER_NAME}: the say command does not work on non-OS X operating systems."
         msg.reply "#{Variables::OWNER_NAME}: if my detector is incorrect, make sure to either fix it or report it."

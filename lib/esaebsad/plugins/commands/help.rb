@@ -13,13 +13,13 @@ EOS
   match /help (.+)/, method: :advanced
 
   def list(msg)
-    commands = Variables.get_help.keys.join(', ')
+    commands = Variables.get_help.keys.join(", ")
     msg.reply "List of commands: #{commands}"
   end
 
   def advanced(msg, command)
     help = Variables.get_help
-    message = help.include?(command) ? help[command] : 'Command not found.'
+    message = help.include?(command) ? help[command] : "Command not found."
     msg.reply(message)
   end
 end

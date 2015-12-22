@@ -9,9 +9,9 @@ Style/StringLiteralsInInterpolation:
 
 # It's complicated.
 # Sometimes you should use one, sometimes not.
-# No space after parenthies, like in
+# No space after parenthies, like in...
 # text = text.gsub(/\[\[.+\]\]/){|s| !s.start_with?("[[Category:", "[[File:", "[[wikipedia:", "[[WP:") ? s.gsub(/\[\[/, "{{L|").gsub(/\]\]/, "}}") : s}
-# Space after a lack of parenties.
+# Space after a lack of parenties, like in...
 # sub.each {|s| text << "[[Category:#{s}]]\n"}
 Style/SpaceBeforeBlockBraces:
   Enabled: false
@@ -22,3 +22,13 @@ Style/SpaceInsideBlockBraces:
 
 Metrics/MethodLength:
   Max: 9000 # I don't give a fuck, I don't give a fuck, fuck fuck...
+  
+Metrics/ParameterLists:
+  Max: 9000
+
+# Gay stuff to disable:
+# * "Missing top-level class documentation comment."
+# * "Ambiguous regexp literal. Parenthesize the method arguments if it's surely a regexp literal, or add a whitespace to the right of the / if it should be a division."
+# * "Align the elements of an array literal if they span more than one line."
+# * "Assignment Branch Condition size for execute is too high."
+# * "Use %r around regular expression."
