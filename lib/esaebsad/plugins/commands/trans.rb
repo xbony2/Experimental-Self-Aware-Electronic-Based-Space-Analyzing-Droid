@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class Trans < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "trans", <<EOS
 Group: owner. Syntax: "@@trans (page); (special)"
