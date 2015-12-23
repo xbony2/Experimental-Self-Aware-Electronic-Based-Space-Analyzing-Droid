@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class ReplaceAllInLink < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "replaceallinlink", <<EOS
 Group: owner. Syntax: "@@replaceallinlink (link); (oldtext); (newtext)"

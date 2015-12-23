@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class Lyrics < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   def initialize(*args)
     super

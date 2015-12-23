@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class AddRiovArmor < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   def get_wikitext(type, name, durablity, damage = "", mining_level = "")
     File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)

@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class SayStuff < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "say", <<EOS
 Group: owner. Syntax: "@@say (words)"

@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class AddCatA < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "addcata", <<EOS
 Group: owner. Syntax: "@@addcata (name); (sub1); [sub2]; [sub3]"

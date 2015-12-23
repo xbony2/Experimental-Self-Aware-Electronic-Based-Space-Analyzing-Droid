@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class CatManipulator < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "catmanipulate", <<EOS
 Group: owner. Syntax: "@@catmanipulate (cat); (newcat); (wiki)"

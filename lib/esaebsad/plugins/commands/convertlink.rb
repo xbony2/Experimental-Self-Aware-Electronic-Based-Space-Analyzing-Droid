@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "convertlink", <<EOS
 Group: owner. Syntax: "@@convertlink (oldlink); (newlink)"

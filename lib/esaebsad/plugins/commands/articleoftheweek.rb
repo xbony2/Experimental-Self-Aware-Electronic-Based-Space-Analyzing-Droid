@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class ArticleOfTheWeek < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "articleoftheweek", <<EOS
 Group: all. Syntax: "@@articleoftheweek"

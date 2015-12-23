@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class Stop < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "stop", <<EOS
 Group: owner. Syntax: "@@stop"

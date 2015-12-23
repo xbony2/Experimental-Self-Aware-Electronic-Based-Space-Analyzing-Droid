@@ -2,6 +2,7 @@ require_relative "../../variables"
 
 class GamepediaDump < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
   Variables.set_help "gamepediadump", <<EOS
 Group: owner. Syntax: "@@gamepediadump"
