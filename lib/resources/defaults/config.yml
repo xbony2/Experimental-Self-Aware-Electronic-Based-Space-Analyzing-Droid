@@ -1,0 +1,16 @@
+irc:
+  server: irc.esper.net
+  channels:
+    - #NuclearControl2
+    - #FTB-Wiki
+    - #FTB-Wiki-Dev
+  nick: ESAEBSAD
+
+wikis:
+  ftb: http://ftb.gamepedia.com
+  mc-br: http://minecraft-br.gamepedia.com
+
+wiki:
+  core: ftb
+  username: ESAEBSAD
+  password: _
