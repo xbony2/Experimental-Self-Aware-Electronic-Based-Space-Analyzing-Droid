@@ -1,8 +1,9 @@
 class Trans < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "trans", <<EOS
+  create_help "trans", <<EOS
 Group: owner. Syntax: "@@trans (page); (special)"
 The trans command will prepare a (FTB) wiki page for translation.
 The special argument can be really anything and nothing will happen, except for "in".

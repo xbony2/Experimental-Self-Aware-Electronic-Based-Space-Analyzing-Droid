@@ -1,7 +1,9 @@
 class Roll < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "roll", <<EOS
+  create_help "roll", <<EOS
 Group: all. Syntax: "@@roll"
 The roll command rolls a die.
 EOS

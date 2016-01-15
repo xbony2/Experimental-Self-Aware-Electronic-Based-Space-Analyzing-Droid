@@ -1,8 +1,9 @@
 class UrlShorten < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "urlshorten", <<EOS
+  create_help "urlshorten", <<EOS
 Group: all. Syntax: "@@urlshorten (url)"
 The url shorten command will shorten a url using Goo.gl.
 EOS

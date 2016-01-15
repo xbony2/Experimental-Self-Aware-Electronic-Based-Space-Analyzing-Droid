@@ -1,8 +1,9 @@
 class ArticleOfTheWeek < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "articleoftheweek", <<EOS
+  create_help "articleoftheweek", <<EOS
 Group: all. Syntax: "@@articleoftheweek"
 The article of the week command creates a new article of the week using an extremely advanced algolrithm.
 EOS

@@ -1,7 +1,9 @@
 class Flip < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "flip", <<EOS
+  create_help "flip", <<EOS
 Group: all. Syntax: "@@flip"
 The flip command flips a coin.
 EOS

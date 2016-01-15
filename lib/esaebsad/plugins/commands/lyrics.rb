@@ -1,6 +1,7 @@
 class Lyrics < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
   def initialize(*args)
     super
@@ -8,7 +9,7 @@ class Lyrics < ESAEBSADCommand
     @lyric_getter = Lyricfy::Fetcher.new
   end
 
-  set_help "lyrics", <<EOS
+  create_help "lyrics", <<EOS
 Group: owner. Syntax: "@@lyrics (artist); (song)"
 The lyrics command will line-by-line state the lyrics of a song.
 It is owner-only, since many songs are hundreds of lines long.

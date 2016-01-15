@@ -1,8 +1,9 @@
 class Info < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "info", <<EOS
+  create_help "info", <<EOS
 Group: all. Syntax: "@@info (usr)"
 The info command will give basic information on a user.
 EOS

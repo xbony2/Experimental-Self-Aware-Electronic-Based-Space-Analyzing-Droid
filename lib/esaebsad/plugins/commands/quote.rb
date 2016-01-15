@@ -1,8 +1,9 @@
 class Quote < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "quote", <<EOS
+  create_help "quote", <<EOS
 Group: all. Syntax: "@@quote"
 The quote command will yield a clean, motivating quote.
 EOS

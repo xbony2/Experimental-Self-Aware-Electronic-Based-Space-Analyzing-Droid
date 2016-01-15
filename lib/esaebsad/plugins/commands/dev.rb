@@ -1,7 +1,9 @@
 class Dev < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "dev", <<EOS
+  create_help "dev", <<EOS
 Group: all. Syntax: "@@dev"
 The dev command gives basic information on ESAEBSAD.
 EOS

@@ -1,8 +1,9 @@
 class UpdateData < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
   
-  set_help "updatedata", <<EOS
+  create_help "updatedata", <<EOS
 Group: all. Syntax: "@@updatedata [module]"
 The update data command will update ESEABSAD modules.
 EOS

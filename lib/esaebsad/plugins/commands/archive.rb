@@ -1,7 +1,9 @@
 class Archive < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "archive", <<EOS
+  create_help "archive", <<EOS
 Group: all. Syntax: "@@archive (url)"
 The archive shorten command will backup a url using the Internet Archieve (archive.com).
 EOS

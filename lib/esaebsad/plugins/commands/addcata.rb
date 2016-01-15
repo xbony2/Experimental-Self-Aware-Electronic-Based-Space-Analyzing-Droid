@@ -1,16 +1,12 @@
 class AddCatA < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  def initialize(*args)
-    super
-      
-    create_help "addcata", <<EOS
+  create_help "addcata", <<EOS
 Group: owner. Syntax: "@@addcata (name); (sub1); [sub2]; [sub3]"
 The addcata command will create a new category based on 1-3 subcategories.
 EOS
-  end
-  
   set :prefix, /^@@/
   match /addcata (.*); (.*)/, method: :one_sub
   match /addcata (.*); (.*); (.*)/, method: :two_sub

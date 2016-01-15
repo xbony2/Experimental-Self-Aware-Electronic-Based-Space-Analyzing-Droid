@@ -1,8 +1,9 @@
 class GamepediaDump < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "gamepediadump", <<EOS
+  create_help "gamepediadump", <<EOS
 Group: owner. Syntax: "@@gamepediadump"
 The gamepedia dump command will create a list of all the gamepedia wikis.
 EOS

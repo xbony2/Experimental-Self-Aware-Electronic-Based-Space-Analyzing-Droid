@@ -1,8 +1,9 @@
 class Stop < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "stop", <<EOS
+  create_help "stop", <<EOS
 Group: owner. Syntax: "@@stop"
 The stop command will stop ESAEBSAD.
 EOS

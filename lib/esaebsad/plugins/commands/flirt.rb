@@ -1,7 +1,9 @@
 class Flirt < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "flirt", <<EOS
+  create_help "flirt", <<EOS
 Group: all. Syntax: "@@flirt (flirtery)"
 The flirt command will make ESAEBSAD flirt with the "flirtery".
 EOS

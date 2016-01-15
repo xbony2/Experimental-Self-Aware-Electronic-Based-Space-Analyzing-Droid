@@ -1,8 +1,9 @@
 class CatManipulator < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "catmanipulate", <<EOS
+  create_help "catmanipulate", <<EOS
 Group: owner. Syntax: "@@catmanipulate (cat); (newcat); (wiki)"
 The cat manipulate command will convert all instanences of a category to a different category.
 EOS

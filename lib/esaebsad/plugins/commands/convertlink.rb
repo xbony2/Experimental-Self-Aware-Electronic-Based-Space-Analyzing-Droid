@@ -1,8 +1,9 @@
 class ConvertLink < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "convertlink", <<EOS
+  create_help "convertlink", <<EOS
 Group: owner. Syntax: "@@convertlink (oldlink); (newlink)"
 The convert link command will convert all instanences of a link to a different link.
 EOS

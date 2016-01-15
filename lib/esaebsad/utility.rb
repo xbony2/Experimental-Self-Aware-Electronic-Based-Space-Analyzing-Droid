@@ -7,25 +7,22 @@ module ESAEBSAD
     MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
     OWNER_NAME = "xbony2"
     EMODULES = ["badideas"]
-      
-    data = {}
-      
-    help_commands = {}
-    attr_reader :help_commands
+    DATA = {}
+    HELP_COMMANDS = {}
     
     def create_help(name, doc)
-      help_commands[name] = doc
+      HELP_COMMANDS[name] = doc
     end
       
     def get_data(emodule)
-      data[emodule]
+      DATA[emodule]
     end
       
     def update_data(emodule = nil)
       if emodule.nil?
-        EMODULES.each {|emod| data[emod] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")}
+        EMODULES.each {|emod| DATA[emod] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")}
       else
-        data[emodule] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")
+        DATA[emodule] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")
       end
     end
     

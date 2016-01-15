@@ -1,12 +1,13 @@
 class AddRiovArmor < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
   def get_wikitext(type, name, durablity, damage = "", mining_level = "")
     File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
 
-  set_help "addriovarmor", <<EOS
+  create_help "addriovarmor", <<EOS
 Group: owner. Syntax: "@@addriovarmor (name); (info1); (info2); (info3)..."
 The add riov armor command is an alias for all automatic page-generating commands.
 It should never be run more then once, and it's arguments vary on it's need.

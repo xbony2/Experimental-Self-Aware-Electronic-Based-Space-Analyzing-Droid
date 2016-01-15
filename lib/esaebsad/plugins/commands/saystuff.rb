@@ -1,8 +1,9 @@
 class SayStuff < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
 
-  set_help "say", <<EOS
+  create_help "say", <<EOS
 Group: owner. Syntax: "@@say (words)"
 The say shorten command will say, as in through the speaker, the given string.
 It will not work if ESAEBSAD is running on a non-OS X computer.

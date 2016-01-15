@@ -1,17 +1,13 @@
 class AddCat < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
+  extend ESAEBSAD::Utility
   
-  def initialize(*args)
-    super
-    
-    create_help "addcat", <<EOS
+  create_help "addcat", <<EOS
 Group: owner. Syntax: "@@addcat (type); (name)"
 The addcat command will create a new category based on the type.
 Example: "@@add_cat mod; Thermal Expansion 3".
 EOS
-  end
-
   set :prefix, /^@@/
   match /addcat (.+); (.*)/
   def execute(msg, type, name)
