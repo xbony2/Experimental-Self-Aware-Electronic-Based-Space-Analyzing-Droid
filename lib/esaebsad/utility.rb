@@ -10,11 +10,18 @@ module ESAEBSAD
     EDATA = {}
     HELP_COMMANDS = {}
     
+    @has_edata_init = false
+    
     def create_help(name, doc)
       HELP_COMMANDS[name] = doc
     end
       
     def get_data(emodule)
+      if !@has_edata_init
+        update_data
+        @has_edata_init = true
+      end
+      
       EDATA[emodule]
     end
       
