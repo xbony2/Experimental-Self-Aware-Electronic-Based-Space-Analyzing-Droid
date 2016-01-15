@@ -1,11 +1,38 @@
-require_relative "variables"
-
 module ESAEBSAD
   module Utility
+    BOT_NAME = "ESAEBSAD"
+    FTB_WIKI_CLIENT = MediaWiki::Butt.new "http://ftb.gamepedia.com"
+    MINECRAFT_BR_WIKI_CLIENT = MediaWiki::Butt.new "http://minecraft-br.gamepedia.com"
+    FTB_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
+    MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
+    OWNER_NAME = "xbony2"
+    EMODULES = ["badideas"]
+      
+    data = {}
+      
+    help_commands = {}
+    attr_reader :help_commands
+    
+    def create_help(name, doc)
+      help_commands[name] = doc
+    end
+      
+    def get_data(emodule)
+      data[emodule]
+    end
+      
+    def update_data(emodule = nil)
+      if emodule.nil?
+        EMODULES.each {|emod| data[emod] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")}
+      else
+        data[emodule] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")
+      end
+    end
+    
     def get_client(code = "ftb")
       case code
-      when "br" then Variables::MINECRAFT_BR_WIKI_CLIENT
-      when "ftb" then Variables::FTB_WIKI_CLIENT
+      when "br" then MINECRAFT_BR_WIKI_CLIENT
+      when "ftb" then FTB_WIKI_CLIENT
       end
     end
 

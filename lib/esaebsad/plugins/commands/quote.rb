@@ -1,9 +1,8 @@
-require_relative "../../variables"
-
 class Quote < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
-  Variables.set_help "quote", <<EOS
+  set_help "quote", <<EOS
 Group: all. Syntax: "@@quote"
 The quote command will yield a clean, motivating quote.
 EOS

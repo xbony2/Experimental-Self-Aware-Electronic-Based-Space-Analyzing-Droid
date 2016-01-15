@@ -1,9 +1,8 @@
-require_relative "../../variables"
-
 class Motivate < ESAEBSADCommand
   include Cinch::Plugin
+  include ESAEBSAD::Utility
 
-  Variables.set_help "motivate", <<EOS
+  set_help "motivate", <<EOS
 Group: all. Syntax: "@@motivate"
 The motivate command will yield a motivating message.
 EOS

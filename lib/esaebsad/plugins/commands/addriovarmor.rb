@@ -1,5 +1,3 @@
-require_relative "../../variables"
-
 class AddRiovArmor < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
@@ -8,7 +6,7 @@ class AddRiovArmor < ESAEBSADCommand
     File.read("git/IRC-Bot/lib/resources/templates/#{type}").gsub(/#NAME/, name).gsub(/#DURA/, durablity).gsub(/#DAMAGE/, damage).gsub(/#MINING_LEVEL/, mining_level)
   end
 
-  Variables.set_help "addriovarmor", <<EOS
+  set_help "addriovarmor", <<EOS
 Group: owner. Syntax: "@@addriovarmor (name); (info1); (info2); (info3)..."
 The add riov armor command is an alias for all automatic page-generating commands.
 It should never be run more then once, and it's arguments vary on it's need.

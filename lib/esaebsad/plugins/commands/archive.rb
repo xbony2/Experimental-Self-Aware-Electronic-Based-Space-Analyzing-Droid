@@ -1,9 +1,7 @@
-require_relative "../../variables"
-
 class Archive < ESAEBSADCommand
   include Cinch::Plugin
 
-  Variables.set_help "archive", <<EOS
+  set_help "archive", <<EOS
 Group: all. Syntax: "@@archive (url)"
 The archive shorten command will backup a url using the Internet Archieve (archive.com).
 EOS

@@ -1,9 +1,7 @@
-require_relative "../../variables"
-
 class Flirt < ESAEBSADCommand
   include Cinch::Plugin
 
-  Variables.set_help "flirt", <<EOS
+  set_help "flirt", <<EOS
 Group: all. Syntax: "@@flirt (flirtery)"
 The flirt command will make ESAEBSAD flirt with the "flirtery".
 EOS

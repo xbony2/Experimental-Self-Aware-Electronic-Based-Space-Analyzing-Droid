@@ -1,10 +1,8 @@
-require_relative "../../variables"
-
 class ReplaceAllInLink < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
 
-  Variables.set_help "replaceallinlink", <<EOS
+  set_help "replaceallinlink", <<EOS
 Group: owner. Syntax: "@@replaceallinlink (link); (oldtext); (newtext)"
 The replace all in link command will convert all instanences of text in a page linked by the given page to a new text.
 EOS

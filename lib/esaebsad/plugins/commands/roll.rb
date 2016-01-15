@@ -1,9 +1,7 @@
-require_relative "../../variables"
-
 class Roll < ESAEBSADCommand
   include Cinch::Plugin
 
-  Variables.set_help "roll", <<EOS
+  set_help "roll", <<EOS
 Group: all. Syntax: "@@roll"
 The roll command rolls a die.
 EOS

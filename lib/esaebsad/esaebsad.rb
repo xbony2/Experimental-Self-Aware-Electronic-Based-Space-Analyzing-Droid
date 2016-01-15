@@ -13,7 +13,6 @@ require "require_all"
 
 require_relative "esaebsadcommand"
 require_relative "utility"
-require_relative "variables"
 require_rel "plugins"
 
 bot = Cinch::Bot.new do
