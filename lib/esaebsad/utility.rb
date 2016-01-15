@@ -6,7 +6,7 @@ module ESAEBSAD
     FTB_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
     MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
     OWNER_NAME = "xbony2"
-    EMODULES = ["badideas"]
+    EMODULES = ["badideas", "flirt", "motivate", "quote"]
     EDATA = {}
     HELP_COMMANDS = {}
     
