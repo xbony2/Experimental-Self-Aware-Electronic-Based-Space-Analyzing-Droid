@@ -1,1 +1,1 @@
-require "/lib/esaebsad/esaebsad"
+require_relative "lib/esaebsad/esaebsad.rb"
