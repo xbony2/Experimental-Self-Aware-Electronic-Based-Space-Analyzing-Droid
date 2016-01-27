@@ -1,12 +1,22 @@
 module ESAEBSAD
   module Utility
-    BOT_NAME = "ESAEBSAD"
-    FTB_WIKI_CLIENT = MediaWiki::Butt.new "http://ftb.gamepedia.com"
-    MINECRAFT_BR_WIKI_CLIENT = MediaWiki::Butt.new "http://minecraft-br.gamepedia.com"
-    FTB_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
-    MINECRAFT_BR_WIKI_CLIENT.login(BOT_NAME, File.read("/Users/xbony2/git/IRC-Bot/lib/resources/SEKRET_PASSWORD.confidentual".chomp))
-    OWNER_NAME = "xbony2"
-    EMODULES = ["badideas", "flirt", "motivate", "quote"]
+    CONFIG = YAML.load_file("config.yml")
+    
+    IRC_SERVER = CONFIG["irc"]["server"]
+    IRC_CHANNELS = CONFIG["irc"]["channels"]
+    IRC_BOT_NAME = CONFIG["irc"]["nick"]
+    IRC_OWNER = CONFIG["irc"]["owner"]
+    
+    WIKI_CORE = CONFIG["wiki"]["core"]
+    WIKI_BOT_NAME = CONFIG["wiki"]["username"]
+    
+    CLIENTS = {}
+    CONFIG["wikis"].each do |wiki, url|
+      CLIENTS[wiki] = MediaWiki::Butt.new(url)
+      CLIENTS[wiki].login(WIKI_BOT_NAME, CONFIG["wiki"]["password"])
+    end
+    
+    EMODULES = ["badideas", "flirt", "motivate", "quote", "group-ftbop", "group-minecraftbrop", "group-ban"]
     EDATA = {}
     HELP_COMMANDS = {}
     
@@ -33,11 +43,8 @@ module ESAEBSAD
       end
     end
     
-    def get_client(code = "ftb")
-      case code
-      when "br" then MINECRAFT_BR_WIKI_CLIENT
-      when "ftb" then FTB_WIKI_CLIENT
-      end
+    def get_client(code = WIKI_CORE)
+      CLIENTS[code]
     end
 
     def urlize(page_name)
@@ -48,7 +55,6 @@ module ESAEBSAD
       msg.gsub(/\\n/, "\n").gsub(/\\-/, "--")
     end
 
-    # TODO: create a better system.
     def get_group(authname)
       case authname
       when "xbony2" then :owner
