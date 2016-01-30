@@ -11,7 +11,7 @@ EOS
   set :prefix, /^@@/
   match /addcat (.+); (.*)/
   def execute(msg, type, name)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, :ftbop
       case type
       when "mod" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
       when "minor" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")

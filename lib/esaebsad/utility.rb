@@ -55,15 +55,19 @@ module ESAEBSAD
       msg.gsub(/\\n/, "\n").gsub(/\\-/, "--")
     end
 
-    def get_group(authname)
-      case authname
-      when IRC_OWNER then :owner
-      else :all
-      end
+    def get_groups(authname)
+      update_data
+      
+      groups = []
+      groups << :owner if authname == IRC_OWNER
+      groups << :ftbop if EDATA["group-ftbop"].include?(authname)
+      groups << :minecraftbrop if EDATA["group-minecraftbrop"].include?(authname)
+      groups << :ban if EDATA["group-ban"].include?(authname)
+      groups << :all
     end
 
     def is_part_of_group?(authname, group)
-      get_group(authname) == group
+      get_groups(authname).include?(group)
     end
   end
 end
