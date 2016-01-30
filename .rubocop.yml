@@ -1,5 +1,5 @@
 Metrics/LineLength:
-  Max: 220
+  Max: 220 # We're not coding on our iPhone here.
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
