@@ -5,6 +5,7 @@ irc:
     - "#FTB-Wiki"
     - "#FTB-Wiki-Dev"
   nick: ESAEBSAD
+  owner: xbony2
 
 wikis:
   ftb: http://ftb.gamepedia.com

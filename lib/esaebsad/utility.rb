@@ -57,7 +57,7 @@ module ESAEBSAD
 
     def get_group(authname)
       case authname
-      when "xbony2" then :owner
+      when IRC_OWNER then :owner
       else :all
       end
     end
