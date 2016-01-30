@@ -4,7 +4,7 @@ class Trans < ESAEBSADCommand
   extend ESAEBSAD::Utility
 
   create_help "trans", <<EOS
-Group: owner. Syntax: "@@trans (page); (special)"
+Group: ftbop. Syntax: "@@trans (page); (special)"
 The trans command will prepare a (FTB) wiki page for translation.
 The special argument can be really anything and nothing will happen, except for "in".
 "in" will make me automatically insert the header notifying the translator of older translations.
@@ -13,7 +13,7 @@ EOS
   set :prefix, /^@@/
   match /trans (.*); (.+)/
   def execute(msg, page, special)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, :ftbop
       text = get_client.get_text(page)
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub /\]\]/, "{{L}}]]"}
       text = text.gsub(/<br\/>/, "<br />")

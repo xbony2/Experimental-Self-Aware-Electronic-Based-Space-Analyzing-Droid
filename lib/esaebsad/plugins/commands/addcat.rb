@@ -4,9 +4,9 @@ class AddCat < ESAEBSADCommand
   extend ESAEBSAD::Utility
   
   create_help "addcat", <<EOS
-Group: owner. Syntax: "@@addcat (type); (name)"
+Group: ftbop. Syntax: "@@addcat (type); (name)"
 The addcat command will create a new category based on the type.
-Example: "@@add_cat mod; Thermal Expansion 3".
+Example: "@@addcat mod; Thermal Expansion 3".
 EOS
   set :prefix, /^@@/
   match /addcat (.+); (.*)/

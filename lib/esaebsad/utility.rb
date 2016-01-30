@@ -56,13 +56,11 @@ module ESAEBSAD
     end
 
     def get_groups(authname)
-      update_data
-      
       groups = []
       groups << :owner if authname == IRC_OWNER
-      groups << :ftbop if EDATA["group-ftbop"].include?(authname)
-      groups << :minecraftbrop if EDATA["group-minecraftbrop"].include?(authname)
-      groups << :ban if EDATA["group-ban"].include?(authname)
+      groups << :ftbop if get_data("group-ftbop").include?(authname)
+      groups << :minecraftbrop if get_data("group-minecraftbrop").include?(authname)
+      groups << :ban if get_data("group-ban").include?(authname)
       groups << :all
     end
 
