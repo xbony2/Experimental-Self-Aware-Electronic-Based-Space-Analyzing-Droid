@@ -15,9 +15,12 @@ class ReplaceAllInLink < ESAEBSADCommand
   def execute(msg, wiki, link, oldtext, newtext)
     if is_op? msg.user.authname, wiki
       client = get_client(wiki)
+      oldtext = irc_escape(oldtext)
+      newtext = irc_escape(newtext)
+      
       client.what_links_here(link).each do |page|
         text = client.get_text(page)
-        client.edit(page, text.gsub(oldtext, irc_escape(newtext))) if text.include?(oldtext)
+        client.edit(page, text.gsub(oldtext, newtext), summary: localize("mw.summary.replaceallinlink", oldtext, newtext, link)) if text.include?(oldtext)
       end
       msg.reply(localize("command.shared.complete"))
     else

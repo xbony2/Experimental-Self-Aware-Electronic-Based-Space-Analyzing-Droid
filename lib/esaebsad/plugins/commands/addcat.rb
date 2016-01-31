@@ -24,8 +24,8 @@ class AddCat < ESAEBSADCommand
   def create_categories(msg, name, wiki, sub = [])
     if is_op? msg.user.authname, wiki
       text = ""
-      sub.each {|s| text << "[[Category:#{s}]]\n"}
-      get_client(wiki).create_page("Category:#{name}", text, "Created category page.")
+      sub.each {|s| text << "[[#{localize("mw.category")}:#{s}]]\n"}
+      get_client(wiki).create_page("#{localize("mw.category")}:#{name}", text, localize("mw.summary.catcreation"))
       msg.reply(localize("command.shared.link", "http://#{wiki}.gamepedia.com/Category:#{urlize(name)}"))
     else
       msg.reply(localize("command.shared.unauthorized"))

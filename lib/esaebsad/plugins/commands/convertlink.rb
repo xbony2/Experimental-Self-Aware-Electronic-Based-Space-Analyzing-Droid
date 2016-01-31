@@ -16,7 +16,7 @@ class ConvertLink < ESAEBSADCommand
     if is_op? msg.user.authname, wiki
       get_client.what_links_here(oldlink).each do |page|
         text = get_client.get_text(page)
-        get_client.edit(page, text.gsub("[[#{oldlink}]]", "[[#{newlink}]]"), summary: "Converting [[#{oldlink}]] to [[#{newlink}]]") if text.include?(oldlink)
+        get_client.edit(page, text.gsub("[[#{oldlink}]]", "[[#{newlink}]]"), summary: localize("mw.summary.linkconvert", oldlink, newlink)) if text.include?(oldlink)
       end
       msg.reply(localize("command.shared.complete"))
     else

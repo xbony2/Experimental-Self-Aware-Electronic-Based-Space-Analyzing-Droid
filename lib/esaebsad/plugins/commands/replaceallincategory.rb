@@ -15,9 +15,12 @@ class ReplaceAllInCategory < ESAEBSADCommand
   def execute(msg, wiki, cat, oldtext, newtext)
     if is_op? msg.user.authname, wiki
       client = get_client(wiki)
-      client.get_category_members("Category:#{cat}").each do |page|
+      oldtext = irc_escape(oldtext)
+      newtext = irc_escape(newtext)
+      
+      client.get_category_members("#{localize("mw.category")}:#{cat}").each do |page|
         text = client.get_text(page)
-        client.edit(page, text.gsub(irc_escape(oldtext), irc_escape(newtext))) if text.include?(irc_escape(oldtext))
+        client.edit(page, text.gsub(oldtext, newtext), summary: localize("mw.summary.replaceallincat", oldtext, newtext, cat)) if text.include?(irc_escape(oldtext))
       end
       msg.reply(localize("command.shared.complete"))
     else

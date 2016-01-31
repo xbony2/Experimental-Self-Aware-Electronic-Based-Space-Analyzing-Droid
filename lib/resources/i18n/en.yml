@@ -1,5 +1,6 @@
 # TRANSLATORS NOTE: translation is discouraged right now as ESAEBSAD is being refactored.
-# IRC help
+
+## IRC help
 help.addcat:
   - "Group: op. Syntax: @@addcat (name); (wiki); (sub1); [sub2]; [sub3]"
   - The addcat command will create a new category based on 1-3 subcategories.
@@ -94,13 +95,13 @@ help.urlshorten:
   - "Group: all. Syntax: @@urlshorten (url)"
   - The url shorten command will shorten a url using Goo.gl.
 
-# General IRC command components
+## General IRC command components
 command.shared.unauthorized: You are not authorized.
 command.shared.link: "Here you go: $1"
 command.shared.mistake: You entered an incorrect parameter; try again.
 command.shared.complete: Process complete.
 
-# Specific IRC command components
+## Specific IRC command components
 command.articleoftheweek.1: The article of the week is...
 command.articleoftheweek.2: "$1! $2"
 
@@ -124,3 +125,14 @@ command.lyrics.notfound: "Song not found! Or it may be broken. Remember: artist;
 command.roll: The die roll reveals the number $1.
 
 command.urlshorten: "New URL: $1"
+
+## MediaWiki messages
+mw.category: Category
+
+mw.summary.catcreation: Created category page.
+mw.summary.modifiedcat: Modified category.
+mw.summary.linkconvert: Converting [[$1]] to [[$2]].
+
+# Translators note: don't translate these bottom two strings right now, they'll be removed soon.
+mw.summary.replaceallincat: Replacing $1 with $2 in Category $3
+mw.summary.replaceallinlink: Replacing $1 with $2 in link [[$3]]
