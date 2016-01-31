@@ -82,7 +82,7 @@ module ESAEBSAD
     end
     
     def localize(id, str1 = "", str2 = "", str3 = "", str4 = "")
-      LANGUAGE_STRINGS[id].sub(/&1/, str1).sub(/&2/, str2).sub(/&3/, str3).sub(/&4/, str4)
+      LANGUAGE_STRINGS[id].sub(/\$1/, str1).sub(/\$2/, str2).sub(/\$3/, str3).sub(/\$4/, str4)
     end
   end
 end
