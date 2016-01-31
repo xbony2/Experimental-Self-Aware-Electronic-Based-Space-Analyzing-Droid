@@ -116,3 +116,11 @@ command.flirt.message: "&1: hey bby, &2"
 command.help.list: "List of commands: &1"
 command.help.seperater: ", " # Although this seems strange, commas are different in some languages because of Unicode and syntax.
 command.help.notfound: Command not found.
+
+command.info.message: "User: &1 | Contribs: &2 | Registered on: &3 | Gender: &4"
+
+command.lyrics.notfound: "Song not found! Or it may be broken. Remember: artist; song."
+
+command.roll.message: "The die roll reveals the number &1."
+
+command.urlshorten.message: "New URL: &1"

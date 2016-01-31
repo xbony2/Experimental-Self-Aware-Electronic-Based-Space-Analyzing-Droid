@@ -18,7 +18,7 @@ class Lyrics < ESAEBSADCommand
         lyrics = @lyric_getter.search(artist, song).body.split "\\n"
         lyrics.each {|str| msg.reply(str)}
       rescue NoMethodError
-        msg.reply "Song not found! Or it may be broken. Remember: artist; song."
+        msg.reply(localize("command.lyrics.notfound"))
       end
     else
       msg.reply(localize("command.shared.unauthorized"))

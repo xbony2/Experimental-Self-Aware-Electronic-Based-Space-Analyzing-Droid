@@ -14,7 +14,6 @@ class Help < ESAEBSADCommand
 
   def advanced(msg, command)
     help = HELP_COMMANDS
-    message = help.include?(command) ? help[command] : localize("command.help.notfound")
-    msg.reply(message)
+    msg.reply(help.include?(command) ? help[command] : localize("command.help.notfound"))
   end
 end
