@@ -62,7 +62,7 @@ module ESAEBSAD
 
     def get_groups(user)
       groups = []
-      groups << "owner" if authname == IRC_OWNER
+      groups << "owner" if user == IRC_OWNER
       
       GROUPS.each do |group, users|
         groups << group if users.include?(user)
