@@ -19,6 +19,7 @@ wiki:
     - flirt
     - motivate
     - quote
-    - group-ftbop
-    - group-minecraftbrop
-    - group-ban
+  groups:
+    - ftbop
+    - minecraftbrop
+    - ban

@@ -20,6 +20,11 @@ module ESAEBSAD
     EDATA = {}
     HELP_COMMANDS = {}
     
+    GROUPS = {}
+    CONFIG["wiki"]["groups"].each do |group|
+      GROUPS[group] = CLIENTS[WIKI_CORE].get_text("User:#{WIKI_BOT_NAME}/data/group-#{group}").split("\n")
+    end
+    
     @@has_edata_init = false
     
     def create_help(name, doc)
@@ -37,9 +42,9 @@ module ESAEBSAD
       
     def update_data(emodule = nil)
       if emodule.nil?
-        EMODULES.each {|emod| EDATA[emod] = get_client.get_text("User:ESAEBSAD/data/#{emod}").split("\n")}
+        EMODULES.each {|emod| EDATA[emod] = get_client.get_text("User:#{WIKI_BOT_NAME}/data/#{emod}").split("\n")}
       else
-        EDATA[emodule] = get_client.get_text("User:ESAEBSAD/data/#{emodule}").split("\n")
+        EDATA[emodule] = get_client.get_text("User:#{WIKI_BOT_NAME}/data/#{emodule}").split("\n")
       end
     end
     
@@ -55,17 +60,19 @@ module ESAEBSAD
       msg.gsub(/\\n/, "\n").gsub(/\\-/, "--")
     end
 
-    def get_groups(authname)
+    def get_groups(user)
       groups = []
-      groups << :owner if authname == IRC_OWNER
-      groups << :ftbop if get_data("group-ftbop").include?(authname)
-      groups << :minecraftbrop if get_data("group-minecraftbrop").include?(authname)
-      groups << :ban if get_data("group-ban").include?(authname)
-      groups << :all
+      groups << "owner" if authname == IRC_OWNER
+      
+      GROUPS.each do |group, users|
+        groups << group if users.include?(user)
+      end
+      
+      groups << "all"
     end
 
-    def is_part_of_group?(authname, group)
-      get_groups(authname).include?(group)
+    def is_part_of_group?(user, group)
+      get_groups(user).include?(group)
     end
   end
 end

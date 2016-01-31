@@ -11,7 +11,7 @@ EOS
   set :prefix, /^@@/
   match /say (.+)/
   def execute(msg, words)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, "owner"
       if ENV["OS"].nil? && (RUBY_PLATFORM.end_with? "darwin14")
         Voice.say(words, voice: "Samantha")
       else

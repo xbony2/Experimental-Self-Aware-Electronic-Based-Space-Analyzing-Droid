@@ -25,7 +25,7 @@ EOS
   end
 
   def create_categories(msg, name, sub = [])
-    if is_part_of_group? msg.user.authname, :ftbop
+    if is_part_of_group? msg.user.authname, "ftbop"
       text = ""
       sub.each {|s| text << "[[Category:#{s}]]\n"}
       get_client.create_page("Category:#{name}", text, "Created category page.")

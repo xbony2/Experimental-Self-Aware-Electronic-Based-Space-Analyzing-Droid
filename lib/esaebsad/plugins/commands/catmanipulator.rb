@@ -10,7 +10,7 @@ EOS
   set :prefix, /^@@/
   match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, "owner"
       category = wiki == "br" ? "Categoria" : "Category"
 
       newcat = newcat == "nil" ? "" : "[[#{category}:#{newcat}]]"

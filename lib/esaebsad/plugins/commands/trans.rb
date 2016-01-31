@@ -13,7 +13,7 @@ EOS
   set :prefix, /^@@/
   match /trans (.*); (.+)/
   def execute(msg, page, special)
-    if is_part_of_group? msg.user.authname, :ftbop
+    if is_part_of_group? msg.user.authname, "ftbop"
       text = get_client.get_text(page)
       text = text.gsub(/\[\[Category:.+\]\]/){|s| s.gsub /\]\]/, "{{L}}]]"}
       text = text.gsub(/<br\/>/, "<br />")

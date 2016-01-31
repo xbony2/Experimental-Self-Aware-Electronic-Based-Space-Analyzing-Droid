@@ -10,7 +10,7 @@ EOS
   set :prefix, /^@@/
   match "gamepediadump"
   def execute(msg)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, "owner"
       domains = File.new("Documents/domains.txt", "w")
 
       open("http://www.gamepedia.com/wikis").read.match(/&hellip;(.+)&page=(\d\d)/).to_s.sub(/&hellip;(.+)&page=/, "").to_i.times do |n|

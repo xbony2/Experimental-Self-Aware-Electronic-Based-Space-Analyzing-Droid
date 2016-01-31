@@ -10,7 +10,7 @@ EOS
   set :prefix, /^@@/
   match /replaceallinlink (.*); (.*); (.+|.?)/
   def execute(msg, link, oldtext, newtext)
-    if is_part_of_group? msg.user.authname, :ftbop
+    if is_part_of_group? msg.user.authname, "ftbop"
       get_client.what_links_here(link).each do |page|
         text = get_client.get_text(page)
         get_client.edit(page, text.gsub(oldtext, irc_escape(newtext))) if text.include?(oldtext)

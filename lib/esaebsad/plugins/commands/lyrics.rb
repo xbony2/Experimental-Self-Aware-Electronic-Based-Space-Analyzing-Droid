@@ -17,7 +17,7 @@ EOS
   set :prefix, /^@@/
   match /lyrics (.*); (.*)/
   def execute(msg, artist, song)
-    if is_part_of_group? msg.user.authname, :owner
+    if is_part_of_group? msg.user.authname, "owner"
       begin
         lyrics = @lyric_getter.search(artist, song).body.split "\\n"
         lyrics.each {|str| msg.reply(str)}
