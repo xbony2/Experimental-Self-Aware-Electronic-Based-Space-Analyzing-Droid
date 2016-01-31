@@ -16,7 +16,7 @@ class AddCatt < ESAEBSADCommand
         return
       end
 
-      msg.reply(localize("command.shared.link").sub(/&1/, "http://ftb.gamepedia.com/Category:#{urlize(name)}"))
+      msg.reply(localize("command.shared.link", "http://ftb.gamepedia.com/Category:#{urlize(name)}"))
     else
       msg.reply(localize("command.shared.unauthorized"))
     end

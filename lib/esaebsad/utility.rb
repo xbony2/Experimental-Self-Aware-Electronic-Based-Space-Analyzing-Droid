@@ -1,13 +1,7 @@
 module ESAEBSAD
   module Utility
     CONFIG = YAML.load_file("config.yml")
-    
-    LANGUAGE_STRINGS = {}
-    CONFIG["i18n"]["enabled"].each do |lang|
-      LANGUAGE_STRINGS[lang] = YAML.load_file("lib/resources/i18n/#{lang}.yml")
-    end
-    
-    LANG = CONFIG["i18n"]["default"]
+    LANGUAGE_STRINGS = YAML.load_file("lib/resources/i18n/#{CONFIG["i18n"]}.yml")
     
     IRC_SERVER = CONFIG["irc"]["server"]
     IRC_CHANNELS = CONFIG["irc"]["channels"]
@@ -87,8 +81,8 @@ module ESAEBSAD
       get_groups(user).include?("#{wiki}-op")
     end
     
-    def localize(id, language = LANG)
-      LANGUAGE_STRINGS[language][id]
+    def localize(id, str1 = "", str2 = "", str3 = "", str4 = "")
+      LANGUAGE_STRINGS[id].sub(/&1/, str1).sub(/&2/, str2).sub(/&3/, str3).sub(/&4/, str4)
     end
   end
 end

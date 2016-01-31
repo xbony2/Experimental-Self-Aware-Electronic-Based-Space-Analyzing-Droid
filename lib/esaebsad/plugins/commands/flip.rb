@@ -8,6 +8,6 @@ class Flip < ESAEBSADCommand
   match "flip"
   def execute(msg)
     msg.reply "The coin flip reveals #{rand(2) == 0 ? "heads" : "tails"}."
-    msg.reply(localize("command.flip.result").sub(/&1/, rand(2) == 0 ? localize("command.flip.heads") : localize("command.flip.tails")))
+    msg.reply(localize("command.flip.result", rand(2) == 0 ? localize("command.flip.heads") : localize("command.flip.tails")))
   end
 end

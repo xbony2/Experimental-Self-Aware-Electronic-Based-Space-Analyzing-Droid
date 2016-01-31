@@ -1,7 +1,4 @@
-i18n:
-  enabled:
-    - en
-  default: en
+i18n: en
 
 irc:
   server: irc.esper.net

@@ -9,7 +9,7 @@ class Help < ESAEBSADCommand
   match /help (.+)/, method: :advanced
 
   def list(msg)
-    msg.reply(localize("command.help.list").sub(/&1/, HELP_COMMANDS.keys.join(localize("command.help.seperater"))))
+    msg.reply(localize("command.help.list"), HELP_COMMANDS.keys.join(localize("command.help.seperater")))
   end
 
   def advanced(msg, command)
