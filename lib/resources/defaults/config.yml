@@ -8,7 +8,7 @@ irc:
 
 wikis:
   ftb: http://ftb.gamepedia.com
-  mc-br: http://minecraft-br.gamepedia.com
+  minecraftbr: http://minecraft-br.gamepedia.com
 
 wiki:
   core: ftb
@@ -20,6 +20,6 @@ wiki:
     - motivate
     - quote
   groups:
-    - ftbop
-    - minecraftbrop
+    - ftb-op
+    - minecraftbr-op
     - ban

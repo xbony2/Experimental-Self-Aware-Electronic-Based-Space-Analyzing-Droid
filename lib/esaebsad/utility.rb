@@ -74,5 +74,9 @@ module ESAEBSAD
     def is_part_of_group?(user, group)
       get_groups(user).include?(group)
     end
+    
+    def is_op?(user, wiki)
+      get_groups(user).include?("#{wiki}-op")
+    end
   end
 end
