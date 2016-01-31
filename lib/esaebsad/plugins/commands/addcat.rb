@@ -1,4 +1,4 @@
-class AddCatA < ESAEBSADCommand
+class AddCat < ESAEBSADCommand
   include Cinch::Plugin
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
