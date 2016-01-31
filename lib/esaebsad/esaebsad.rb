@@ -1,16 +1,11 @@
 require "cinch"
-require "httparty"
 require "json"
 require "googl"
-require "rest-client"
 require "open-uri"
-require "mediawiki-butt"
+require "mediawiki/butt"
 require "lyricfy"
-require "highline"
-require "nokogiri"
-require "voice"
 require "require_all"
-require 'yaml'
+require "yaml"
 
 require_relative "utility"
 require_relative "esaebsadcommand"
