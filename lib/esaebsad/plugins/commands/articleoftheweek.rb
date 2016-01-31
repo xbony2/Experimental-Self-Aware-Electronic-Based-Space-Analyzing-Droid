@@ -13,8 +13,8 @@ class ArticleOfTheWeek < ESAEBSADCommand
   end
   
   def execute(msg, wiki)
-    msg.reply "The article of the week is..."
+    msg.reply(localize("command.articleoftheweek.1"))
     page = get_client(wiki).get_random_pages[0]
-    msg.reply "#{page}! http://#{wiki}.gamepedia.com/#{urlize(page)}"
+    msg.reply(localize("command.articleoftheweek.2").sub(/&1/, page).sub(/&2/, "http://#{wiki}.gamepedia.com/#{urlize(page)}"))
   end
 end

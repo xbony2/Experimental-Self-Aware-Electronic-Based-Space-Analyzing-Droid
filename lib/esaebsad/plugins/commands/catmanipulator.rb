@@ -14,9 +14,9 @@ class CatManipulator < ESAEBSADCommand
       get_client(wiki).get_category_members("Category:#{cat}").each do |page|
         get_client.edit(page, get_client.get_text(page).gsub(/\[\[(Category|Categoria):#{cat}\]\]/, newcat), summary: "Modified category. | Modificado categoria.")
       end
-      msg.reply "Process complete."
+      msg.reply(localize("command.shared.complete"))
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

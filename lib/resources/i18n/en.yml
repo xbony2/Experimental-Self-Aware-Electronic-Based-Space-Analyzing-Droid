@@ -1,3 +1,4 @@
+# TRANSLATORS NOTE: translation is discouraged right now as ESAEBSAD is being refactored.
 # IRC help
 help.addcat:
   - "Group: op. Syntax: @@addcat (name); (wiki); (sub1); [sub2]; [sub3]"
@@ -92,3 +93,26 @@ help.updatedata:
 help.urlshorten:
   - "Group: all. Syntax: @@urlshorten (url)"
   - The url shorten command will shorten a url using Goo.gl.
+
+# General IRC command components
+command.shared.unauthorized: You are not authorized.
+command.shared.link: "Here you go: &1"
+command.shared.mistake: You entered an incorrect parameter; try again.
+command.shared.complete: Process complete.
+
+# Specific IRC command components
+command.articleoftheweek.1: The article of the week is...
+command.articleoftheweek.2: "&1! &2"
+
+command.dev.1: I am an IRC/wiki bot created by Xbony2 in Ruby, using the cinch and MW Butt gems.
+command.dev.2: "I am open-sourced and under the MIT license: http://goo.gl/GkH1x1"
+
+command.flip.result: "The coin flip reveals &1."
+command.flip.heads: heads
+command.flip.tails: tails
+
+command.flirt.message: "&1: hey bby, &2"
+
+command.help.list: "List of commands: &1"
+command.help.seperater: ", " # Although this seems strange, commas are different in some languages because of Unicode and syntax.
+command.help.notfound: Command not found.

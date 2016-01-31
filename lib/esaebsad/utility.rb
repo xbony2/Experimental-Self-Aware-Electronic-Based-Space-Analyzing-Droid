@@ -88,7 +88,7 @@ module ESAEBSAD
     end
     
     def localize(id, language = LANG)
-      
+      LANGUAGE_STRINGS[language][id]
     end
   end
 end

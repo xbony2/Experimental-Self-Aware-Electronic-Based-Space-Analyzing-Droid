@@ -18,9 +18,9 @@ class ConvertLink < ESAEBSADCommand
         text = get_client.get_text(page)
         get_client.edit(page, text.gsub("[[#{oldlink}]]", "[[#{newlink}]]"), summary: "Converting [[#{oldlink}]] to [[#{newlink}]]") if text.include?(oldlink)
       end
-      msg.reply "Process complete."
+      msg.reply(localize("command.shared.complete"))
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

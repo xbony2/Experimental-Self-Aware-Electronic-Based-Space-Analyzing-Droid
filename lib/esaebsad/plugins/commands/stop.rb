@@ -7,6 +7,6 @@ class Stop < ESAEBSADCommand
   set :prefix, /^@@/
   match "stop"
   def execute(msg)
-    is_part_of_group?(msg.user.authname, "owner") ? exit : msg.reply("You cannot stop me unless you're my creator.")
+    is_part_of_group?(msg.user.authname, "owner") ? exit : msg.reply(localize("command.shared.unauthorized"))
   end
 end

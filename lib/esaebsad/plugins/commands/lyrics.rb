@@ -21,7 +21,7 @@ class Lyrics < ESAEBSADCommand
         msg.reply "Song not found! Or it may be broken. Remember: artist; song."
       end
     else
-      msg.reply "You are not authorized. Ask #{Variables::OWNER_NAME} for any requests."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

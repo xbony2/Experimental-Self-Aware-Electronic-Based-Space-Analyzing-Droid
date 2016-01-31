@@ -10,11 +10,11 @@ class UpdateData < ESAEBSADCommand
   
   def update_full(msg)
     update_data
-    msg.reply "Process complete."
+    msg.reply(localize("command.shared.complete"))
   end
   
   def update_specific(msg, emodule)
     update_data(emodule)
-    msg.reply "Process complete."
+    msg.reply(localize("command.shared.complete"))
   end
 end

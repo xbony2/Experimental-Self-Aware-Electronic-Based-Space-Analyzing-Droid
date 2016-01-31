@@ -12,13 +12,13 @@ class AddCatt < ESAEBSADCommand
       when "mod" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Mods]]", "Created category page.")
       when "minor" then get_client.create_page("Category:#{name}", "[[Category:Mod categories]]\n[[Category:Minor Mods]]", "Created category page.")
       else
-        msg.reply "You screwed up. Try again."
+        msg.reply(localize("command.shared.mistake"))
         return
       end
 
-      msg.reply "Here you go: http://ftb.gamepedia.com/Category:#{urlize(name)}"
+      msg.reply(localize("command.shared.link").sub(/&1/, "http://ftb.gamepedia.com/Category:#{urlize(name)}"))
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

@@ -19,9 +19,9 @@ class ReplaceAllInCategory < ESAEBSADCommand
         text = client.get_text(page)
         client.edit(page, text.gsub(irc_escape(oldtext), irc_escape(newtext))) if text.include?(irc_escape(oldtext))
       end
-      msg.reply "Process complete."
+      msg.reply(localize("command.shared.complete"))
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

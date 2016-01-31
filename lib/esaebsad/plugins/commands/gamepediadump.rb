@@ -21,7 +21,7 @@ class GamepediaDump < ESAEBSADCommand
 
       domains.close
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

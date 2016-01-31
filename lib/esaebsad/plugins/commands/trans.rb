@@ -26,7 +26,7 @@ class Trans < ESAEBSADCommand
       get_client.edit(page, text, "Added translation markup.")
       msg.reply "Here you go: http://ftb.gamepedia.com/#{urlize(page)}"
     else
-      msg.reply "You are not authorized."
+      msg.reply(localize("command.shared.unauthorized"))
     end
   end
 end

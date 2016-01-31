@@ -9,12 +9,12 @@ class Help < ESAEBSADCommand
   match /help (.+)/, method: :advanced
 
   def list(msg)
-    msg.reply "List of commands: #{ESAEBSAD::Utility::HELP_COMMANDS.keys.join(", ")}"
+    msg.reply(localize("command.help.list").sub(/&1/, HELP_COMMANDS.keys.join(localize("command.help.seperater"))))
   end
 
   def advanced(msg, command)
-    help = ESAEBSAD::Utility::HELP_COMMANDS
-    message = help.include?(command) ? help[command] : "Command not found."
+    help = HELP_COMMANDS
+    message = help.include?(command) ? help[command] : localize("command.help.notfound")
     msg.reply(message)
   end
 end
