@@ -11,7 +11,7 @@ EOS
   match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
     if is_part_of_group? msg.user.authname, "owner"
-      category = wiki == "br" ? "Categoria" : "Category"
+      category = wiki == "minecraftbr" ? "Categoria" : "Category"
 
       newcat = newcat == "nil" ? "" : "[[#{category}:#{newcat}]]"
       get_client(wiki).get_category_members("Category:#{cat}").each do |page|
