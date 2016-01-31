@@ -9,6 +9,7 @@ module ESAEBSAD
     
     WIKI_CORE = CONFIG["wiki"]["core"]
     WIKI_BOT_NAME = CONFIG["wiki"]["username"]
+    EMODULES = CONFIG["wiki"]["emodules"]
     
     CLIENTS = {}
     CONFIG["wikis"].each do |wiki, url|
@@ -16,20 +17,19 @@ module ESAEBSAD
       CLIENTS[wiki].login(WIKI_BOT_NAME, CONFIG["wiki"]["password"])
     end
     
-    EMODULES = ["badideas", "flirt", "motivate", "quote", "group-ftbop", "group-minecraftbrop", "group-ban"]
     EDATA = {}
     HELP_COMMANDS = {}
     
-    @has_edata_init = false
+    @@has_edata_init = false
     
     def create_help(name, doc)
       HELP_COMMANDS[name] = doc
     end
       
     def get_data(emodule)
-      if !@has_edata_init
+      if !@@has_edata_init
         update_data
-        @has_edata_init = true
+        @@has_edata_init = true
       end
       
       EDATA[emodule]
