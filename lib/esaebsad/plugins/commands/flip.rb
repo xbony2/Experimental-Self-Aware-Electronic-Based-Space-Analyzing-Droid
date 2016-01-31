@@ -3,10 +3,7 @@ class Flip < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "flip", <<EOS
-Group: all. Syntax: "@@flip"
-The flip command flips a coin.
-EOS
+  create_help "flip"
   set :prefix, /^@@/
   match "flip"
   def execute(msg)

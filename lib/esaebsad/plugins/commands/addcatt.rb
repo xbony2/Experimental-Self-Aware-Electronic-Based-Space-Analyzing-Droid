@@ -3,11 +3,7 @@ class AddCatt < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
   
-  create_help "addcatt", <<EOS
-Group: ftbop. Syntax: "@@addcatt (type); (name)"
-The addcatt command will create a new category based on the type.
-Example: "@@addcatt mod; Thermal Expansion 3".
-EOS
+  create_help "addcatt"
   set :prefix, /^@@/
   match /addcatt (.+); (.*)/
   def execute(msg, type, name)

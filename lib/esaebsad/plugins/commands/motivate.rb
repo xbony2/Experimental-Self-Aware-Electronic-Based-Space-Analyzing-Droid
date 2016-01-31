@@ -3,10 +3,7 @@ class Motivate < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "motivate", <<EOS
-Group: all. Syntax: "@@motivate"
-The motivate command will yield a motivating message.
-EOS
+  create_help "motivate"
   set :prefix, /^@@/
   match "motivate"
   def execute(msg)

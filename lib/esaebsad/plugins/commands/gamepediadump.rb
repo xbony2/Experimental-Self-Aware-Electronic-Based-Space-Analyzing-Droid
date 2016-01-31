@@ -3,10 +3,7 @@ class GamepediaDump < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "gamepediadump", <<EOS
-Group: owner. Syntax: "@@gamepediadump"
-The gamepedia dump command will create a list of all the gamepedia wikis.
-EOS
+  create_help "gamepediadump"
   set :prefix, /^@@/
   match "gamepediadump"
   def execute(msg)

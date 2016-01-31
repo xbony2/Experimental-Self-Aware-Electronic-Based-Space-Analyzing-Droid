@@ -3,10 +3,7 @@ class Roll < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "roll", <<EOS
-Group: all. Syntax: "@@roll"
-The roll command rolls a die.
-EOS
+  create_help "roll"
   set :prefix, /^@@/
   match "roll"
   def execute(msg)

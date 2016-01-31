@@ -1,0 +1,94 @@
+# IRC help
+help.addcat:
+  - "Group: op. Syntax: @@addcat (name); (wiki); (sub1); [sub2]; [sub3]"
+  - The addcat command will create a new category based on 1-3 subcategories.
+
+help.addcatt:
+  - "Group: ftbop. Syntax: @@addcatt (type); (name)"
+  - The addcatt command will create a new category based on the type.
+  - "Example: @@addcatt mod; Thermal Expansion 3"
+
+help.articleoftheweek:
+  - "Group: all. Syntax: @@articleoftheweek [wiki]"
+  - The article of the week command creates a new article of the week using an extremely advanced algolrithm.
+
+help.badideas:
+  - "Group: all. Syntax: @@badideas"
+  - The bad ideas command will yield a bad idea.
+
+help.catmanipulate:
+  - "Group: owner. Syntax: @@catmanipulate (cat); (newcat); (wiki)"
+  - The cat manipulate command will convert all instanences of a category to a different category.
+
+help.convertlink:
+  - "Group: op. Syntax: @@convertlink [wiki]; (oldlink); (newlink)"
+  - The convert link command will convert all instanences of a link to a different link.
+
+help.dev:
+  - "Group: all. Syntax: @@dev"
+  - The dev command gives basic information on ESAEBSAD.
+
+help.flip:
+  - "Group: all. Syntax: @@flip"
+  - The flip command flips a coin.
+
+help.flirt:
+  - "Group: all. Syntax: @@flirt (flirtery)"
+  - The flirt command will make ESAEBSAD flirt with the "flirtery".
+
+help.gamepediadump:
+  - "Group: owner. Syntax: @@gamepediadump"
+  - The gamepedia dump command will create a list of all the gamepedia wikis.
+
+help.help:
+  - "Group: all. Syntax: @@help [command]"
+  - The help command gives a list of commands.
+  - When supplied with a parameter, it will give information specific to that command.
+
+help.info:
+  - "Group: all. Syntax: @@info [wiki]; (user)"
+  - The info command will give basic information on a user.
+
+help.lyrics:
+  - "Group: owner. Syntax: @@lyrics (artist); (song)"
+  - The lyrics command will line-by-line state the lyrics of a song.
+  - It is owner-only, since many songs are hundreds of lines long.
+
+help.motivate:
+  - "Group: all. Syntax: @@motivate"
+  - The motivate command will yield a motivating message.
+
+help.quote:
+  - "Group: all. Syntax: @@quote"
+  - The quote command will yield a clean, motivating quote.
+
+help.replaceallincategory:
+  - "Group: op. Syntax: @@replaceallincategory [wiki]; (cat); (oldtext); (newtext)"
+  - The replace all in category command will convert all instanences of text in a category to a new text.
+
+help.replaceallinlink:
+  - "Group: op. Syntax: @@replaceallinlink [wiki]; (link); (oldtext); (newtext)"
+  - The replace all in link command will convert all instanences of text in a page linked by the given page to a new text.
+  
+help.roll:
+  - "Group: all. Syntax: @@roll"
+  - The roll command rolls a die.
+
+help.stop:
+  - "Group: owner. Syntax: @@stop"
+  - The stop command will stop ESAEBSAD.
+
+help.trans:
+  - "Group: ftbop. Syntax: @@trans (page); (special)"
+  - The trans command will prepare a (FTB) wiki page for translation.
+  - The special argument can be really anything and nothing will happen, except for 'in'.
+  - "'in' will make me automatically insert the header notifying the translator of older translations."
+  - "See: http://ftb.gamepedia.com/Feed_The_Beast_Wiki:Translation_Guide#Restoring_translations"
+
+help.updatedata:
+  - "Group: all. Syntax: @@updatedata [module]"
+  - The update data command will update ESEABSAD modules.
+
+help.urlshorten:
+  - "Group: all. Syntax: @@urlshorten (url)"
+  - The url shorten command will shorten a url using Goo.gl.

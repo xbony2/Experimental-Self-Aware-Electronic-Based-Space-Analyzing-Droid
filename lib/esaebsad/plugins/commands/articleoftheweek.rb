@@ -3,10 +3,7 @@ class ArticleOfTheWeek < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "articleoftheweek", <<EOS
-Group: all. Syntax: "@@articleoftheweek [wiki]"
-The article of the week command creates a new article of the week using an extremely advanced algolrithm.
-EOS
+  create_help "articleoftheweek"
   set :prefix, /^@@/
   match "articleoftheweek", method: :default
   match /articleoftheweek (.+)/, method: :execute

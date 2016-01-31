@@ -3,10 +3,7 @@ class Quote < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "quote", <<EOS
-Group: all. Syntax: "@@quote"
-The quote command will yield a clean, motivating quote.
-EOS
+  create_help "quote"
   set :prefix, /^@@/
   match "quote"
   def execute(msg)

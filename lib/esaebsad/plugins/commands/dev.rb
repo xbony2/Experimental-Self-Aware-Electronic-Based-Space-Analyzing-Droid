@@ -3,10 +3,7 @@ class Dev < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "dev", <<EOS
-Group: all. Syntax: "@@dev"
-The dev command gives basic information on ESAEBSAD.
-EOS
+  create_help "dev"
   set :prefix, /^@@/
   match "dev"
   def execute(msg)

@@ -3,11 +3,7 @@ class Help < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "help", <<EOS
-Group: all. Syntax: "@@help [command]"
-The help command gives a list of commands.
-When supplied with a parameter, it will give information specific to that command.
-EOS
+  create_help "help"
   set :prefix, /^@@/
   match "help", method: :list
   match /help (.+)/, method: :advanced

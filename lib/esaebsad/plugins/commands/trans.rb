@@ -3,13 +3,7 @@ class Trans < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "trans", <<EOS
-Group: ftbop. Syntax: "@@trans (page); (special)"
-The trans command will prepare a (FTB) wiki page for translation.
-The special argument can be really anything and nothing will happen, except for "in".
-"in" will make me automatically insert the header notifying the translator of older translations.
-See: http://ftb.gamepedia.com/Feed_The_Beast_Wiki:Translation_Guide#Restoring_translations
-EOS
+  create_help "trans"
   set :prefix, /^@@/
   match /trans (.*); (.+)/
   def execute(msg, page, special)

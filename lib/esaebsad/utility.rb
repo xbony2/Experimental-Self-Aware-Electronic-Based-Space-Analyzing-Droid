@@ -2,10 +2,18 @@ module ESAEBSAD
   module Utility
     CONFIG = YAML.load_file("config.yml")
     
+    LANGUAGE_STRINGS = {}
+    CONFIG["i18n"]["enabled"].each do |lang|
+      LANGUAGE_STRINGS[lang] = YAML.load_file("lib/resources/i18n/#{lang}.yml")
+    end
+    
+    LANG = CONFIG["i18n"]["default"]
+    
     IRC_SERVER = CONFIG["irc"]["server"]
     IRC_CHANNELS = CONFIG["irc"]["channels"]
     IRC_BOT_NAME = CONFIG["irc"]["nick"]
     IRC_OWNER = CONFIG["irc"]["owner"]
+    
     
     WIKI_CORE = CONFIG["wiki"]["core"]
     WIKI_BOT_NAME = CONFIG["wiki"]["username"]
@@ -27,8 +35,8 @@ module ESAEBSAD
     
     @@has_edata_init = false
     
-    def create_help(name, doc)
-      HELP_COMMANDS[name] = doc
+    def create_help(name)
+      HELP_COMMANDS[name] = LANGUAGE_STRINGS[LANG]["help.#{name}"].join("\n")
     end
       
     def get_data(emodule)
@@ -77,6 +85,10 @@ module ESAEBSAD
     
     def is_op?(user, wiki)
       get_groups(user).include?("#{wiki}-op")
+    end
+    
+    def localize(id, language = LANG)
+      
     end
   end
 end

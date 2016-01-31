@@ -3,10 +3,7 @@ class BadIdeas < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
   
-  create_help "badideas", <<EOS
-Group: all. Syntax: "@@badideas"
-The bad ideas command will yield a bad idea.
-EOS
+  create_help "badideas"
   set :prefix, /^@@/
   match "badideas"
   def execute(msg)

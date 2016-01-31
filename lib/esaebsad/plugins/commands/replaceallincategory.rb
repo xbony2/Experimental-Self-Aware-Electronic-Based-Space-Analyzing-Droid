@@ -3,10 +3,7 @@ class ReplaceAllInCategory < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "replaceallincategory", <<EOS
-Group: op. Syntax: "@@replaceallincategory [wiki]; (cat); (oldtext); (newtext)"
-The replace all in category command will convert all instanences of text in a category to a new text.
-EOS
+  create_help "replaceallincategory"
   set :prefix, /^@@/
   match /replaceallincategory (.*); (.*); (.+|.?)/, method: :default
   match /replaceallincategory (.+); (.*); (.*); (.+|.?)/, method: :execute

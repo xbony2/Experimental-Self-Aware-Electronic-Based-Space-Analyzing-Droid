@@ -3,10 +3,7 @@ class Stop < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "stop", <<EOS
-Group: owner. Syntax: "@@stop"
-The stop command will stop ESAEBSAD.
-EOS
+  create_help "stop"
   set :prefix, /^@@/
   match "stop"
   def execute(msg)

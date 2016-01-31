@@ -3,10 +3,7 @@ class ConvertLink < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "convertlink", <<EOS
-Group: op. Syntax: "@@convertlink [wiki]; (oldlink); (newlink)"
-The convert link command will convert all instanences of a link to a different link.
-EOS
+  create_help "convertlink"
   set :prefix, /^@@/
   match /convertlink (.*); (.*)/, method: :default
   match /convertlink (.+); (.*); (.*)/, method: :execute

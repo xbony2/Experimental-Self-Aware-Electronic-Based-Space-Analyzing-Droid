@@ -3,10 +3,7 @@ class UrlShorten < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "urlshorten", <<EOS
-Group: all. Syntax: "@@urlshorten (url)"
-The url shorten command will shorten a url using Goo.gl.
-EOS
+  create_help "urlshorten"
   set :prefix, /^@@/
   match /urlshorten (.+)/
   def execute(msg, url)

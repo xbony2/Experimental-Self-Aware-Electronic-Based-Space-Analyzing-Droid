@@ -3,10 +3,7 @@ class UpdateData < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
   
-  create_help "updatedata", <<EOS
-Group: all. Syntax: "@@updatedata [module]"
-The update data command will update ESEABSAD modules.
-EOS
+  create_help "updatedata"
   set :prefix, /^@@/
   match "updatedata", method: :update_full
   match /updatedata (.+)/, method: :update_specific

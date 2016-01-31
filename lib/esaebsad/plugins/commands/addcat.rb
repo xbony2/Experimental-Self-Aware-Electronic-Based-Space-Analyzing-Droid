@@ -3,10 +3,7 @@ class AddCat < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "addcat", <<EOS
-Group: op. Syntax: "@@addcat (name); (wiki); (sub1); [sub2]; [sub3]"
-The addcat command will create a new category based on 1-3 subcategories.
-EOS
+  create_help "addcat"
   set :prefix, /^@@/
   match /addcat (.*); (.+); (.*)/, method: :one_sub
   match /addcat (.*); (.+); (.*); (.*)/, method: :two_sub

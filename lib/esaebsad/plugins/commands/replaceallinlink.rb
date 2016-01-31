@@ -3,10 +3,7 @@ class ReplaceAllInLink < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "replaceallinlink", <<EOS
-Group: op. Syntax: "@@replaceallinlink [wiki]; (link); (oldtext); (newtext)"
-The replace all in link command will convert all instanences of text in a page linked by the given page to a new text.
-EOS
+  create_help "replaceallinlink"
   set :prefix, /^@@/
   match /replaceallinlink (.*); (.*); (.+|.?)/, method: :default
   match /replaceallinlink (.+); (.*); (.*); (.+|.?)/, method: :execute

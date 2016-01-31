@@ -3,10 +3,7 @@ class Info < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "info", <<EOS
-Group: all. Syntax: "@@info [wiki]; (user)"
-The info command will give basic information on a user.
-EOS
+  create_help "info"
   set :prefix, /^@@/
   match /info (.*)/, method: :default
   match /info (.+), (.*)/, method: :execute

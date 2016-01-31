@@ -3,10 +3,7 @@ class CatManipulator < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "catmanipulate", <<EOS
-Group: owner. Syntax: "@@catmanipulate (cat); (newcat); (wiki)"
-The cat manipulate command will convert all instanences of a category to a different category.
-EOS
+  create_help "catmanipulate"
   set :prefix, /^@@/
   match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)

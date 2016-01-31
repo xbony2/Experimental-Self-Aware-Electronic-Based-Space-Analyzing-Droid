@@ -9,11 +9,7 @@ class Lyrics < ESAEBSADCommand
     @lyric_getter = Lyricfy::Fetcher.new
   end
 
-  create_help "lyrics", <<EOS
-Group: owner. Syntax: "@@lyrics (artist); (song)"
-The lyrics command will line-by-line state the lyrics of a song.
-It is owner-only, since many songs are hundreds of lines long.
-EOS
+  create_help "lyrics"
   set :prefix, /^@@/
   match /lyrics (.*); (.*)/
   def execute(msg, artist, song)
