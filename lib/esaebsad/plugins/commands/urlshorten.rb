@@ -7,6 +7,6 @@ class UrlShorten < ESAEBSADCommand
   set :prefix, /^@@/
   match /urlshorten (.+)/
   def execute(msg, url)
-    msg.reply(localize("command.urlshorten.message", Googl.shorten(url).short_url))
+    msg.reply(localize("command.urlshorten", Googl.shorten(url).short_url))
   end
 end

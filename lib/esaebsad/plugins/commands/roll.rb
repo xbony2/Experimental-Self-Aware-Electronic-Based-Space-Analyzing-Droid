@@ -7,6 +7,6 @@ class Roll < ESAEBSADCommand
   set :prefix, /^@@/
   match "roll"
   def execute(msg)
-    msg.reply(localize("command.roll.message", 1 + rand(6)))
+    msg.reply(localize("command.roll", 1 + rand(6)))
   end
 end
