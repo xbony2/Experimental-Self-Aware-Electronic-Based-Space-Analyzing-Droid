@@ -51,11 +51,6 @@ help.info:
   - "Group: all. Syntax: $Pinfo [wiki]; (user)"
   - The info command will give basic information on a user.
 
-help.lyrics:
-  - "Group: owner. Syntax: $Plyrics (artist); (song)"
-  - The lyrics command will line-by-line state the lyrics of a song.
-  - It is owner-only, since many songs are hundreds of lines long.
-
 help.motivate:
   - "Group: all. Syntax: $Pmotivate"
   - The motivate command will yield a motivating message.
@@ -119,8 +114,6 @@ command.help.seperater: ", " # Although this seems strange, commas are different
 command.help.notfound: Command not found.
 
 command.info: "User: $1 | Contribs: $2 | Registered on: $3 | Gender: $4"
-
-command.lyrics.notfound: "Song not found! Or it may be broken. Remember: artist; song."
 
 command.roll: The die roll reveals the number $1.
 
