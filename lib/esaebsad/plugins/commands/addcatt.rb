@@ -3,8 +3,6 @@ class AddCatt < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
   
-  create_help "addcatt"
-  set :prefix, /^@@/
   match /addcatt (.+); (.*)/
   def execute(msg, type, name)
     if is_part_of_group? msg.user.authname, "ftbop"

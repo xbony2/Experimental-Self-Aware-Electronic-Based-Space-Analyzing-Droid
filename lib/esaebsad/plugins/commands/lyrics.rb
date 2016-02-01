@@ -9,8 +9,6 @@ class Lyrics < ESAEBSADCommand
     @lyric_getter = Lyricfy::Fetcher.new
   end
 
-  create_help "lyrics"
-  set :prefix, /^@@/
   match /lyrics (.*); (.*)/
   def execute(msg, artist, song)
     if is_part_of_group? msg.user.authname, "owner"

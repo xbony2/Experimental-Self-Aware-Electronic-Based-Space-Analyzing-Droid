@@ -20,6 +20,7 @@ bot = Cinch::Bot.new do
     c.server = ESAEBSAD::Utility::IRC_SERVER
     c.channels = ESAEBSAD::Utility::IRC_CHANNELS
     c.nick = ESAEBSAD::Utility::IRC_BOT_NAME
+    c.plugins.prefix = ESAEBSAD::Utility::IRC_PREFIX_REGEX
     c.plugins.plugins = ESAEBSADCommand.get_subclasses
   end
 end

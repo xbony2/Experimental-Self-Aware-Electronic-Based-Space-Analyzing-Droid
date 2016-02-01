@@ -3,8 +3,6 @@ class Motivate < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "motivate"
-  set :prefix, /^@@/
   match "motivate"
   def execute(msg)
     msg.reply(get_data("motivate").sample)

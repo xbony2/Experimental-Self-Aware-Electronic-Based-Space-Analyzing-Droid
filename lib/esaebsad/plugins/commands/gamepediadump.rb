@@ -3,8 +3,6 @@ class GamepediaDump < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "gamepediadump"
-  set :prefix, /^@@/
   match "gamepediadump"
   def execute(msg)
     if is_part_of_group? msg.user.authname, "owner"

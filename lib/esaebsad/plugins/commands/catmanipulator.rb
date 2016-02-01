@@ -3,8 +3,6 @@ class CatManipulator < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "catmanipulate"
-  set :prefix, /^@@/
   match /catmanipulate (.*); (.*); (.+)/
   def execute(msg, cat, newcat, wiki)
     if is_part_of_group? msg.user.authname, "owner"

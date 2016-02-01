@@ -6,6 +6,7 @@ irc:
     - "#FTB-Wiki"
     - "#FTB-Wiki-Dev"
   nick: ESAEBSAD
+  prefix: "@@"
   owner: xbony2
 
 wikis:

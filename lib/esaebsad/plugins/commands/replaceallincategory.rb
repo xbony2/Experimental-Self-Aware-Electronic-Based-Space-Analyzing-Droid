@@ -3,8 +3,6 @@ class ReplaceAllInCategory < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "replaceallincategory"
-  set :prefix, /^@@/
   match /replaceallincategory (.*); (.*); (.+|.?)/, method: :default
   match /replaceallincategory (.+); (.*); (.*); (.+|.?)/, method: :execute
   

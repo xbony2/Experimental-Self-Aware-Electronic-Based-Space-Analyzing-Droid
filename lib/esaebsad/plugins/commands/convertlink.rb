@@ -3,8 +3,6 @@ class ConvertLink < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "convertlink"
-  set :prefix, /^@@/
   match /convertlink (.*); (.*)/, method: :default
   match /convertlink (.+); (.*); (.*)/, method: :execute
   

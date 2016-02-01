@@ -3,8 +3,6 @@ class Trans < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "trans"
-  set :prefix, /^@@/
   match /trans (.*); (.+)/
   def execute(msg, page, special)
     if is_part_of_group? msg.user.authname, "ftbop"

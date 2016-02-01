@@ -3,8 +3,6 @@ class AddCat < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "addcat"
-  set :prefix, /^@@/
   match /addcat (.*); (.+); (.*)/, method: :one_sub
   match /addcat (.*); (.+); (.*); (.*)/, method: :two_sub
   match /addcat (.*); (.*); (.+); (.*); (.*)/, method: :three_sub

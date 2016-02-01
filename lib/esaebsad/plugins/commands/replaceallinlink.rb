@@ -3,8 +3,6 @@ class ReplaceAllInLink < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "replaceallinlink"
-  set :prefix, /^@@/
   match /replaceallinlink (.*); (.*); (.+|.?)/, method: :default
   match /replaceallinlink (.+); (.*); (.*); (.+|.?)/, method: :execute
   

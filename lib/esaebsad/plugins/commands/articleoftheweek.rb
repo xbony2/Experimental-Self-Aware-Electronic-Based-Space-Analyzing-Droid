@@ -3,8 +3,6 @@ class ArticleOfTheWeek < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  create_help "articleoftheweek"
-  set :prefix, /^@@/
   match "articleoftheweek", method: :default
   match /articleoftheweek (.+)/, method: :execute
   
