@@ -30,7 +30,7 @@ module ESAEBSAD
     @@has_edata_init = false
     
     def create_help(name)
-      HELP_COMMANDS[name] = LANGUAGE_STRINGS[LANG]["help.#{name}"].join("\n")
+      HELP_COMMANDS[name] = LANGUAGE_STRINGS["help.#{name}"].join("\n")
     end
       
     def get_data(emodule)
