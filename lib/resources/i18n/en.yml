@@ -1,13 +1,13 @@
-# TRANSLATORS NOTE: translation is discouraged right now as ESAEBSAD is being refactored.
+# Base translation. "$P" is the bot prefix.
 
 ## IRC help
 help.addcat:
   - "Group: op. Syntax: $Paddcat (name); (wiki); (sub1); [sub2]; [sub3]"
-  - The addcat command will create a new category based on 1-3 subcategories.
+  - The add cat command will create a new category based on 1-3 subcategories.
 
 help.addcatt:
   - "Group: ftbop. Syntax: $Paddcatt (type); (name)"
-  - The addcatt command will create a new category based on the type.
+  - The add cat t (add category [based on] template) command will create a new category based on the type.
   - "Example: $Paddcatt mod; Thermal Expansion 3"
 
 help.articleoftheweek:
@@ -29,6 +29,13 @@ help.convertlink:
 help.dev:
   - "Group: all. Syntax: $Pdev"
   - The dev command gives basic information on ESAEBSAD.
+  
+help.findreplace:
+  - "Group: op. Syntax: $Pfindreplace [wiki]; (type):(scope); (oldtext); (newtext)"
+  - The find replace command will simply find and replace some text in a particular scope.
+  - The type parameter specifies said scope. Each type is represented by one letter.
+  - C for Category, L for Link, N for Namespace. Note for Namespace, the NS ID should be used.
+  - "Example: $Pfindreplace ftb; C:Documentation templates; [[Template:Cg]]; {{Tl|Cg}}"
 
 help.flip:
   - "Group: all. Syntax: $Pflip"
@@ -58,14 +65,6 @@ help.motivate:
 help.quote:
   - "Group: all. Syntax: $Pquote"
   - The quote command will yield a clean, motivating quote.
-
-help.replaceallincategory:
-  - "Group: op. Syntax: $Preplaceallincategory [wiki]; (cat); (oldtext); (newtext)"
-  - The replace all in category command will convert all instanences of text in a category to a new text.
-
-help.replaceallinlink:
-  - "Group: op. Syntax: $Preplaceallinlink [wiki]; (link); (oldtext); (newtext)"
-  - The replace all in link command will convert all instanences of text in a page linked by the given page to a new text.
   
 help.roll:
   - "Group: all. Syntax: $Proll"
@@ -121,11 +120,10 @@ command.urlshorten: "New URL: $1"
 
 ## MediaWiki messages
 mw.category: Category
+mw.link: Link
+mw.namespace: Namespace
 
 mw.summary.catcreation: Created category page.
 mw.summary.modifiedcat: Modified category.
 mw.summary.linkconvert: Converting [[$1]] to [[$2]].
-
-# Translators note: don't translate these bottom two strings right now, they'll be removed soon.
-mw.summary.replaceallincat: Replacing $1 with $2 in Category $3
-mw.summary.replaceallinlink: Replacing $1 with $2 in link [[$3]]
+mw.summary.findreplace: Replacing "$1" with "$2" in scope $3 $4.

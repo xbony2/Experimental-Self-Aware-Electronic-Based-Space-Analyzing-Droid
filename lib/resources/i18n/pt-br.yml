@@ -30,6 +30,13 @@ help.dev:
   - "Group: all. Syntax: $Pdev"
   - The dev command gives basic information on ESAEBSAD.
 
+help.findreplace:
+  - "Group: op. Syntax: $Pfindreplace [wiki]; (type):(scope); (oldtext); (newtext)"
+  - The find replace command will simply find and replace some text in a particular scope.
+  - The type parameter specifies said scope. Each type is represented by one letter.
+  - C for Category, L for Link, N for Namespace. Note for Namespace, the NS ID should be used.
+  - "Example: $Pfindreplace ftb; C:Documentation templates; [[Template:Cg]]; {{Tl|Cg}}"
+
 help.flip:
   - "Group: all. Syntax: $Pflip"
   - The flip command flips a coin.
@@ -58,14 +65,6 @@ help.motivate:
 help.quote:
   - "Group: all. Syntax: $Pquote"
   - The quote command will yield a clean, motivating quote.
-
-help.replaceallincategory:
-  - "Group: op. Syntax: $Preplaceallincategory [wiki]; (cat); (oldtext); (newtext)"
-  - The replace all in category command will convert all instanences of text in a category to a new text.
-
-help.replaceallinlink:
-  - "Group: op. Syntax: $Preplaceallinlink [wiki]; (link); (oldtext); (newtext)"
-  - The replace all in link command will convert all instanences of text in a page linked by the given page to a new text.
   
 help.roll:
   - "Group: all. Syntax: $Proll"
@@ -121,11 +120,10 @@ command.urlshorten: "New URL: $1"
 
 ## MediaWiki messages
 mw.category: Categoria
+mw.link: Link
+mw.namespace: Namespace
 
 mw.summary.catcreation: Created category page.
 mw.summary.modifiedcat: Modificado categoria.
 mw.summary.linkconvert: Converting [[$1]] to [[$2]].
-
-# Translators note: don't translate these bottom two strings right now, they'll be removed soon.
-mw.summary.replaceallincat: Replacing $1 with $2 in Category $3
-mw.summary.replaceallinlink: Replacing $1 with $2 in link [[$3]]
+mw.summary.findreplace: Replacing "$1" with "$2" in scope $3 $4.
