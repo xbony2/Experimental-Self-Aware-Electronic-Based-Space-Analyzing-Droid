@@ -12,6 +12,6 @@ class Info < ESAEBSADCommand
   
   def execute(msg, wiki, user)
     client = get_client(wiki)
-    msg.reply(localize("command.info", user, client.get_contrib_count(user), client.get_registration_time(user).strftime("%B %e, %Y"), client.get_user_gender(user)))
+    msg.reply(localize("command.info", user, client.get_contrib_count(user).to_s, client.get_registration_time(user).strftime("%B %e, %Y"), client.get_user_gender(user)))
   end
 end
