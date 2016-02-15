@@ -44,6 +44,7 @@ class FindReplace < ESAEBSADCommand
         client = get_client(wiki)
         text = client.get_text(page)
         client.edit(page, text.gsub(old_text, new_text), summary: localize("mw.summary.findreplace", old_text, new_text, scope, scope_text)) if text.include?(old_text)
+        sleep(0.5)
       end
       msg.reply(localize("command.shared.complete"))
     else
