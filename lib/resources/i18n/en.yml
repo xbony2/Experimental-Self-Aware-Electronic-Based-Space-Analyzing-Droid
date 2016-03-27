@@ -65,6 +65,10 @@ help.motivate:
 help.quote:
   - "Group: all. Syntax: $Pquote"
   - The quote command will yield a clean, motivating quote.
+
+help.refreshlogin:
+  - "Group: all. Syntax: $refreshlogin"
+  - Logs out and logs back in ESAEBSAD's wiki accounts.
   
 help.roll:
   - "Group: all. Syntax: $Proll"
