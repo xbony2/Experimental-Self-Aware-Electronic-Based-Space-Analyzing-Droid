@@ -1,7 +1,8 @@
 module ESAEBSAD
   module Utility
     CONFIG = YAML.load_file("config.yml")
-    LANGUAGE_STRINGS = YAML.load_file("lib/resources/i18n/#{CONFIG["i18n"]}.yml")
+    DEFAULT_LANGUAGE_STRINGS = YAML.load_file("lib/resources/i18n/en.yml")
+    LANGUAGE_STRINGS = DEFAULT_LANGUAGE_STRINGS.merge(YAML.load_file("lib/resources/i18n/#{CONFIG["i18n"]}.yml"))
     
     IRC_SERVER = CONFIG["irc"]["server"]
     IRC_CHANNELS = CONFIG["irc"]["channels"]
