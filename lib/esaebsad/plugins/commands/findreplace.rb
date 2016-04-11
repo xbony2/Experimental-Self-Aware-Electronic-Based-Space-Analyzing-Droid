@@ -32,7 +32,7 @@ class FindReplace < ESAEBSADCommand
   end
   
   def namespace2(msg, wiki, namespace, old_text, new_text)
-    execute(msg, wiki, get_client(wiki).get_all_pages_in_namespace(namespace, 5000), localize("mw.namespace"), namespace, old_text, new_text)
+    execute(msg, wiki, get_client(wiki).get_search_results(old_text, namespace), localize("mw.namespace"), namespace, old_text, new_text)
   end
   
   def execute(msg, wiki, pages, scope, scope_text, old_text, new_text)
