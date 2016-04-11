@@ -24,15 +24,15 @@ class FindReplace < ESAEBSADCommand
   end
   
   def category2(msg, wiki, category, old_text, new_text)
-    execute(msg, wiki, get_client.get_category_members("Category:#{category}", 5000), localize("mw.category"), category, old_text, new_text)
+    execute(msg, wiki, get_client(wiki).get_category_members("Category:#{category}", 5000), localize("mw.category"), category, old_text, new_text)
   end
   
   def linkage2(msg, wiki, page, old_text, new_text)
-    execute(msg, wiki, get_client.what_links_here(page, 5000), localize("mw.link"), page, old_text, new_text)
+    execute(msg, wiki, get_client(wiki).what_links_here(page, 5000), localize("mw.link"), page, old_text, new_text)
   end
   
   def namespace2(msg, wiki, namespace, old_text, new_text)
-    execute(msg, wiki, get_client.get_all_pages_in_namespace(namespace, 5000), localize("mw.namespace"), namespace, old_text, new_text)
+    execute(msg, wiki, get_client(wiki).get_all_pages_in_namespace(namespace, 5000), localize("mw.namespace"), namespace, old_text, new_text)
   end
   
   def execute(msg, wiki, pages, scope, scope_text, old_text, new_text)
