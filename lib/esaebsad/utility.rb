@@ -48,7 +48,10 @@ module ESAEBSAD
     end
     
     def get_client(code = WIKI_CORE)
-      CLIENTS[code]
+      client = CLIENTS[code]
+      client.login(WIKI_BOT_NAME, CONFIG["wiki"]["password"]) unless client.user_bot?
+
+      client
     end
 
     def urlize(page_name)
