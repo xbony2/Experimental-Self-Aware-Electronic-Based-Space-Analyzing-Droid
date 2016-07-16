@@ -45,10 +45,6 @@ help.flirt:
   - "Group: all. Syntax: $Pflirt (flirtery)"
   - The flirt command will make ESAEBSAD flirt with the "flirtery".
 
-help.gamepediadump:
-  - "Group: owner. Syntax: $Pgamepediadump"
-  - The gamepedia dump command will create a list of all the gamepedia wikis.
-
 help.help:
   - "Group: all. Syntax: $Phelp [command]"
   - The help command gives a list of commands.
