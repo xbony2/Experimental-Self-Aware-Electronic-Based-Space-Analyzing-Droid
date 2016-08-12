@@ -11,7 +11,13 @@ class Info < ESAEBSADCommand
   end
   
   def execute(msg, wiki, user)
-    client = get_client(wiki)
+    client = nil
+    if wiki.start_with?("http://", "https://")
+      client = MediaWiki::Butt.new(wiki)
+    else
+      client = get_client(wiki)
+    end
+    
     msg.reply(localize("command.info", user, commafy(client.get_contrib_count(user)), client.get_registration_time(user).strftime("%B %e, %Y"), client.get_user_gender(user)))
   end
   
