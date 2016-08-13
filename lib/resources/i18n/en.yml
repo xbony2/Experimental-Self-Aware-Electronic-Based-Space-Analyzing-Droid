@@ -53,6 +53,7 @@ help.help:
 help.info:
   - "Group: all. Syntax: $Pinfo [wiki]; (user)"
   - The info command will give basic information on a user.
+  - The wiki parameter can be one of the registered codes or a URL.
 
 help.motivate:
   - "Group: all. Syntax: $Pmotivate"

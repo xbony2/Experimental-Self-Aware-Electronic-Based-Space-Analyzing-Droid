@@ -4,7 +4,7 @@ class Info < ESAEBSADCommand
   extend ESAEBSAD::Utility
 
   match /info (.*)/, method: :default
-  match /info (.+), (.*)/, method: :execute
+  match /info (.+); (.*)/, method: :execute
   
   def default(msg, user)
     execute(msg, WIKI_CORE, user)
