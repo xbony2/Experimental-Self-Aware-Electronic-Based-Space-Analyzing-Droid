@@ -24,7 +24,7 @@ class FindReplace < ESAEBSADCommand
   end
   
   def category2(msg, wiki, category, old_text, new_text)
-    execute(msg, wiki, get_client(wiki).get_category_members("Category:#{category}", 5000), localize("mw.category"), category, old_text, new_text)
+    execute(msg, wiki, get_client(wiki).get_category_members("Category:#{category}", 5000, "page|file|subcat"), localize("mw.category"), category, old_text, new_text)
   end
   
   def linkage2(msg, wiki, page, old_text, new_text)
