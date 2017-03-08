@@ -10,13 +10,14 @@ irc:
   owner: xbony2
 
 wikis:
-  ftb: http://ftb.gamepedia.com
-  minecraftbr: http://minecraft-br.gamepedia.com
+  ftb: https://ftb.gamepedia.com
+  minecraftbr: https://minecraft-br.gamepedia.com
 
 wiki:
   core: ftb
   username: ESAEBSAD
-  password: _
+  loginusername: ESAEBSAD@ESAEBSAD-bot
+  password: *censored*
   emodules:
     - badideas
     - flirt
