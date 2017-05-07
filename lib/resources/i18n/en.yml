@@ -22,6 +22,12 @@ help.catmanipulate:
   - "Group: owner. Syntax: $Pcatmanipulate (cat); (newcat); (wiki)"
   - The cat manipulate command will convert all instanences of a category to a different category.
 
+help.colorredictgen:
+  - "Group: ftbop. Syntax: $Pcolorredirectgen (name); (target)"
+  - Generates a group of redirects for Minecraft dyed stuff.
+  - The first name should include "$color" for where the color is.
+  - "Examples: $Pcolorredirectgen $color Wool; Wool"
+
 help.convertlink:
   - "Group: op. Syntax: $Pconvertlink [wiki]; (oldlink); (newlink)"
   - The convert link command will convert all instanences of a link to a different link.
@@ -29,13 +35,17 @@ help.convertlink:
 help.dev:
   - "Group: all. Syntax: $Pdev"
   - The dev command gives basic information on ESAEBSAD.
-  
+
 help.findreplace:
   - "Group: op. Syntax: $Pfindreplace [wiki]; (type):(scope); (oldtext); (newtext)"
   - The find replace command will simply find and replace some text in a particular scope.
   - The type parameter specifies said scope. Each type is represented by one letter.
   - C for Category, L for Link, N for Namespace. Note for Namespace, the NS ID should be used.
   - "Example: $Pfindreplace ftb; C:Documentation templates; [[Template:Cg]]; {{Tl|Cg}}"
+
+help.fixdoubleredirects:
+  - "Group: ftbop. Syntax: $Pfixdoubleredirects"
+  - Will go through the double redirects list and fix them.
 
 help.flip:
   - "Group: all. Syntax: $Pflip"
@@ -62,7 +72,7 @@ help.motivate:
 help.quote:
   - "Group: all. Syntax: $Pquote"
   - The quote command will yield a clean, motivating quote.
-  
+
 help.roll:
   - "Group: all. Syntax: $Proll"
   - The roll command rolls a die.
