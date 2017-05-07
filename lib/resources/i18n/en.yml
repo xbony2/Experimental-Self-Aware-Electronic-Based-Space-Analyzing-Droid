@@ -22,7 +22,7 @@ help.catmanipulate:
   - "Group: owner. Syntax: $Pcatmanipulate (cat); (newcat); (wiki)"
   - The cat manipulate command will convert all instanences of a category to a different category.
 
-help.colorredictgen:
+help.colorredirectgen:
   - "Group: ftbop. Syntax: $Pcolorredirectgen (name); (target)"
   - Generates a group of redirects for Minecraft dyed stuff.
   - The first name should include "$color" for where the color is.
