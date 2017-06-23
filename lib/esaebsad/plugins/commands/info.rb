@@ -3,9 +3,9 @@ class Info < ESAEBSADCommand
   include ESAEBSAD::Utility
   extend ESAEBSAD::Utility
 
-  match /info/, method: :default1
-  match /info (.*)/, method: :default2
-  match /info (.+); (.*)/, method: :execute
+  match /info$/, method: :default1
+  match /info (.*)$/, method: :default2
+  match /info (.+); (.*)$/, method: :execute
 
   def default1(msg)
     execute(msg, WIKI_CORE, msg.user.nick)
