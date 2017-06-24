@@ -28,8 +28,8 @@ class FindReplace < ESAEBSADCommand
   end
 
   def linkage2(msg, wiki, page, old_text, new_text)
-    wiki = get_client(wiki)
-    execute(msg, wiki, wiki.what_links_here(page, 5000).concat(wiki.get_all_transcluders(page, 5000)).uniq, localize("mw.link"), page, old_text, new_text)
+    client = get_client(wiki)
+    execute(msg, wiki, client.what_links_here(page, 5000).concat(client.get_all_transcluders(page, 5000)).uniq, localize("mw.link"), page, old_text, new_text)
   end
 
   def namespace2(msg, wiki, namespace, old_text, new_text)
