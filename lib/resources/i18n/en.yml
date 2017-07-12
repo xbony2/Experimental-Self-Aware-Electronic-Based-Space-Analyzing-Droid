@@ -36,6 +36,14 @@ help.dev:
   - "Group: all. Syntax: $Pdev"
   - The dev command gives basic information on ESAEBSAD.
 
+help.findlist:
+  - "Group: all. Syntax: $Pfindlist [wiki]; (type):(scope)"
+  - The find list command will simply and find and then list a number of pages.
+  - This will be using paste.ee instead of IRC if there's more than 5 things.
+  - The type parameter specifies said scope. Each type is represented by one letter.
+  - C for Category, L for Link, N for Namespace. Note for Namespace, the NS ID should be used.
+  - "Example: $Pfindlist ftb; C:Documentation templates"
+
 help.findreplace:
   - "Group: op. Syntax: $Pfindreplace [wiki]; (type):(scope); (oldtext); (newtext)"
   - The find replace command will simply find and replace some text in a particular scope.

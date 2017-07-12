@@ -15,9 +15,11 @@ module ESAEBSAD
     WIKI_BOT_NAME = CONFIG["wiki"]["username"]
     EMODULES = CONFIG["wiki"]["emodules"]
 
+    PASTEE = Pastee.new(CONFIG["pastee"])
+
     CLIENTS = {}
     CONFIG["wikis"].each do |wiki, url|
-      CLIENTS[wiki] = MediaWiki::Butt.new(url, use_continuation: true, assertion: :bot)
+      CLIENTS[wiki] = MediaWiki::Butt.new(url, use_continuation: true, assertion: :bot, query_limit_default: 5000)
       CLIENTS[wiki].login(CONFIG["wiki"]["loginusername"], CONFIG["wiki"]["password"])
     end
 
@@ -83,6 +85,17 @@ module ESAEBSAD
 
     def localize(id, str1 = "", str2 = "", str3 = "", str4 = "")
       LANGUAGE_STRINGS[id].sub(/\$1/, str1).sub(/\$2/, str2).sub(/\$3/, str3).sub(/\$4/, str4)
+    end
+
+    def list_stuff(msg, stuff)
+        if stuff.length > 5
+            id = PASTEE.submit(stuff, "Dump", expire = 60)
+            msg.reply "http://paste.ee/p/#{id}"
+        else
+            stuff.each do |str|
+                msg.reply str
+            end
+        end
     end
   end
 end

@@ -7,6 +7,7 @@ require "open-uri"
 require "mediawiki-butt"
 require "require_all"
 require "yaml"
+require "pastee"
 
 require_relative "utility"
 require_relative "esaebsadcommand"

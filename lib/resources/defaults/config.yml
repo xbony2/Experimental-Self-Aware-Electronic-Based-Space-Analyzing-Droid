@@ -9,6 +9,8 @@ irc:
   prefix: "@@"
   owner: xbony2
 
+pastee: *censored*
+
 wikis:
   ftb: https://ftb.gamepedia.com
   minecraftbr: https://minecraft-br.gamepedia.com
