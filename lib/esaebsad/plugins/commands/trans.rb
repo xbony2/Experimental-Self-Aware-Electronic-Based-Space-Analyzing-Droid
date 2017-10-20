@@ -21,7 +21,7 @@ class Trans < ESAEBSADCommand
       text = text.gsub(/\{\{Cg\/.+\n/){|s| s.insert(-2, "{{L}}")}
       text = text.gsub(/\{\{Navbox .+\}\}/){|s| s.insert(-3, "{{L}}")}
       text = text.insert(0, "<translate><!--Translators note: this article is part of the [[project:Translation Restoration project|Translation Restoration project]]--></translate>\n") if special == "in"
-      get_client.edit(page, text, "Added translation markup.")
+      get_client.edit(page, text, summary = "Added translation markup.")
       msg.reply(localize("command.shared.link", "http://ftb.gamepedia.com/#{urlize(page)}"))
     else
       msg.reply(localize("command.shared.unauthorized"))

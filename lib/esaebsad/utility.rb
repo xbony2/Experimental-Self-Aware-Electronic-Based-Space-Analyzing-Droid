@@ -19,7 +19,7 @@ module ESAEBSAD
 
     CLIENTS = {}
     CONFIG["wikis"].each do |wiki, url|
-      CLIENTS[wiki] = MediaWiki::Butt.new(url, use_continuation: true, assertion: :bot, query_limit_default: 5000)
+      CLIENTS[wiki] = MediaWiki::Butt.new(url, assertion: :bot)
       CLIENTS[wiki].login(CONFIG["wiki"]["loginusername"], CONFIG["wiki"]["password"])
     end
 
