@@ -5,7 +5,7 @@
 ESAEBSAD is written in Ruby, using the Cinch and MediaWiki-Butt gems.
 
 ## Running
-First, make sure there is a `config.yml` file in this directory; this is required for ESAEBSAD to function. For the default configuration (minus the password), view `lib/resources/defaults/config.yml`.
+First, make sure there is a `config.yml` file in this directory; this is required for ESAEBSAD to function. For the default configuration (minus my password), see `lib/resources/defaults/config.yml`.
 
 To run ESAEBSAD, you should simply execute the following in Terminal.
 ```bash
