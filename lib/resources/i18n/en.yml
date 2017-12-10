@@ -63,6 +63,10 @@ help.flirt:
   - "Group: all. Syntax: $Pflirt (flirtery)"
   - The flirt command will make ESAEBSAD flirt with the "flirtery".
 
+help.generatelangcats:
+  - "Group: ftbop. Syntax: $Pgeneratelangcats"
+  - Will automatically generate the wanted language categories.
+
 help.help:
   - "Group: all. Syntax: $Phelp [command]"
   - The help command gives a list of commands.
