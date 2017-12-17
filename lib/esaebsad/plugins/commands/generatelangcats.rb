@@ -7,7 +7,7 @@ class FixDoubleRedirects < ESAEBSADCommand
     def execute(msg)
       if is_op? msg.user.authname, "ftb"
         get_client.get_wantedcategories_page.each do |category|
-            match = /^Category:(.+)\/(\w{2})$/.match(category)
+            match = /^Category:(.+)\/(\w{2}|\w{2}-\w{2}|tl-b)$/.match(category)
             get_client.create_page(category, "[[Category:#{match[1]}]]", summary: localize("mw.summary.catcreation")) if !match.nil?
 		end
 
