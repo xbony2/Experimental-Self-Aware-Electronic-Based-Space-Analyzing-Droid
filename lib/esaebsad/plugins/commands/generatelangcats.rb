@@ -1,4 +1,4 @@
-class FixDoubleRedirects < ESAEBSADCommand
+class GenerateLangCats < ESAEBSADCommand
 	include Cinch::Plugin
     include ESAEBSAD::Utility
     extend ESAEBSAD::Utility
